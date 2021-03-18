@@ -2,5 +2,5 @@ module.exports = {
   siteMetadata: {
     title: "Infinidreams-Blog-Frontend",
   },
-  plugins: [],
+  plugins: [`gatsby-plugin-react-helmet`],
 };
