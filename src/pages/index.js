@@ -1,32 +1,60 @@
 import React, {useEffect, useState} from 'react'
 import Layout from "../components/layout"
-import { useAsync } from "react-async"
 import axios from 'axios'
 
 const IndexPage = () => {
   var[postsData, setPostsData] = useState([])
 
-  async function thisRandomFunction (){
-    try {
-      await axios.get('https://www.google.com/')
-    }
-    catch(err) {
-      console.error(err)
-    }
+  useEffect(() => {  
+    (async function connectToAPI (){
+      try {
+        await axios.get('http://localhost:5000/api/posts').then((res) => {
+          setPostsData(res);
+        });
+      }
+      catch(err) {
+        console.error(err)
+      }
+  
+    })()
 
-  }
-  thisRandomFunction()
 
 
-
-  useEffect(() => {
-
-    
   }, [])
+  
+  // map through each blog posts. 
+  function GetData () {
+    if (postsData.data) return postsData.data.map (data => {
+        return (
+          <div className="blog-post">
+              <h3>{data.title}</h3>
+              <h4> {data.summary}</h4>
+              {data.tags ? data.tags.map(tag => {
+                return <p> {tag} </p>
+              }): <p> </p>}
+              <img src={`data:image/png;base64, ${data.thumbnailString}` }/> 
+          </div>
+        )
+    })
+    return <h2> No Posts found</h2>
+  }
+
+
+
+ 
+
+
   return (
+    
     <Layout>
       <main className="posts-container">
         <div className="post-group"> 
+          {/* { postsData.data ? postsData.data.map((data, index) => {
+            return <h1 key={index}>{data.title} </h1>
+
+          }) : <h1> not found </h1>} */}
+
+          <GetData/>
         </div>
       </main>
     </Layout>

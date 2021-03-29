@@ -1,8 +1,8 @@
 import React from "react"
 
-import TwitterIcon from "../images/Socail-media/2021 Twitter logo - white.png"
-import GithubIcon from "../images/Socail-media/GitHub-Mark-Light-64px.png"
-import EmailIcon from "../images/Socail-media/icons8-email-64.png"
+// import TwitterIcon from "../images/Socail-media/2021 Twitter logo - white.png"
+// import GithubIcon from "../images/Socail-media/GitHub-Mark-Light-64px.png"
+// import EmailIcon from "../images/Socail-media/icons8-email-64.png"
 function Sidebar (){
     return (
       <nav className="nav-container">
