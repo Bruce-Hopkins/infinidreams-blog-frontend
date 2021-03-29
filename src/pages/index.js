@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import Layout from "../components/layout"
 import axios from 'axios'
+import SEO from "../components/SEO"
 
 const IndexPage = () => {
   var[postsData, setPostsData] = useState([])
@@ -33,6 +34,7 @@ const IndexPage = () => {
                 return <p> {tag} </p>
               }): <p> </p>}
               <img src={`data:image/png;base64, ${data.thumbnailString}` }/> 
+              <p>{data.FormattedDateOfPost}</p>
           </div>
         )
     })
@@ -41,12 +43,12 @@ const IndexPage = () => {
 
 
 
- 
 
 
   return (
     
     <Layout>
+      <SEO title="Infinidream | Blog"/>
       <main className="posts-container">
         <div className="post-group"> 
           {/* { postsData.data ? postsData.data.map((data, index) => {

@@ -6,7 +6,6 @@ function Layout (props) {
     return (
       <div>
         <Sidebar/>
-        <SEO/>
         {props.children}
       </div>
     )

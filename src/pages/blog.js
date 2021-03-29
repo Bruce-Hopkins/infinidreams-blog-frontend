@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import Layout from "../components/layout"
 import axios from 'axios'
+import SEO from "../components/SEO"
 
 
 const Singlepost = ({id}) => {
@@ -25,28 +26,28 @@ const Singlepost = ({id}) => {
         
     }
 
-    // TODO, Add metatags to this section
-    // TODO, set the date to something readable
     function GetPost() {
-        if (singlePostsData.data) return (
+        if (singlePostsData.data) { 
+          let postData = singlePostsData.data;
+          return (
             <div className="post-container"> 
                 <div className="post-group">
-                    <h1> {singlePostsData.data.title}</h1>
-                    <img src={`data:image/png;base64, ${singlePostsData.data.thumbnailString}` }/>
-                    {singlePostsData.data.tags ? singlePostsData.data.tags.map(tag => {
+                    <h1> {postData.title}</h1>
+                    <img src={`data:image/png;base64, ${postData.thumbnailString}` }/>
+                    {postData.tags ? postData.tags.map(tag => {
                         return <p> {tag}</p>
                     }): <p> </p>}
-                    <p> {singlePostsData.data.date_of_post}</p>
+                    <p>{postData.FormattedDateOfPost}</p>
+
                 </div>
             </div>
-
-        )
+        )}
         return <h1>Post Id not found</h1>
     }
-    
   return (
-    <Layout> 
-        <GetPost/>
+    <Layout>
+      <SEO title={singlePostsData.data ? singlePostsData.data.title : "Infinidream | Blog"}/>
+      <GetPost/>
      </Layout>
 
   )

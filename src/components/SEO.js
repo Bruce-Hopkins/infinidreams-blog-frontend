@@ -5,7 +5,7 @@ function SEO (props) {
     //TODO Add title depending on the blog title
     return (
         <Helmet>
-            <title>Infinidream | Blog</title>
+            <title>{props.title} </title>
             <meta name="description" content="Blog of Infinidream. Programming tutorials, guides, and benchmarks."/>
             <meta name="keywords" content="Infnidream Blog Bruce Hopkins Jr"/>
             <meta name="robots" content="index, follow"/>
