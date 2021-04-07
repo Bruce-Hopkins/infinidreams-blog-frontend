@@ -22,8 +22,17 @@ const Singlepost = ({id}) => {
     }, [])
 
     // TODO, Loop through body and set the right tags
-    function getBody(body) {
-        
+    function GetBody(body) {
+        if (singlePostsData.data.body) {
+          const blogBody = singlePostsData.data.body;
+          return blogBody.map(bodyString => {
+            if (bodyString.includes("(CODE)")) {
+              return <h1> CODE </h1>
+            } 
+            else return <h1>nope</h1>
+          })
+        }
+        return <h1> nothing</h1>
     }
 
     function GetPost() {
@@ -38,6 +47,7 @@ const Singlepost = ({id}) => {
                         return <p> {tag}</p>
                     }): <p> </p>}
                     <p>{postData.FormattedDateOfPost}</p>
+                    <GetBody/>
 
                 </div>
             </div>
