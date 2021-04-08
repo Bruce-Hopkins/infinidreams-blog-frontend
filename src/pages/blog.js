@@ -2,6 +2,12 @@ import React, {useEffect, useState} from 'react'
 import Layout from "../components/layout"
 import axios from 'axios'
 import SEO from "../components/SEO"
+import Page from "../components/highlighter"
+
+const code = `
+String foo = "foo";
+String bar = "bar";
+`.trim()
 
 
 const Singlepost = ({id}) => {
@@ -19,6 +25,8 @@ const Singlepost = ({id}) => {
           }
       
         })()
+        // setTimeout(() => Prism.highlightAll(), 0)
+
     }, [])
 
     // TODO, Loop through body and set the right tags
@@ -27,7 +35,14 @@ const Singlepost = ({id}) => {
           const blogBody = singlePostsData.data.body;
           return blogBody.map(bodyString => {
             if (bodyString.includes("(CODE)")) {
-              return <h1> CODE </h1>
+                  
+                  return <Page  code={code}/>
+              // <pre className>
+              //   <code className="language-java">
+                  {/* {bodyString} */}
+                {/* </code>
+              </pre> */}
+              
             } 
             else return <h1>nope</h1>
           })

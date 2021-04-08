@@ -1,3 +1,16 @@
 {
-    "presets": ["babel-preset-gatsby"]
+    "presets": [
+        "@babel/preset-env",
+        "@babel/preset-react",
+        "babel-preset-gatsby"
+      ],
+    "plugins": [
+       "@babel/plugin-proposal-class-properties",
+        ["prismjs", {
+        "languages": ["javascript", "css", "html", "java"],
+        "plugins": ["line-numbers", "show-language"],
+        "theme": "okaidia",
+        "css": true
+      }]
+    ]
 }
