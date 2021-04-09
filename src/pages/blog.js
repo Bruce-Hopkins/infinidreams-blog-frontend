@@ -32,19 +32,13 @@ const Singlepost = ({id}) => {
     // TODO, Loop through body and set the right tags
     function GetBody(body) {
         if (singlePostsData.data.body) {
-          const blogBody = singlePostsData.data.body;
-          return blogBody.map(bodyString => {
+          return singlePostsData.data.body.map(bodyString => {
             if (bodyString.includes("(CODE)")) {
-                  
-                  return <Page  code={code}/>
-              // <pre className>
-              //   <code className="language-java">
-                  {/* {bodyString} */}
-                {/* </code>
-              </pre> */}
-              
+                  const splitBodyString = bodyString.split("(CODE)");
+                  console.log(splitBodyString)
+                  return <Page language={splitBodyString[0]} code={splitBodyString[1]}/>
             } 
-            else return <h1>nope</h1>
+            else return <h1>{bodyString}</h1>
           })
         }
         return <h1> nothing</h1>
