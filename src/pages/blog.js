@@ -30,47 +30,26 @@ const Singlepost = ({id}) => {
         // setTimeout(() => Prism.highlightAll(), 0)
 
     }, [])
-
-    function hex2a(hexx) {
-      var hex = hexx.toString();//force conversion
-      var str = '';
-      for (var i = 0; (i < hex.length && hex.substr(i, 2) !== '00'); i += 2)
-        str += String.fromCharCode(parseInt(hex.substr(i, 2), 16));
-      return str;
-    }
-    function sortThroughHexCodes(hexCodeOfString) {
-      let entireString = [];
-      if (hexCodeOfString.includes("&#x")) {
-        const hexNumberSplits = hexCodeOfString.split("&#x");
-        entireString.push(hexNumberSplits[0])
-        for (let i = 1; i < hexNumberSplits.length; i++) {
-          let hexCode = hexNumberSplits[i].substring(0, 3);
-          if (hexCode.includes(';')) {
-            let splitHexCode = hexCode.split(';')[0];
-            entireString.push(hex2a(splitHexCode));
-          }
-          let nonHexCodes = hexNumberSplits[i].split(hexCode)[1];
-          if(nonHexCodes != '') entireString.push(nonHexCodes)
-        }
-        return entireString.join("");
+    function cleanString(stringToBeCleaned) {
+      if(stringToBeCleaned.startsWith(" ")) {
+        return stringToBeCleaned.slice(1);
       }
-      return hexCodeOfString;
+      return stringToBeCleaned;
     }
 
     // TODO, Loop through body and set the right tags
-    // TODO, If it finds a hex like this, split that perticular part into a normal char
     function GetBody(body) {
         if (singlePostsData.data.body) {
           return singlePostsData.data.body.map(bodyString => {
             if (bodyString.includes("(CODE)")) {
                   const splitBodyString = bodyString.split("(CODE)");
-                  console.log(splitBodyString[1])
-                  return <Page language={splitBodyString[0]} code={sortThroughHexCodes(splitBodyString[1])}/>
+                  console.log(splitBodyString[1]);
+                  return <Page language={splitBodyString[0]} code={cleanString(splitBodyString[1])}/>
             } 
-            else {
-              // console.log(hex2a(bodyString))
-              return <h1>{sortThroughHexCodes(bodyString)}</h1>
+            else if (bodyString.includes("/images/")) {
+              return <img src={bodyString}/>
             }
+            else return <p> {cleanString(bodyString)}</p>
           })
         }
         return <h1> nothing</h1>
@@ -85,7 +64,7 @@ const Singlepost = ({id}) => {
                     <h1> {postData.title}</h1>
                     <img src={`data:image/png;base64, ${postData.thumbnailString}` }/>
                     {postData.tags ? postData.tags.map(tag => {
-                        return <p> {sortThroughHexCodes(tag)}</p>
+                        return <p> {tag}</p>
                     }): <p> </p>}
                     <p>{postData.FormattedDateOfPost}</p>
                     <GetBody/>
@@ -97,7 +76,7 @@ const Singlepost = ({id}) => {
     }
   return (
     <Layout>
-      <SEO title={singlePostsData.data ? sortThroughHexCodes(singlePostsData.data.title) : "Infinidream | Blog"}/>
+      <SEO title={singlePostsData.data ? singlePostsData.data.title : "Infinidream | Blog"}/>
       <GetPost/>
     </Layout>
 

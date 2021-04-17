@@ -28,13 +28,16 @@ const IndexPage = () => {
     if (postsData.data) return postsData.data.map (data => {
         return (
           <div className="blog-post">
-              <h3>{data.title}</h3>
-              <h4> {data.summary}</h4>
-              {data.tags ? data.tags.map(tag => {
-                return <p> {tag} </p>
-              }): <p> </p>}
-              <img src={`data:image/png;base64, ${data.thumbnailString}` }/> 
-              <p>{data.FormattedDateOfPost}</p>
+              <a href={"blog/"+data._id}>
+                <h3>{data.title}</h3>
+                <h4> {data.summary}</h4>
+                {data.tags ? data.tags.map(tag => {
+                  return <p> {tag} </p>
+                }): <p> </p>}
+                <img src={`data:image/png;base64, ${data.thumbnailString}` }/> 
+                <p>{data.FormattedDateOfPost}</p>
+              </a>
+
           </div>
         )
     })
