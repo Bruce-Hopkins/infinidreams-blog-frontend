@@ -3,18 +3,12 @@ import Layout from "../components/layout"
 import axios from 'axios'
 import SEO from "../components/SEO"
 import Page from "../components/highlighter"
-
-const code = `
-String foo = "foo";
-String bar = "bar";
-`.trim()
+import "../stylesheets/blog.css"
 
 
 const Singlepost = ({id}) => {
     var[singlePostsData, setSinglePostsData] = useState([])
  
-
-      
     useEffect(() => {  
         (async function connectToAPI (){
           try {
@@ -37,22 +31,27 @@ const Singlepost = ({id}) => {
       return stringToBeCleaned;
     }
 
-    // TODO, Loop through body and set the right tags
+    // TODO,. add lazy loading.
+    //This will sort through the body property in the API and return different html tags depending on the content
     function GetBody(body) {
         if (singlePostsData.data.body) {
+
           return singlePostsData.data.body.map(bodyString => {
+
             if (bodyString.includes("(CODE)")) {
                   const splitBodyString = bodyString.split("(CODE)");
                   console.log(splitBodyString[1]);
                   return <Page language={splitBodyString[0]} code={cleanString(splitBodyString[1])}/>
             } 
+
             else if (bodyString.includes("/images/")) {
               return <img src={bodyString}/>
             }
+
             else return <p> {cleanString(bodyString)}</p>
           })
         }
-        return <h1> nothing</h1>
+        return <h1> There was a problem</h1>
     }
 
     function GetPost() {

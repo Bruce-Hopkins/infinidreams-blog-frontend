@@ -1,4 +1,5 @@
 import React from "react"
+import "../stylesheets/sidebar.css"
 
 // import TwitterIcon from "../images/Socail-media/2021 Twitter logo - white.png"
 // import GithubIcon from "../images/Socail-media/GitHub-Mark-Light-64px.png"

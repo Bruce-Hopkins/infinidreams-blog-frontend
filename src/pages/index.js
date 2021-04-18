@@ -2,7 +2,9 @@ import React, {useEffect, useState} from 'react'
 import Layout from "../components/layout"
 import axios from 'axios'
 import SEO from "../components/SEO"
+import "../stylesheets/index.css"
 
+//TODO, Add featured page when I have more posts.
 const IndexPage = () => {
   var[postsData, setPostsData] = useState([])
 
@@ -18,26 +20,26 @@ const IndexPage = () => {
       }
   
     })()
-
-
-
   }, [])
   
   // map through each blog posts. 
   function GetData () {
     if (postsData.data) return postsData.data.map (data => {
         return (
-          <div className="blog-post">
-              <a href={"blog/"+data._id}>
+          <div className="blogpost-container">
+            <a href={"blog/"+data._id} className="blogpost-group"> 
+              <img src={`data:image/png;base64, ${data.thumbnailString}` }/> 
+              <div className="blogpost-text-group">
                 <h3>{data.title}</h3>
+                <div className="blogpost-info">
+                  {data.tags ? data.tags.map(tag => {
+                    return <p> {tag} </p>
+                  }): <p> </p>}
+                  <p>{data.FormattedDateOfPost}</p>
+                </div>
                 <h4> {data.summary}</h4>
-                {data.tags ? data.tags.map(tag => {
-                  return <p> {tag} </p>
-                }): <p> </p>}
-                <img src={`data:image/png;base64, ${data.thumbnailString}` }/> 
-                <p>{data.FormattedDateOfPost}</p>
-              </a>
-
+              </div>
+            </a>
           </div>
         )
     })
