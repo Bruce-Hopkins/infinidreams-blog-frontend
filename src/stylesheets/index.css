@@ -10,26 +10,35 @@ body {
 }
 
 .post-group {
-    grid-gap: 20px;
+    grid-gap: 10px;
     display: grid;
+    padding-left: 100px;
 }
 .blogpost-container {
-    box-shadow: 1px 2px 27px 3px rgba(0,0,0,0.16);
+    /* box-shadow: 1px 2px 27px 3px rgba(0,0,0,0.16);
     -webkit-box-shadow: 1px 2px 27px 3px rgba(0,0,0,0.16);
     -moz-box-shadow: 1px 2px 27px 3px rgba(0,0,0,0.16);
-    border-radius: 0px;
-    height: 180px;
+    border-radius: 0px; */
+    /* border-bottom: 1px solid #eee; */
+    /* border-bottom: 1px solid #dcdcdc;; */
+    width: 1000px;
+    box-shadow: 0 0 10px rgba(52,64,114,0.12);
+    height: 220px;
 }
 .blogpost-group {
     display: grid;
     grid-template-columns: repeat(2, auto);
+    justify-content: start;
     text-decoration: none;
     color: var(--two);
 }
 .blogpost-group img {
-    width: 200px;
-    height:180px;
+    width: 240px;
+    height:220px;
     /* margin: auto 0; */
+}
+.blogpost-text-group {
+    margin-left: 30px;
 }
 .blogpost-info {
     display: flex;

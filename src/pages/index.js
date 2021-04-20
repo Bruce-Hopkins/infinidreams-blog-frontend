@@ -2,6 +2,8 @@ import React, {useEffect, useState} from 'react'
 import Layout from "../components/layout"
 import axios from 'axios'
 import SEO from "../components/SEO"
+import Sidebar from "../components/sidebar"
+
 import "../stylesheets/index.css"
 
 //TODO, Add featured page when I have more posts.
@@ -45,24 +47,15 @@ const IndexPage = () => {
     })
     return <h2> No Posts found</h2>
   }
-
-
-
-
-
   return (
     
     <Layout>
       <SEO title="Infinidream | Blog"/>
       <main className="posts-container">
         <div className="post-group"> 
-          {/* { postsData.data ? postsData.data.map((data, index) => {
-            return <h1 key={index}>{data.title} </h1>
-
-          }) : <h1> not found </h1>} */}
-
           <GetData/>
         </div>
+        {/* <Sidebar/> */}
       </main>
     </Layout>
 
