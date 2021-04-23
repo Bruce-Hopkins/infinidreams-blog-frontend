@@ -8,15 +8,15 @@ background: linear-gradient(0deg, rgba(19,41,61,1) 0%, rgba(20,19,61,1) 100%); *
     position: fixed;
     width: 300px;
     height: 600px;
-    left: 1100px;
-    top: 60px;
+    left: 0px;
+    top: 0px;
 }
 .nav-group {
     display: grid;
     justify-content: center;
     color: white;
 }
-.icon-group a, img {
+.icon-group a img {
     width: 40px;
 }
 .nav-group h3 {

@@ -8,11 +8,10 @@
 body {
     background-color: white;
 }
-
 .post-group {
     grid-gap: 10px;
     display: grid;
-    padding: 50px 0 0 40px;
+    padding: 30px 0px 0 330px;
 }
 .blogpost-container {
     /*TODO, adjust for all browsers*/

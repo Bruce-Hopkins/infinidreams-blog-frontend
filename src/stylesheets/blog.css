@@ -1,1 +1,23 @@
 /*TODO, Make sure that the img size for the body of the post is set to a maxmimum size. */
+.blog-thumbnail {
+    max-width: 445px;
+}
+.post-group {
+    width: 945px;
+}
+.title-group {
+    display: flex;
+    flex: 1 1 0px;
+}
+.title-text-group {
+    flex-basis: 100%;
+}
+.title-group img {
+    flex-basis: 0;
+}
+.tag-group {
+    display: flex;
+}
+.tag-group p {
+    padding-right: 17px;
+}

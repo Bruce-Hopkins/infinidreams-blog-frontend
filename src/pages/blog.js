@@ -60,13 +60,24 @@ const Singlepost = ({id}) => {
           return (
             <div className="post-container"> 
                 <div className="post-group">
-                    <h1> {postData.title}</h1>
-                    <img src={`data:image/png;base64, ${postData.thumbnailString}` }/>
-                    {postData.tags ? postData.tags.map(tag => {
-                        return <p> {tag}</p>
-                    }): <p> </p>}
-                    <p>{postData.FormattedDateOfPost}</p>
-                    <GetBody/>
+                  <div className="title-group">
+                    <div className="title-text-group">
+                      <h1> {postData.title}</h1>
+                      <h2>{postData.summary}</h2>
+                      <span className="tag-group">
+                        {postData.tags ? postData.tags.map(tag => {
+                            return <p> {tag}</p>
+                        }): <p> </p>}
+                        <p>{postData.FormattedDateOfPost}</p>
+                      </span>
+
+                    </div>
+                    {/* <div> vnvkndvfkl</div> */}
+                    <img className="blog-thumbnail" src={`data:image/png;base64, ${postData.thumbnailString}` }/>
+                  </div>
+                    <div className="body-group">
+                      <GetBody/>
+                    </div>
 
                 </div>
             </div>
