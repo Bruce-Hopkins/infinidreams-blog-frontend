@@ -36,7 +36,7 @@ function Sidebar (){
     }
     if (selectedLinks.length > 0) {
       return selectedLinks.map (selectedLink => {
-        return <a href={"blog/"+selectedLink._id}> {selectedLink.title} </a>
+        return <li> <a href={"blog/"+selectedLink._id}> {selectedLink.title} </a> </li>
       })
     } else console.log(selectedLinks.length)
 
@@ -46,14 +46,19 @@ function Sidebar (){
     return (
       <nav className="nav-container">
         <div className="nav-group">
-          <a className="portfolio-link" href="http://www.infinidream.net/">About Me</a>
-          <h3>Recent posts</h3>
-          <div className="recent-posts-group">
-            <GetRecentPosts/>
+          <h3> Pages:</h3>
+          <div className="important-link-group"> 
+            <a className="portfolio-link" href="/"> Home</a>
+            <a className="portfolio-link" href="http://www.infinidream.net/"> About Me</a>
           </div>
+
+
+          <h3>Recent posts:</h3>
+          <ul className="recent-posts-group">
+            <GetRecentPosts/>
+          </ul>
           {/*TODO, connect and find the most recent blog posts */}
           <div className="icon-group">
-            <a href="http://www.infinidream.net/"> </a>
             <a href="https://twitter.com/InfiniDreams1" target="_blank" rel="noopener noreferrer" > <img src={TwitterIcon} alt="Twitter icon"/> </a>
             <a href="https://github.com/Bruce-Hopkins-Jr" target="_blank" rel="noopener noreferrer">  <img src={GithubIcon} alt="Github Icon"/> </a>
             <a href="mailto: sales@budgetchamp.net" target="_blank" rel="noopener noreferrer"> <img src={EmailIcon} alt="Email Icon"/></a>  

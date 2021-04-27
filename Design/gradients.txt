@@ -1,0 +1,14 @@
+background: rgb(42,120,144);
+background: linear-gradient(336deg, rgba(42,120,144,1) 0%, rgba(42,180,144,1) 100%);
+
+Color:
+#2a7890
+#2ab490
+
+Color:
+#50aa96
+#82aa96
+
+Color:
+#5aa0c8
+#50e1c8

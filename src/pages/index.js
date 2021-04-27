@@ -35,7 +35,7 @@ const IndexPage = () => {
                 <h3>{data.title}</h3>
                 <div className="blogpost-info">
                   {data.tags ? data.tags.map(tag => {
-                    return <p> {tag} </p>
+                    return <p className="blogpost-tags"> {tag} </p>
                   }): <p> </p>}
                   <p>{data.FormattedDateOfPost}</p>
                 </div>
