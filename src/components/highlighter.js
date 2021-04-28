@@ -22,7 +22,7 @@ class Page extends React.Component {
   render() {
     return (
       <pre className>
-        <code className="language-java">
+        <code className={this.props.language ?" language-" + this.props.language : "language-javascript"}>
           {this.props.code}
         </code>
       </pre>

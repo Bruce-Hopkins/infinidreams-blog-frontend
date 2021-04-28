@@ -2,7 +2,12 @@ import React, {useEffect, useState} from 'react'
 import Layout from "../components/layout"
 import axios from 'axios'
 import SEO from "../components/SEO"
+import Sidebar from "../components/sidebar"
 
+import "../stylesheets/index.css"
+import "../stylesheets/layout.css"
+
+//TODO, Add featured page when I have more posts.
 const IndexPage = () => {
   var[postsData, setPostsData] = useState([])
 
@@ -18,46 +23,42 @@ const IndexPage = () => {
       }
   
     })()
-
-
-
   }, [])
   
   // map through each blog posts. 
   function GetData () {
     if (postsData.data) return postsData.data.map (data => {
         return (
-          <div className="blog-post">
-              <h3>{data.title}</h3>
-              <h4> {data.summary}</h4>
-              {data.tags ? data.tags.map(tag => {
-                return <p> {tag} </p>
-              }): <p> </p>}
+          <div className="blogpost-container">
+            <a href={"blog/"+data._id} className="blogpost-group"> 
               <img src={`data:image/png;base64, ${data.thumbnailString}` }/> 
-              <p>{data.FormattedDateOfPost}</p>
+              <div className="blogpost-text-group">
+                <h3>{data.title}</h3>
+                <div className="blogpost-info">
+                  {data.tags ? data.tags.map(tag => {
+                    return <p className="blogposts-tags"> {tag} </p>
+                  }): <p> </p>}
+                  <p className="blogposts-date">{data.FormattedDateOfPost}</p>
+                </div>
+                <h4> {data.summary}</h4>
+                {/* <a className="blog-button"> READ MORE</a> */}
+
+              </div>
+            </a>
           </div>
         )
     })
     return <h2> No Posts found</h2>
   }
-
-
-
-
-
   return (
     
     <Layout>
       <SEO title="Infinidream | Blog"/>
       <main className="posts-container">
         <div className="post-group"> 
-          {/* { postsData.data ? postsData.data.map((data, index) => {
-            return <h1 key={index}>{data.title} </h1>
-
-          }) : <h1> not found </h1>} */}
-
           <GetData/>
         </div>
+        {/* <Sidebar/> */}
       </main>
     </Layout>
 
