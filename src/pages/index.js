@@ -5,6 +5,7 @@ import SEO from "../components/SEO"
 import Sidebar from "../components/sidebar"
 
 import "../stylesheets/index.css"
+import "../stylesheets/layout.css"
 
 //TODO, Add featured page when I have more posts.
 const IndexPage = () => {
@@ -35,11 +36,13 @@ const IndexPage = () => {
                 <h3>{data.title}</h3>
                 <div className="blogpost-info">
                   {data.tags ? data.tags.map(tag => {
-                    return <p className="blogpost-tags"> {tag} </p>
+                    return <p className="blogposts-tags"> {tag} </p>
                   }): <p> </p>}
-                  <p>{data.FormattedDateOfPost}</p>
+                  <p className="blogposts-date">{data.FormattedDateOfPost}</p>
                 </div>
                 <h4> {data.summary}</h4>
+                {/* <a className="blog-button"> READ MORE</a> */}
+
               </div>
             </a>
           </div>

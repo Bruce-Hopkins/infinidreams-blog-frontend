@@ -3,7 +3,9 @@ import Layout from "../components/layout"
 import axios from 'axios'
 import SEO from "../components/SEO"
 import Page from "../components/highlighter"
+
 import "../stylesheets/blog.css"
+import "../stylesheets/layout.css"
 
 
 const Singlepost = ({id}) => {
