@@ -45,7 +45,7 @@ function Sidebar (){
     return (
       <nav className="nav-container">
         <div className="nav-group">
-          <h3> Pages:</h3>
+          <h3 className="pages-header"> Pages:</h3>
           <div className="important-link-group"> 
             <a className="portfolio-link" href="/"> Home</a>
             <a className="portfolio-link" href="http://www.infinidream.net/"> About Me</a>

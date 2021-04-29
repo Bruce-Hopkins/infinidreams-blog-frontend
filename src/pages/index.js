@@ -13,8 +13,6 @@ import "../stylesheets/layout.css"
 //TODO, Add loading animation when API has not connected yet.
 const IndexPage = () => {
   var[postsData, setPostsData] = useState([])
-
-
   useEffect(() => {  
     (async function connectToAPI (){
       try {
@@ -29,7 +27,7 @@ const IndexPage = () => {
     })()
   }, [])
   
-  // map through each blog posts. 
+  // Maps through each blog posts. 
   function GetData () {
     if (postsData.data) return postsData.data.map (data => {
         return (
@@ -62,14 +60,7 @@ const IndexPage = () => {
       <SEO title="Infinidream | Blog"/>
       <main className="posts-container">
         <div className="post-group">
-            <GetData/>
-            {/* <Context>
-
-            </Context> */}
-
-
-    
-          
+            <GetData/>          
         </div>
         {/* <Sidebar/> */}
       </main>

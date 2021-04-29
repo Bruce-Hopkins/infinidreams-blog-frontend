@@ -14,21 +14,30 @@ background: linear-gradient(0deg, rgba(19,41,61,1) 0%, rgba(20,19,61,1) 100%); *
     left: 0px;
     top: 0px;
 }
-.nav-group {display: grid; color: #BDBDBD;}
+.nav-group {display: grid; }
 .nav-group a, h3{ font-family: 'Mukta', sans-serif;}
 .nav-group h3 {
     text-align: left; 
     margin: 40px 0px 0px 20px; 
     font-weight: 400;
+    /* TODO, Try dark blue */
+    /* color: #89abd6; */
+    color: #e0e0e0;
+
 }
 .important-link-group{
     display: grid; 
     grid-template-columns: repeat(1, auto);
-    margin-top: 10px;
+    align-items: center;
+    margin: 10px 0px 0px 20px;
+    border-left: solid 2px var(--one);
+    margin-top: 33px; 
+    height: 90px;
 }
 .important-link-group a{
     width: 120px;
-    margin: 20px 0px 0px 40px;
+    padding-left: 0px;
+    margin: 0px 0px 0px 20px;
     /* border-image-source: linear-gradient(90deg, rgba(90,160,200,1) 0%, rgba(80,225,200,1) 100%);
     border-bottom: 1px solid; */
     font-size: 24px;
@@ -47,17 +56,15 @@ background: linear-gradient(0deg, rgba(19,41,61,1) 0%, rgba(20,19,61,1) 100%); *
     padding: 30px 50px 50px 30px;
 }
 .recent-posts-group li { color: rgba(124,176,240,1);}
-.recent-posts-group a, .portfolio-link {border-bottom: 3px solid rgba(0,0,0,0);}
 .recent-posts-group a {
     color: white;
     font-weight: 100;
     text-align: left;
     text-decoration: none;
+    font-family: 'Quicksand', sans-serif;
     /* text-decoration: underline; */
 }
-.recent-posts-group a:hover, .portfolio-link:hover {color:rgba(124,176,240,1);
-}
-
+.recent-posts-group a:hover, .portfolio-link:hover {color:rgba(124,176,240,1);}
 .icon-group {
     display: grid;
     grid-template-columns: repeat(3, auto);
