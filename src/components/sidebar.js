@@ -32,13 +32,12 @@ function Sidebar (){
           selectedLinks = postsData.data[0, 4];
         } 
         else selectedLinks = postsData.data;
-        console.log(selectedLinks);
     }
     if (selectedLinks.length > 0) {
       return selectedLinks.map (selectedLink => {
         return <li> <a href={"blog/"+selectedLink._id}> {selectedLink.title} </a> </li>
       })
-    } else console.log(selectedLinks.length)
+    }
 
     return <div/>
   }

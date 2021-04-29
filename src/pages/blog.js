@@ -43,7 +43,6 @@ const Singlepost = ({id}) => {
 
             if (bodyString.includes("(CODE)")) {
                   const splitBodyString = bodyString.split("(CODE)");
-                  console.log(splitBodyString[1]);
                   return <Page language={splitBodyString[0]} code={cleanString(splitBodyString[1])}/>
             } 
 
