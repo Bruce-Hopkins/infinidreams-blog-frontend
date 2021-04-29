@@ -16,6 +16,7 @@ const Singlepost = ({id}) => {
           try {
             await axios.get('http://localhost:5000/api/posts/' + id).then((res) => {
                 setSinglePostsData(res)
+                if (res.data.title) document.title = res.data.title;
             });
           }
           catch(err) {
@@ -88,7 +89,8 @@ const Singlepost = ({id}) => {
     }
   return (
     <Layout>
-      <SEO title={singlePostsData.data ? singlePostsData.data.title : "Infinidream | Blog"}/>
+      {/* Change title depending on the blog post title */}
+      <SEO title={singlePostsData.data ? singlePostsData.data.title : ""}/>
       <GetPost/>
     </Layout>
 

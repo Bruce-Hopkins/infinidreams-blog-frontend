@@ -1,3 +1,4 @@
+/* TODO, Add transitions to element hovers */
 .post-group {
     grid-gap: 10px;
     display: grid;
@@ -37,6 +38,7 @@
     margin-left: 30px;
 }
 .blogpost-text-group h3 {color: #404040;}
+.blogpost-group:hover .blogpost-text-group h3 {color: var(--one);}
 .blogpost-text-group h4 {
     color: #5e5e5e;
     font-size: 14px;
@@ -49,7 +51,7 @@
     margin:0 14px 0 0px;
 }
 .blogposts-tags{
-    color: rgba(0,152,240,1);   
+    color: var(--one);   
     font-weight: 300;
 }
 .blogposts-date {

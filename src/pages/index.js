@@ -3,11 +3,14 @@ import Layout from "../components/layout"
 import axios from 'axios'
 import SEO from "../components/SEO"
 import Sidebar from "../components/sidebar"
+import Context from "../components/contextAPI"
+
 
 import "../stylesheets/index.css"
 import "../stylesheets/layout.css"
 
 //TODO, Add featured page when I have more posts.
+//TODO, Add loading animation when API has not connected yet.
 const IndexPage = () => {
   var[postsData, setPostsData] = useState([])
 
@@ -55,7 +58,8 @@ const IndexPage = () => {
     <Layout>
       <SEO title="Infinidream | Blog"/>
       <main className="posts-container">
-        <div className="post-group"> 
+        <div className="post-group">
+          
           <GetData/>
         </div>
         {/* <Sidebar/> */}
