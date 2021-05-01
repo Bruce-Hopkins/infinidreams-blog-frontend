@@ -66,9 +66,9 @@ const Singlepost = ({id}) => {
                     <div className="title-text-group">
                       <h1> {postData.title}</h1>
                       <h2>{postData.summary}</h2>
-                      <span className="tag-group">
+                      <span className="info-group">
                         {postData.tags ? postData.tags.map(tag => {
-                            return <p> {tag}</p>
+                            return <p className="title-tags"> {tag}</p>
                         }): <p> </p>}
                         <p>{postData.FormattedDateOfPost}</p>
                       </span>

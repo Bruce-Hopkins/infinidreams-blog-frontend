@@ -1,23 +1,31 @@
-/*TODO, Make sure that the img size for the body of the post is set to a maxmimum size. */
-.blog-thumbnail {
-    max-width: 445px;
-}
-.post-group {
-    width: 945px;
-}
+.blog-thumbnail {max-width: 500px; height: auto; margin: 0px; padding: 0;}
 .title-group {
-    display: flex;
-    flex: 1 1 0px;
+    display: grid; 
+    grid-template-columns: 1fr 1fr;
+    padding-right: 10px; 
+    height: auto;
+    margin-bottom: 180px;
 }
-.title-text-group {
-    flex-basis: 100%;
+.title-text-group { margin-right: 40px;}
+.title-text-group h1, h2, p {font-family: 'Quicksand', sans-serif;}
+.title-text-group h1{color: black;}
+.title-text-group h2 {
+    width: 450px;
+    font-size: 15px;
+    color: #6A6A6A;
+    font-weight: 600;
 }
-.title-group img {
-    flex-basis: 0;
+/* TODO add more margin bottom */
+/* TODO, more paragraph spacing */
+/* TODO, Test bigger images and add a size limit. */
+.info-group {display: flex;}
+.info-group p {padding-right: 17px;}
+.title-tags {color: var(--one);}
+.post-group {width: 945px;}
+.body-group p, img, .code-toolbar {
+    margin: 0px auto;
+    padding: 30px 0 30px 0;
+    position: relative;
+    display: block;
 }
-.tag-group {
-    display: flex;
-}
-.tag-group p {
-    padding-right: 17px;
-}
+.body-group{word-spacing: 5px;}

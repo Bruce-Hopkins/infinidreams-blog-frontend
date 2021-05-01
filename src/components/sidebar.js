@@ -56,7 +56,6 @@ function Sidebar (){
           <ul className="recent-posts-group">
             <GetRecentPosts/>
           </ul>
-          {/*TODO, connect and find the most recent blog posts */}
           <div className="icon-group">
             <a href="https://twitter.com/InfiniDreams1" target="_blank" rel="noopener noreferrer" > <img src={TwitterIcon} alt="Twitter icon"/> </a>
             <a href="https://github.com/Bruce-Hopkins-Jr" target="_blank" rel="noopener noreferrer">  <img src={GithubIcon} alt="Github Icon"/> </a>

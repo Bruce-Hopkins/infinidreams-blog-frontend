@@ -1,12 +1,5 @@
 import React from 'react';
-// import ReactDOM from 'react-dom';
 import Prism from "prismjs"
-const code = `
-String foo = "foo";
-String bar = "bar";
-`.trim()
-// className="line-numbers"
-// TODO, implement this code into the blog page
 class Page extends React.Component {
 
     constructor(props) {
@@ -15,8 +8,7 @@ class Page extends React.Component {
     
     
   componentDidMount() {
-    // You can call the Prism.js API here
-    // Use setTimeout to push onto callback queue so it runs after the DOM is updated
+    // Call The prism API
     setTimeout(() => Prism.highlightAll(), 0)
   }
   render() {
