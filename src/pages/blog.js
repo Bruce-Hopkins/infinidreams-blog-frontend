@@ -62,21 +62,24 @@ const Singlepost = ({id}) => {
           return (
             <div className="post-container"> 
                 <div className="post-group">
-                  <div className="title-group">
-                    <div className="title-text-group">
-                      <h1> {postData.title}</h1>
-                      <h2>{postData.summary}</h2>
-                      <span className="info-group">
-                        {postData.tags ? postData.tags.map(tag => {
-                            return <p className="title-tags"> {tag}</p>
-                        }): <p> </p>}
-                        <p>{postData.FormattedDateOfPost}</p>
-                      </span>
+                  <div className="gradient-container"> 
+                    <div className="title-group">
+                      <div className="title-text-group">
+                        <h1> {postData.title}</h1>
+                        <h2>{postData.summary}</h2>
+                        <span className="info-group">
+                          {postData.tags ? postData.tags.map(tag => {
+                              return <p className="title-tags"> {tag}</p>
+                          }): <p> </p>}
+                          <p>{postData.FormattedDateOfPost}</p>
+                        </span>
 
+                      </div>
+                      <img className="blog-thumbnail" src={`data:image/png;base64, ${postData.thumbnailString}` }/>
                     </div>
-                    {/* <div> vnvkndvfkl</div> */}
-                    <img className="blog-thumbnail" src={`data:image/png;base64, ${postData.thumbnailString}` }/>
+                  
                   </div>
+
                     <div className="body-group">
                       <GetBody/>
                     </div>

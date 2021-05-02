@@ -28,8 +28,13 @@ function Sidebar (){
     // If not it'll only return the number of posts
     let selectedLinks = [];
     if (postsData.data) {
+
+        // Finds the first five posts on the blog.
         if (postsData.data.length > 5) {
-          selectedLinks = postsData.data[0, 4];
+          for (let i = 0; i < 5; i++) {
+            selectedLinks.push(postsData.data[i]);
+            console.log(postsData.data[i])
+          }
         } 
         else selectedLinks = postsData.data;
     }
