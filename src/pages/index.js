@@ -59,7 +59,7 @@ const IndexPage = () => {
     <Layout>
       <SEO title="Infinidream | Blog"/>
       <main className="posts-container">
-        <div className="post-group">
+        <div className="post-list">
             <GetData/>          
         </div>
         {/* <Sidebar/> */}
