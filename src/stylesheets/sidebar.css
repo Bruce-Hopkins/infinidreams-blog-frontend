@@ -1,4 +1,6 @@
-/* TODO, Change the colors of the hover for the links */
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap');
+
 .nav-container {
     background-color:  #2d2d2d;
     display: block;
@@ -29,13 +31,17 @@
     width: 120px;
     padding-left: 0px;
     margin: 0px 0px 0px 20px;
-    font-size: 24px;
+    font-size: 29px;
     text-align: center;
     color: white;
     text-decoration: none;
-    font-weight: 500;
     text-align: left;
     transition: color var(--timing) ease-out;
+    font-weight: 300;
+    /* font-family: 'Play', sans-serif; */
+
+    font-family: 'Oswald', sans-serif;
+    letter-spacing: 1px;
 }
 .recent-posts-group {
     justify-content: center;
