@@ -7,7 +7,20 @@ import GithubIcon from "../images/Socail-media/GitHub-Mark-Light-64px.png"
 import EmailIcon from "../images/Socail-media/icons8-email-64.png"
 function Sidebar (){
 
-  var[postsData, setPostsData] = useState([])
+  var[postsData, setPostsData] = useState([])    
+  const [show, setShow] = React.useState(false)
+
+  function showMenu() {
+    if (show) {
+      setShow(false)
+      console.log("Show is now false")
+    }
+    else  {
+      setShow(true)
+      console.log("Show is now true")
+
+    }
+  }
   useEffect(() => {  
     (async function connectToAPI (){
       try {
@@ -48,19 +61,22 @@ function Sidebar (){
   }
 
     return (
-      <nav className="nav-container">
+      <nav className={show ? "nav-container show" : "nav-container"}>
+          <svg onClick={showMenu} fill="#000000" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 26 26" width="26px" height="26px"><path d="M 0 4 L 0 6 L 26 6 L 26 4 Z M 0 12 L 0 14 L 26 14 L 26 12 Z M 0 20 L 0 22 L 26 22 L 26 20 Z"/></svg>
         <div className="nav-group">
-          <h3 className="pages-header"> Pages:</h3>
-          <div className="important-link-group"> 
-            <a href="/"> Home</a>
-            <a href="http://www.infinidream.net/"> About Me</a>
-          </div>
-
-
-          <h3>Recent posts:</h3>
-          <ul className="recent-posts-group">
-            <GetRecentPosts/>
-          </ul>
+          <div className="pages-container">
+            <h3> Pages:</h3>
+            <div className="important-link-group"> 
+              <a href="/"> Home</a>
+              <a href="http://www.infinidream.net/"> About Me</a>
+            </div>
+          </div> 
+          <div className="recent-posts-container">
+            <h3>Recent posts:</h3>
+            <ul className="recent-posts-group">
+              <GetRecentPosts/>
+            </ul>
+          </div> 
           <div className="icon-group">
             <a href="https://twitter.com/InfiniDreams1" target="_blank" rel="noopener noreferrer" > <img src={TwitterIcon} alt="Twitter icon"/> </a>
             <a href="https://github.com/Bruce-Hopkins-Jr" target="_blank" rel="noopener noreferrer">  <img src={GithubIcon} alt="Github Icon"/> </a>
