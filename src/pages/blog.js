@@ -66,7 +66,6 @@ const Singlepost = ({id}) => {
                     <div className="title-group">
                       <div className="title-text-group">
                         <h1> {postData.title}</h1>
-                        <h2>{postData.summary}</h2>
                         <span className="info-group">
                           {postData.tags ? postData.tags.map(tag => {
                               return <p className="title-tags"> {tag}</p>

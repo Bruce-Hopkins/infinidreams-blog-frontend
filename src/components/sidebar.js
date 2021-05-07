@@ -40,7 +40,7 @@ function Sidebar (){
     }
     if (selectedLinks.length > 0) {
       return selectedLinks.map (selectedLink => {
-        return <li> <a href={"blog/"+selectedLink._id}> {selectedLink.title} </a> </li>
+        return <li> <a href={"/blog/"+selectedLink._id}> {selectedLink.title} </a> </li>
       })
     }
 
