@@ -52,8 +52,8 @@ function Sidebar (){
         <div className="nav-group">
           <h3 className="pages-header"> Pages:</h3>
           <div className="important-link-group"> 
-            <a className="portfolio-link" href="/"> Home</a>
-            <a className="portfolio-link" href="http://www.infinidream.net/"> About Me</a>
+            <a href="/"> Home</a>
+            <a href="http://www.infinidream.net/"> About Me</a>
           </div>
 
 
