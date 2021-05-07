@@ -44,7 +44,7 @@
     grid-gap: 30px;
     padding: 30px 50px 50px 30px;
 }
-.recent-posts-group li { color: rgba(124,176,240,1);}
+.recent-posts-group li { color: var(--one)}
 .recent-posts-group a {
     color: white;
     font-weight: 100;
