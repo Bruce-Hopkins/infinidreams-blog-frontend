@@ -1,4 +1,5 @@
 /* TODO, Add transitions to element hovers */
+/*TODO, make sure none of the text groups have default font-size */
 /* .blog-button{
     display: block;
     width: 100px;
@@ -15,7 +16,7 @@
     margin-bottom: 30px;
     width: 700px;
     box-shadow: 0 0 10px rgba(52,64,114,0.12);
-    height: 220px;
+    height: 180px;
     border: none;
 }
 .blogpost-group {
@@ -25,9 +26,13 @@
     text-decoration: none;
     color: var(--two);
 }
-.blogpost-group img { width: 240px; height:220px;}
+.blogpost-group img { width: 240px; height:auto;}
 .blogpost-text-group { margin-left: 30px;}
-.blogpost-text-group h3 {color: #404040; transition: color var(--timing) ease-in-out;}
+.blogpost-text-group h3 {
+    color: #404040; 
+    transition: color var(--timing) ease-in-out;
+    font-size: 18.5px;
+}
 .blogpost-group:hover .blogpost-text-group h3 {color: var(--one);}
 .blogpost-text-group h4 {
     color: #5e5e5e;
@@ -39,3 +44,26 @@
 .blogposts-tags {color: var(--one); font-weight: 300;}
 .blogposts-date { font-weight: 600; color: #4f4f4f;}
 .post-list { padding: 20px 0 0 300px }
+
+@media(max-width:1000px) {
+    .blogpost-group img { width: 160px; height: auto; align-self: center;}
+    .blogpost-container { width: 400px; height: 200px;}
+    .blogpost-group {height: 100%;}
+    .blogpost-text-group { margin: 0px 20px 0 20px;}
+    .blogpost-text-group h3 {font-size: 15px; margin: 20px 0 10px 0;}
+    .blogpost-info p {font-size: 12px; }
+    .blogpost-text-group h4 {font-size: 11px; margin: 10px 0 15px 0;}
+
+
+}
+@media(max-width:800px) {
+    .post-list { padding: 100px 0 0 0px }
+    .blogpost-container {  width: 100%; max-width: 600px; }
+    .blogpost-text-group { margin: 0px 30px 0 20px;}
+    .blogpost-container { height: auto; margin: 0 auto 20px auto;}
+    .blogpost-group img {width: 110px; align-self: center;}
+    .blogpost-text-group h3 {font-size: 14px; margin: 10px 0 10px 0;}
+    .blogpost-info p {font-size: 12px; }
+    .blogpost-text-group h4 {font-size: 11px; margin: 10px 0 15px 0;}
+
+}

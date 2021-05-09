@@ -27,7 +27,7 @@
 .title-group {
     display: grid;
     grid-template-columns: repeat(2, auto);
-    width: 80%;
+    width: auto;
     height: auto;
     position: relative;
     justify-content: center;
@@ -40,7 +40,7 @@
     background-color: white;
     padding: 0 40px 0 20px;
     height: 100%;
-    max-width: 450px;
+    width: 310px;
 }
 .title-text-group h1, h2, .info-group {font-family: 'Quicksand', sans-serif; margin-left: 15px;}
 .title-text-group h1{color: black; margin-top: 50px;}
