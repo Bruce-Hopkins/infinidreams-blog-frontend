@@ -1,12 +1,11 @@
-
+/* TODO, Clean nav-group size bug */
+.post-container { z-index: -1; position: relative;}
 .post-group {
     grid-gap: 10px;
     display: grid;
     padding: 0px 0px 0 250px;
-    /* width: 100%; */
-
 }
-.blog-thumbnail {max-width: 400px; height: 300px; margin: 0px; padding: 0;}
+.blog-thumbnail {max-width: 400px; height: auto; margin: 0px; padding: 0;}
 .gradient-container {
     width: 100%;
     display: flex; 
@@ -51,8 +50,6 @@
     font-weight: 600;
 }
 /* TODO add more margin bottom */
-/* TODO, more paragraph spacing */
-/* TODO, Test bigger images and add a size limit. */
 .info-group {display: flex;}
 .info-group p {padding-right: 17px; color: black;}
 .title-tags {color: black;}
@@ -66,3 +63,16 @@
     display: block;
 }
 .body-group{word-spacing: 5px;}
+@media(max-width:800px) {
+    .title-text-group h1 { font-size: 15.5px; margin: 25px 20px 0 20px; }
+    .title-group {grid-template-columns: repeat(1, auto); margin-top: 40px;}
+    .post-group {padding: 90px 0;}
+    .blog-thumbnail {max-width: 300px; order: -1;}
+    .info-group {margin-top: 10px;}
+    .info-group p { font-size: 13px; margin: 5px 0 5px 0}
+    .title-text-group {height: 175px; width: 300px; padding: 0;}
+    .gradient-container { height: 520px; margin-bottom: 20px; align-items: start; }
+    .body-group { margin: 0px 10px 0px 10px; }
+    .body-group p {font-size: 14.3px; }
+    .code-toolbar { font-size: 13px; overflow: scroll; width: 90vw;}
+}

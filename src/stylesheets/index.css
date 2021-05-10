@@ -1,22 +1,10 @@
-/* TODO, Add transitions to element hovers */
 /*TODO, make sure none of the text groups have default font-size */
-/* .blog-button{
-    display: block;
-    width: 100px;
-    height: 40px;
-    color: white;
-    background-color: rgba(30, 180, 232, 1);
-    border-radius: 100px;
-    text-align: center;
-    line-height: 3.5;
-    font-size: 12px;
-} */
 .blogpost-container {
     /*TODO, adjust for all browsers*/
     margin-bottom: 30px;
     width: 700px;
     box-shadow: 0 0 10px rgba(52,64,114,0.12);
-    height: 180px;
+    height: auto;
     border: none;
 }
 .blogpost-group {
@@ -27,7 +15,7 @@
     color: var(--two);
 }
 .blogpost-group img { width: 240px; height:auto;}
-.blogpost-text-group { margin-left: 30px;}
+.blogpost-text-group { margin: 0 20px 0 30px}
 .blogpost-text-group h3 {
     color: #404040; 
     transition: color var(--timing) ease-in-out;
@@ -47,11 +35,11 @@
 
 @media(max-width:1000px) {
     .blogpost-group img { width: 160px; height: auto; align-self: center;}
-    .blogpost-container { width: 400px; height: 200px;}
+    .blogpost-container { width: 460px; height: 200px;}
     .blogpost-group {height: 100%;}
     .blogpost-text-group { margin: 0px 20px 0 20px;}
-    .blogpost-text-group h3 {font-size: 15px; margin: 20px 0 10px 0;}
-    .blogpost-info p {font-size: 12px; }
+    .blogpost-text-group h3 {font-size: 16px; margin: 20px 0 10px 0;}
+    .blogpost-info p {font-size: 12.4px; }
     .blogpost-text-group h4 {font-size: 11px; margin: 10px 0 15px 0;}
 
 
