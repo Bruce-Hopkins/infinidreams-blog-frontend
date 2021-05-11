@@ -36,11 +36,13 @@
     width: 20px;
     height: 20px;
     border-radius: 100px;
-} 
-.circle1 { grid-area: top-cirle; background-color: red; justify-self: center;}
-.circle2 { grid-area: middle-left-cirle; background-color: green; justify-self: start;}
-.circle3 { grid-area: middle-right-cirle; background-color: blue; justify-self: end;}
-.circle4 { grid-area: bottom-cirle; background-color: #404040; justify-self: center;}
+}
+
+/* Loading aniamtion */
+.circle1 { grid-area: top-cirle; background-color: var(--one); justify-self: center;}
+.circle2 { grid-area: middle-left-cirle; background-color: #FFBB00; justify-self: start;}
+.circle3 { grid-area: middle-right-cirle; background-color:#FFBB00; justify-self: end;}
+.circle4 { grid-area: bottom-cirle; background-color: var(--one); justify-self: center;}
 
 .loading-animation {
     display: grid;
@@ -52,6 +54,9 @@
     padding: 10px;
     height: 80px;
     width: 80px;
+
+    position: relative;
+    margin: 40px auto;
 
     animation-name: loading;
     animation-duration: 2s;

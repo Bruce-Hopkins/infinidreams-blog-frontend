@@ -1,10 +1,10 @@
 :root {
     --one: rgba(0,152,240,1);
-    --two:  rgba(90,160,200,1);
+    --two:  #FFC422;;
     --three: rgba(80,225,200,1);
     --four: #53b4ed;
     --postHeight: 180px;
-    --timing: 0.20s;
+    --timing: 0.15s;
 }
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 body { background-color: white; margin: 0;}

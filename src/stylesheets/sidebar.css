@@ -32,7 +32,7 @@
     grid-template-columns: repeat(1, auto);
     align-items: center;
     margin: 10px 0px 0px 20px;
-    border-left: solid 2px var(--one);
+    /* border-left: solid 2px var(--one); */
     margin-top: 33px; 
     height: 90px;
 }
@@ -60,16 +60,20 @@
     grid-gap: 30px;
     padding: 30px 50px 50px 30px;
 }
-.recent-posts-group li { color: var(--one)}
+.recent-posts-group li { color: var(--one); transition: color var(--timing) ease-out;}
 .recent-posts-group a {
     color: white;
     font-weight: 100;
     text-align: left;
     text-decoration: none;
     font-family: 'Quicksand', sans-serif;
-    transition: color var(--timing) ease-out;
+    transition: color var(--timing) ease-out, text-decoration var(--timing) ease-out ;
 }
-.recent-posts-group a:hover, .important-link-group a:hover {color:rgba(124,176,240,1);}
+.recent-posts-group a:hover, .important-link-group a:hover {color:var(--two);}
+.recent-posts-group li:hover {color:var(--two);}
+.recent-posts-group li:hover a {color:var(--two); text-decoration:underline ;}
+
+
 .icon-group {
     display: grid;
     grid-template-columns: repeat(3, auto);
