@@ -43,14 +43,17 @@ const IndexPage = () => {
                   <p className="blogposts-date">{data.FormattedDateOfPost}</p>
                 </div>
                 <h4> {data.summary}</h4>
-                {/* <a className="blog-button"> READ MORE</a> */}
-
               </div>
             </a>
           </div>
         )
     })
-    return <h2> No Posts found</h2>
+    return <div className="loading-animation"> 
+      <div className="circle1"></div>
+      <div className="circle2"></div>
+      <div className="circle3"></div>
+      <div className="circle4"></div>
+    </div>
   }
   
 

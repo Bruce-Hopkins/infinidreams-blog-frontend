@@ -1,5 +1,4 @@
 /* TODO, Clean nav-group size bug */
-.post-container { z-index: -1; position: relative;}
 .post-group {
     grid-gap: 10px;
     display: grid;
@@ -17,8 +16,11 @@
     /* background: rgb(60,120,220);
     background: linear-gradient(43deg, rgba(60,120,220,1) 0%, rgba(80,210,200,1) 100%);  */
 
+    /* background: rgb(32,153,238);
+    background: linear-gradient(325deg, rgba(0,152,240,1) 0%, rgba(159,205,231,1) 100%);  */
+
     background: rgb(32,153,238);
-    background: linear-gradient(30deg, rgba(32,153,238,1) 0%, rgba(159,205,231,1) 100%); 
+    background: linear-gradient(110deg, rgba(32,153,238,1) 0%, rgba(159,205,231,1) 100%); 
 
     /* background: rgb(32,153,238);
     background: linear-gradient(324deg, rgba(32,153,238,1) 0%, rgba(95,219,255,1) 100%); */
@@ -30,10 +32,16 @@
     height: auto;
     position: relative;
     justify-content: center;
-
+/* 
     box-shadow: 2px 2px 30px -2px rgba(0,0,0,0.53);
     -webkit-box-shadow: 2px 2px 30px -2px rgba(0,0,0,0.53);
-    -moz-box-shadow: 2px 2px 30px -2px rgba(0,0,0,0.53);
+    -moz-box-shadow: 2px 2px 30px -2px rgba(0,0,0,0.53); */
+
+    box-shadow: 2px 2px 30px -2px #003459;
+    -webkit-box-shadow: 2px 2px 30px -2px #003459;
+    -moz-box-shadow: 2px 2px 30px 1px #003459;
+
+    
 }
 .title-text-group { 
     background-color: white;
@@ -64,6 +72,7 @@
 }
 .body-group{word-spacing: 5px;}
 @media(max-width:800px) {
+    .post-container { z-index: -1; position: relative;}
     .title-text-group h1 { font-size: 15.5px; margin: 25px 20px 0 20px; }
     .title-group {grid-template-columns: repeat(1, auto); margin-top: 40px;}
     .post-group {padding: 90px 0;}

@@ -31,6 +31,34 @@
 .blogpost-info p {margin:0 14px 0 0px;}
 .blogposts-tags {color: var(--one); font-weight: 300;}
 .blogposts-date { font-weight: 600; color: #4f4f4f;}
+
+.circle1, .circle2 , .circle3, .circle4 {
+    width: 20px;
+    height: 20px;
+    border-radius: 100px;
+} 
+.circle1 { grid-area: top-cirle; background-color: red; justify-self: center;}
+.circle2 { grid-area: middle-left-cirle; background-color: green; justify-self: start;}
+.circle3 { grid-area: middle-right-cirle; background-color: blue; justify-self: end;}
+.circle4 { grid-area: bottom-cirle; background-color: #404040; justify-self: center;}
+
+.loading-animation {
+    display: grid;
+    grid-template-areas:
+      'top-cirle top-cirle'
+      'middle-left-cirle middle-right-cirle'
+      'bottom-cirle bottom-cirle';
+    grid-gap: 10px;
+    padding: 10px;
+    height: 80px;
+    width: 80px;
+
+    animation-name: loading;
+    animation-duration: 2s;
+    animation-timing-function: ease-out;
+    animation-iteration-count: infinite;
+
+}
 .post-list { padding: 20px 0 0 300px }
 
 @media(max-width:1000px) {
@@ -41,8 +69,6 @@
     .blogpost-text-group h3 {font-size: 16px; margin: 20px 0 10px 0;}
     .blogpost-info p {font-size: 12.4px; }
     .blogpost-text-group h4 {font-size: 11px; margin: 10px 0 15px 0;}
-
-
 }
 @media(max-width:800px) {
     .post-list { padding: 100px 0 0 0px }
@@ -53,5 +79,13 @@
     .blogpost-text-group h3 {font-size: 14px; margin: 10px 0 10px 0;}
     .blogpost-info p {font-size: 12px; }
     .blogpost-text-group h4 {font-size: 11px; margin: 10px 0 15px 0;}
+}
 
+@keyframes loading {
+
+    0%{transform: rotate(0deg);}
+    25%{transform: rotate(90deg);}
+    50%{transform: rotate(180deg);}
+    75%{transform: rotate(270deg);}
+    100%{transform: rotate(360deg);}
 }
