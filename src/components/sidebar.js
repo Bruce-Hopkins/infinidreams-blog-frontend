@@ -19,9 +19,12 @@ function Sidebar (){
     }
   }
   useEffect(() => {  
+    /*  The reason why sidebar makes its own connection to the API instead of using the connection to get the posts is for two reasons
+    1: The API does not send all of the blogpost for individual post pages, therefore sidebar would have to connect to tha API anyway
+    2: The sidebar can now load faster than the actual posts, which will give a user soemthing to click on.  */ 
     (async function connectToAPI (){
       try {
-        await axios.get('http://localhost:5000/api/posts').then((res) => {
+        await axios.get('http://localhost:5000/api/recent-posts').then((res) => {
           setPostsData(res);
         });
       }

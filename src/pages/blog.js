@@ -14,7 +14,10 @@ const Singlepost = ({id}) => {
     useEffect(() => {  
         (async function connectToAPI (){
           try {
+            console.log("!!!!")
+            console.log(id)
             await axios.get('http://localhost:5000/api/posts/' + id).then((res) => {
+              
                 setSinglePostsData(res)
                 if (res.data.title) document.title = res.data.title;
             });

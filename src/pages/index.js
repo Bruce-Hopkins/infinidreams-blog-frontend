@@ -10,7 +10,6 @@ import "../stylesheets/index.css"
 import "../stylesheets/layout.css"
 
 //TODO, Add featured page when I have more posts.
-//TODO, Add loading animation when API has not connected yet.
 const IndexPage = () => {
   var[postsData, setPostsData] = useState([])
   useEffect(() => {  
@@ -32,7 +31,7 @@ const IndexPage = () => {
     if (postsData.data) return postsData.data.map (data => {
         return (
           <div className="blogpost-container">
-            <a href={"blog/"+data._id} className="blogpost-group"> 
+            <a href={"blog/"+data._id} className="blogpost-group">  
               <img src={`data:image/png;base64, ${data.thumbnailString}` }/> 
               <div className="blogpost-text-group">
                 <h3>{data.title}</h3>

@@ -7,7 +7,11 @@ exports.onCreatePage = async ({page, actions}) =>{
         createPage({
             path: "/blog",
             matchPath: "/blog/:id",
-            component: path.resolve("src/pages/blog.js")
+            component: path.resolve("src/pages/blog.js"),
+            context: {
+                title: "Yo man",
+                description: "This is a description"
+            }
         })
     }
 }
