@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import ReactDOM from "react-dom";
+import "../../stylesheets/admin-styles/create.css"
 
 const Input = () => {
-    return <textarea id="body" name="body" cols="40" rows="0"></textarea>
+    return <textarea className="body-input" id="body" name="body" cols="60" rows="4"></textarea>
 };
 const Tags = () => {
-    return <input type="text" id="tags" name="tags"/>
+    return <input className="tags-input" type="text" id="tags" name="tags"/>
 }
 
 const Form = () => {
@@ -23,34 +23,42 @@ const Form = () => {
 
   return (
     <div>
-      <form method="POST" action="/">
+      <form className="admin-create-form" method="POST" action="/">
         <label for="thumbnail">Thumbnail</label>
-        <input type="file" id="thumbnail" name="thumbnail"/>
+        <input className="thumbnail-input" type="file" id="thumbnail" name="thumbnail"/>
         <br/>
 
         <label for="title">title</label>
-        <input type="text" id="title" name="title"/>
+        <input className="title-input" type="text" id="title" name="title"/>
         <br/>
 
         <label for="summary">summary</label>
-        <input type="text" id="summary" name="summary"/>
+        <input className="summary-input" type="text" id="summary" name="summary"/>
         <br/>
   
-        <button onClick={onAddBtnClick}>Add input</button>
         <br/>
 
-        <label for="body">body</label>
-        {inputList}
+        <label for="body">body:</label>
+        <div className="body-group">
+          {/* Calling Input function to at least have one text boxes for use   */}
+          <Input/>
+          {inputList}
+        </div>
+        <button type="button" onClick={onAddBtnClick}>Add input</button>
+
         <br/>
 
-        <button onClick={tagsButtonClick}>Add tags</button>
         <br/>
         
         <label for="tags">tags</label>
-        {tagsList}
+        <div className="tags-group"> 
+          <Tags/>
+          {tagsList}
+        </div>
+        <button type="button" onClick={tagsButtonClick}>Add tags</button>
         <br/>
 
-        <input type="submit" value="Submit"></input>
+        <input className="submit-input" type="submit" value="Submit"></input>
 
         
       </form>

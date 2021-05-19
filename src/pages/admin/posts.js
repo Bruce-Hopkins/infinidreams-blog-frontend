@@ -1,8 +1,14 @@
 import React, {useEffect, useState} from 'react'
 import axios from 'axios'
 
-// TODO, change this to be the component that connects through axios later
+import "../../stylesheets/admin-styles/posts.css"
+import "../../stylesheets/blog.css"
+
+
 const Posts = () => {
+
+  // TODO, change this to be the component that connects through axios later
+
     var[postsData, setPostsData] = useState([])
     useEffect(() => {  
         (async function connectToAPI (){
@@ -38,8 +44,11 @@ const Posts = () => {
                 </div>
                 </a>
             </div>
-            <form method="POST" action="/"> <input type="submit" value="Update"/> </form>
-            <form method="POST" action="/"> <input type="submit" value="Delete"/> </form>
+            <div className="admin-post-buttons">
+              <form method="POST" action="/"> <input id="update" type="submit" value="Update"/> </form>
+              <form method="POST" action="/"> <input id="delete" type="submit" value="Delete"/> </form>
+            </div> 
+
           </div>
         )
     })

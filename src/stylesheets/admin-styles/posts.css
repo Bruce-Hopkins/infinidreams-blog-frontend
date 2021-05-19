@@ -1,0 +1,14 @@
+.admin-post-buttons {
+    display: flex; 
+    grid-gap: 200px;
+    margin-left: 200px;
+    margin-bottom: 50px;
+}
+#delete {
+    background-color: red;
+    color: white;
+}
+#update {
+    background-color: yellow;
+    color: black;
+}

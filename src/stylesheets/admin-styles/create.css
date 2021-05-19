@@ -1,0 +1,22 @@
+.admin-create-form {
+    display: grid;
+    justify-content: center;
+}
+.admin-create-form input, .admin-create-form button {
+    margin: 50px 0 50px 0;
+}
+.body-group {
+    display: grid;
+    grid-template-columns: repeat(1, auto);
+}
+.tags-input {
+    display: grid;
+    grid-template-columns: repeat(1, auto);
+}
+.submit-input{
+    background-color: var(--one);
+    color: white;
+    height: 50px;
+    border-radius: 100px;
+    border-style: none;
+}
