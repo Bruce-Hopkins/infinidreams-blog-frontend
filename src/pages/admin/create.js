@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import createPageForm from "../../components/createPageForm"
 import "../../stylesheets/admin-styles/create.css"
 
 const Input = () => {
@@ -21,18 +22,25 @@ const Form = () => {
     setInputList(inputList.concat(<Input key={inputList.length} />));
   };
 
+  // TODO, Implement changes to prevent redirect
   return (
     <div>
-      <form className="admin-create-form" method="POST" action="/">
-        <label for="thumbnail">Thumbnail</label>
-        <input className="thumbnail-input" type="file" id="thumbnail" name="thumbnail"/>
+      <form 
+        className="admin-create-form" 
+        method="POST" 
+        action="http://localhost:5000/api/post/create" 
+        enctype="multipart/form-data"
+        >
+
+        <label for="thumbnail">Thumbnail:</label>
+        <input className="thumbnail-input" type="file" id="image" name="image"/>
         <br/>
 
-        <label for="title">title</label>
+        <label for="title">title:</label>
         <input className="title-input" type="text" id="title" name="title"/>
         <br/>
 
-        <label for="summary">summary</label>
+        <label for="summary">summary:</label>
         <input className="summary-input" type="text" id="summary" name="summary"/>
         <br/>
   
@@ -50,7 +58,7 @@ const Form = () => {
 
         <br/>
         
-        <label for="tags">tags</label>
+        <label for="tags">tags:</label>
         <div className="tags-group"> 
           <Tags/>
           {tagsList}

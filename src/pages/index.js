@@ -10,7 +10,7 @@ import "../stylesheets/index.css"
 import "../stylesheets/layout.css"
 
 //TODO, Add featured page when I have more posts.
-//TODO, Add loading animation when API has not connected yet.
+// TODO, Fix infinite loading when page backend down. Either Check regularly if page is up, or give a message if the page fails to connect
 const IndexPage = () => {
   var[postsData, setPostsData] = useState([])
   useEffect(() => {  

@@ -45,7 +45,7 @@ const Posts = () => {
                 </a>
             </div>
             <div className="admin-post-buttons">
-              <form method="POST" action="/"> <input id="update" type="submit" value="Update"/> </form>
+              <form method="POST" action={"http://localhost:5000/api/post/" + data._id + "/delete"}> <input id="update" type="submit" value="Update"/> </form>
               <form method="POST" action="/"> <input id="delete" type="submit" value="Delete"/> </form>
             </div> 
 
