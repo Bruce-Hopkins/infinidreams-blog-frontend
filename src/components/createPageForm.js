@@ -5,6 +5,7 @@ import "../stylesheets/admin-styles/create.css"
 
 const Form = (props) => {
 
+    // TODO Fix body and tags reloading after pressing the button
     // Body text area. Value is the property that is inside the text area
     const Input = (props) => {
         return <textarea 
@@ -23,18 +24,21 @@ const Form = (props) => {
             type="text" 
             id="tags" 
             name="tags"
-            value={props.value ? props.value : ""}
+            defaultValue={props.value ? props.value : ""}
         />
     }
-    function GetBodyValue(bodyArray) {
-        return bodyArray.map (bodydata => {
+    function GetBodyValue(props) {
+        if(props.bodyArray) return props.bodyArray.map (bodydata => {
            return <Input value={bodydata}/>
         })
+        else return <Input/>
+        
     }
-    function GetTagsValue(tagsArray) {
-        return tagsArray.map (bodydata => {
-            return <Input value={bodydata}/>
+    function GetTagsValue(props) {
+        if(props.tagsArray) return props.tagsArray.map (tagData => {
+            return <Tags value={tagData}/>
          })
+         else return <Tags/>
     }
 
     const [inputList, setInputList] = useState([]);
@@ -67,7 +71,7 @@ const Form = (props) => {
         <label for="title">title:</label>
         <input 
             className="title-input" 
-            value={props.data ? props.data.title : ""} 
+            defaultValue={props.data ? props.data.title : ""} 
             type="text" 
             id="title" 
             name="title"/>
@@ -76,7 +80,7 @@ const Form = (props) => {
         <label for="summary">summary:</label>
         <input 
             className="summary-input" 
-            value={props.data ? props.data.title : ""} 
+            defaultValue={props.data ? props.data.title : ""} 
             type="text" 
             id="summary" 
             name="summary"/>
@@ -85,6 +89,7 @@ const Form = (props) => {
         <label for="body">body:</label>
         <div className="body-group">
             {/* Calling Input function to at least have one text boxes for use or to display the body recieved from the update information. */}
+            
             {props.data ? <GetBodyValue bodyArray={props.data.body}/> : <Input/>}
             {/* Allows user to add more bodys if needed */}
             {inputList}
