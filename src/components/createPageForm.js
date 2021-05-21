@@ -6,24 +6,24 @@ import "../stylesheets/admin-styles/create.css"
 const Form = (props) => {
 
     // Body text area. Value is the property that is inside the text area
-    const Input = (value) => {
+    const Input = (props) => {
         return <textarea 
             className="body-input" 
             id="body" name="body" 
             cols="60" 
             rows="4">
-            {value ? value : ""}
+            {props.value ? props.value : ""}
         </textarea>
     };
 
     // Tags text input. Value is the defualt value that the text will have
-    const Tags = (value) => {
+    const Tags = (props) => {
         return <input 
             className="tags-input" 
             type="text" 
             id="tags" 
             name="tags"
-            value={value ? value : ""}
+            value={props.value ? props.value : ""}
         />
     }
     function GetBodyValue(bodyArray) {
@@ -67,7 +67,7 @@ const Form = (props) => {
         <label for="title">title:</label>
         <input 
             className="title-input" 
-            value={props.data.title ? props.data.title : ""} 
+            value={props.data ? props.data.title : ""} 
             type="text" 
             id="title" 
             name="title"/>
@@ -76,7 +76,7 @@ const Form = (props) => {
         <label for="summary">summary:</label>
         <input 
             className="summary-input" 
-            value={props.data.title ? props.data.title : ""} 
+            value={props.data ? props.data.title : ""} 
             type="text" 
             id="summary" 
             name="summary"/>
@@ -85,7 +85,7 @@ const Form = (props) => {
         <label for="body">body:</label>
         <div className="body-group">
             {/* Calling Input function to at least have one text boxes for use or to display the body recieved from the update information. */}
-            {props.data.body ? <GetBodyValue bodyArray={props.data.body}/> : <Input/>}
+            {props.data ? <GetBodyValue bodyArray={props.data.body}/> : <Input/>}
             {/* Allows user to add more bodys if needed */}
             {inputList}
         </div>
@@ -95,7 +95,7 @@ const Form = (props) => {
         
         <label for="tags">tags:</label>
         <div className="tags-group"> 
-            {props.data.tags ? <GetTagsValue tagsArray={props.data.tags}/> : <Tags/>}
+            {props.data ? <GetTagsValue tagsArray={props.data.tags}/> : <Tags/>}
             {tagsList}
         </div>
         <button type="button" onClick={tagsButtonClick}>Add tags</button>
