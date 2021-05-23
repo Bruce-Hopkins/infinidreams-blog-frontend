@@ -1,9 +1,34 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from 'axios'
 import "../stylesheets/admin-styles/create.css"
 
 
 
 const Form = (props) => {
+    var[postsData, setPostsData] = useState([])
+    var[bodyData, setBodyData] = useState([])
+    var inputValue = [];
+    var valuesList = [];
+    
+
+
+    useEffect(() => {  
+
+        (async function connectToAPI (){
+        try {
+            
+          await axios.get('http://localhost:5000/api/posts/' + props.id).then((res) => {
+            setPostsData(res.data);
+            inputValue = res.data.body;
+          });
+        }
+        catch(err) {
+            console.error(err)
+        }
+        loopThrough();
+    
+        })()
+    }, [])
 
     // TODO Fix body and tags reloading after pressing the button
     // Body text area. Value is the property that is inside the text area
@@ -17,6 +42,13 @@ const Form = (props) => {
         </textarea>
     };
 
+    function loopThrough () {
+        console.log(inputValue)
+        inputValue.map (input => { 
+            valuesList.push(<Input value={input} key={inputList.length} />)
+        })
+        setBodyData(valuesList)
+    }
     // Tags text input. Value is the defualt value that the text will have
     const Tags = (props) => {
         return <input 
@@ -51,7 +83,7 @@ const Form = (props) => {
     };
 
     const onAddBtnClick = event => {
-    setInputList(inputList.concat(<Input key={inputList.length} />));
+        setBodyData(bodyData.concat(<Input key={bodyData.length} />));
     };
 
   // TODO, Implement changes to prevent redirect
@@ -60,7 +92,7 @@ const Form = (props) => {
       <form 
         className="admin-create-form" 
         method="POST" 
-        action={props.url}
+        action={ postsData ? postsData.url : "none"}
         enctype="multipart/form-data"
         >
 
@@ -90,9 +122,10 @@ const Form = (props) => {
         <div className="body-group">
             {/* Calling Input function to at least have one text boxes for use or to display the body recieved from the update information. */}
             
-            {props.data ? <GetBodyValue bodyArray={props.data.body}/> : <Input/>}
+            {/* {props.data ? <GetBodyValue bodyArray={props.data.body}/> : <Input/>} */}
             {/* Allows user to add more bodys if needed */}
-            {inputList}
+            {/* {inputList} */}
+            {bodyData}
         </div>
         <button type="button" onClick={onAddBtnClick}>Add input</button>
 
