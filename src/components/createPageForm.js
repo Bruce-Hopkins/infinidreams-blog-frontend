@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from 'axios'
 import "../stylesheets/admin-styles/create.css"
 
-
-
 const Form = (props) => {
 
     // Gets the data from the API
@@ -15,6 +13,7 @@ const Form = (props) => {
 
     var[inputSummary, setInputSummary] = useState([]);
     var[inputTitle, setInputTitle] = useState([]);
+    var[inputFile, setInputFile] = useState([]);
 
     var inputBodyValue = [];
     var valuesList = [];
@@ -147,15 +146,9 @@ const Form = (props) => {
         setTagsValues(copyOftagsValues)
         console.log(tagsValues)
     }
-
-    const updateTitleValue = event => {
-        setInputTitle(event.target.value)
-    }
-
-    const updateSummaryValue = event => { 
-        setInputSummary(event.target.value)
-    }
-
+    const updateTitleValue = event => {setInputTitle(event.target.value)}
+    const updateSummaryValue = event => {setInputSummary(event.target.value)}
+    const updateFileValue = event => {setInputFile(event.target.files[0])}
 
 
   // TODO, Implement changes to prevent redirect
@@ -169,14 +162,20 @@ const Form = (props) => {
         >
 
         <label for="thumbnail">Thumbnail:</label>
-        <input className="thumbnail-input" type="file" id="image" name="image"/>
+        <input 
+        className="thumbnail-input" 
+            type="file" 
+            id="image" 
+            name="image" 
+            onChange={updateFileValue}
+            />
         <br/>
 
         <label for="title">title:</label>
         <input 
             className="title-input" 
             defaultValue={props.data ? props.data.title : ""} 
-            // onChange={}
+            onChange={updateTitleValue}
             type="text" 
             id="title" 
             name="title"/>
@@ -186,6 +185,7 @@ const Form = (props) => {
         <input 
             className="summary-input" 
             defaultValue={props.data ? props.data.summary : ""} 
+            onChange={updateSummaryValue}
             type="text" 
             id="summary" 
             name="summary"/>
@@ -202,7 +202,6 @@ const Form = (props) => {
         <label for="tags">tags:</label>
         <div className="tags-group"> 
             {/* {props.data ? <GetTagsValue tagsArray={props.data.tags}/> : <Tags/>} */}
-            {console.log(tagsData)}
             {tagsData}
         </div>
         <button type="button" onClick={tagsButtonClick}>Add tags</button>
