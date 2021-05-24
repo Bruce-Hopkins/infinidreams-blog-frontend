@@ -6,6 +6,9 @@ const Form = (props) => {
 
     // Gets the data from the API
     var[postsData, setPostsData] = useState([]);
+    var[test, setTests] = useState([]);
+
+    
 
     // Updates the input data
     var[bodyData, setBodyData] = useState([]);
@@ -22,33 +25,22 @@ const Form = (props) => {
     var tagsValuesList = [];
 
     var [tagsData, setTagsData] = useState([]);
-    var [tagsValues, setTagsValues] = useState()
+    var [tagsValues, setTagsValues] = useState();
 
-    
+    var propsValues = props.data;
+    var [hasGottenProps, setHasGottonProps] = useState(false);
 
-    // TODO, use context API in this section
-    useEffect(() => {  
-        (async function connectToAPI (){
-        try {
-            
-          await axios.get('http://localhost:5000/api/posts/' + props.id).then((res) => {
-            setPostsData(res.data);
-            inputBodyValue = res.data.body;
-            inputTagsValue = res.data.tags;
-            console.log(inputTagsValue)
-          });
-        }
-        catch(err) {
-            console.error(err)
-        }
-        loopThroughBody();
-        loopThroughTags();
-    
-        })()
-    }, [])
+        // Tags text input. Value is the defualt value that the text will have
+    const Tags = (props) => {
+        return <input 
+            className="tags-input" 
+            type="text" 
+            id={props._id}
+            name="tags"
+            defaultValue={props.value ? props.value : ""}
+        />
+    }
 
-    // TODO Fix body and tags reloading after pressing the button
-    // Body text area. Value is the property that is inside the text area
     const Input = (props) => {
         return <textarea 
             className="body-input" 
@@ -61,45 +53,46 @@ const Form = (props) => {
             {props.value ? props.value : ""}
         </textarea>
     };
+    // Takes the values from the variable inputValue and adds it to the bodyData state
 
-
-
-    // Tags text input. Value is the defualt value that the text will have
-    const Tags = (props) => {
-        return <input 
-            className="tags-input" 
-            type="text" 
-            id={props._id}
-            name="tags"
-            defaultValue={props.value ? props.value : ""}
-        />
-    }
-
-        // Takes the values from the variable inputValue and adds it to the bodyData state
-        function loopThroughBody () {
-            inputBodyValue.map (input => { 
-                valuesList.push(<Input 
-                    value={input} 
-                    key={valuesList.length} 
-                    _id={valuesList.length} 
-                    />)
-            });
-            setInputValueStates(inputBodyValue);
-            setBodyData(valuesList);
-        }
-        function loopThroughTags () {
-            inputTagsValue.map (input => {
-                tagsValuesList.push(<Tags
-                    value={input}
-                    key={tagsValuesList.length}
-                    _id={tagsValuesList.length}
+    function loopThroughBody () {
+        inputBodyValue.map (input => { 
+            valuesList.push(<Input 
+                value={input} 
+                key={valuesList.length} 
+                _id={valuesList.length} 
                 />)
-            });
-            setTagsValues(inputTagsValue);
-            setTagsData(tagsValuesList);
-    
-        }  
+        });
+        setInputValueStates(inputBodyValue);
+        setBodyData(valuesList);
+    }
+    function loopThroughTags () {
+        inputTagsValue.map (input => {
+            tagsValuesList.push(<Tags
+                value={input}
+                key={tagsValuesList.length}
+                _id={tagsValuesList.length}
+            />)
+        });
+        setTagsValues(inputTagsValue);
+        setTagsData(tagsValuesList);
 
+    }  
+
+    (async function getPropsValue (){
+        if(propsValues && !hasGottenProps) {
+            setPostsData(propsValues)
+
+            inputBodyValue = props.data.body;
+            inputTagsValue = props.data.tags;
+
+            loopThroughBody();
+            loopThroughTags();
+
+            setHasGottonProps(true)
+        }
+    })()
+    
     const tagsButtonClick = event => {
         setTagsData(tagsData.concat(<Tags key={tagsData.length} _id={tagsData.length} />));
     };
@@ -126,7 +119,6 @@ const Form = (props) => {
         var copyOfInputValueStates = inputValueStates;
         copyOfInputValueStates[id] = event.target.value;
         setInputValueStates(copyOfInputValueStates);
-        console.log(inputValueStates)
     }
 
     const updateTagsValue = event => {
@@ -144,11 +136,31 @@ const Form = (props) => {
         var copyOftagsValues = tagsValues;
         copyOftagsValues[id] = event.target.value;
         setTagsValues(copyOftagsValues)
-        console.log(tagsValues)
     }
     const updateTitleValue = event => {setInputTitle(event.target.value)}
     const updateSummaryValue = event => {setInputSummary(event.target.value)}
     const updateFileValue = event => {setInputFile(event.target.files[0])}
+
+    const handleSubmit = event => {
+        event.preventDefault();
+
+        const formData = new FormData();
+        formData.append("image", inputFile);
+        formData.append("title", inputTitle);
+        formData.append("summary", inputSummary);
+        formData.append("body", inputBodyValue);
+        formData.append("tags", inputTagsValue);
+
+    
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'multipart/form-data' },
+            body: formData
+        };
+        fetch(props.url, requestOptions)
+            .then(response => console.log(response))
+            .catch(error => console.log('Form submit error', error))
+      };
 
 
   // TODO, Implement changes to prevent redirect
@@ -157,8 +169,9 @@ const Form = (props) => {
       <form 
         className="admin-create-form" 
         method="POST" 
-        action={ postsData ? postsData.url : "none"}
         enctype="multipart/form-data"
+        action={ props.url ? props.url : "/"}
+        // onSubmit={handleSubmit}
         >
 
         <label for="thumbnail">Thumbnail:</label>
@@ -193,7 +206,7 @@ const Form = (props) => {
 
         <label for="body">body:</label>
         <div className="body-group">
-            {bodyData}
+            {props.data ? bodyData : <Input/>}
         </div>
         <button type="button" onClick={onAddBtnClick}>Add input</button>
 
@@ -202,7 +215,7 @@ const Form = (props) => {
         <label for="tags">tags:</label>
         <div className="tags-group"> 
             {/* {props.data ? <GetTagsValue tagsArray={props.data.tags}/> : <Tags/>} */}
-            {tagsData}
+            { props.data ? tagsData : <Tags/>}
         </div>
         <button type="button" onClick={tagsButtonClick}>Add tags</button>
         <br/>
