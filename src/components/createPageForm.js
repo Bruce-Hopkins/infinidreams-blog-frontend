@@ -6,7 +6,6 @@ const Form = (props) => {
 
     // Gets the data from the API
     var[postsData, setPostsData] = useState([]);
-    var[test, setTests] = useState([]);
 
     
 
@@ -103,10 +102,12 @@ const Form = (props) => {
 
     // Update the body text areas everytime the text area is updated
     const updateBodyValue = event => {
+        // ! If this works do the same for the other component
+        console.log(valuesList)
 
         // Updates the textareas
         let id = parseInt(event.target.getAttribute('id'));
-        let copyOfBodyData = bodyData;
+        let copyOfBodyData = valuesList;
         copyOfBodyData[id] = <Input 
             _id={id} 
             key={id} 
@@ -114,6 +115,7 @@ const Form = (props) => {
             onChange={updateBodyValue} 
         /> 
         setBodyData(copyOfBodyData);
+        valuesList = copyOfBodyData;
         
         // Then get the atrribute to POST the update request
         var copyOfInputValueStates = inputValueStates;
