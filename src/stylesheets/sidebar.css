@@ -68,10 +68,11 @@
     text-decoration: none;
     font-family: 'Quicksand', sans-serif;
     transition: color var(--timing) ease-out, text-decoration var(--timing) ease-out ;
+    font-size: 16px;
 }
-.recent-posts-group a:hover, .important-link-group a:hover {color:var(--two);}
-.recent-posts-group li:hover {color:var(--two);}
-.recent-posts-group li:hover a {color:var(--two); text-decoration:underline ;}
+.recent-posts-group a:hover, .important-link-group a:hover {color:var(--one);}
+.recent-posts-group li:hover {color:var(--one);}
+.recent-posts-group li:hover a {color:var(--one); text-decoration:underline ;}
 
 
 .icon-group {
@@ -116,7 +117,11 @@
         width: auto;
     }
     .important-link-group a {margin: 0; text-align: center;}
-    .recent-posts-group {padding: 0 0 0 20px; margin-top: 40px;}
+    ::marker {
+        margin: 0px !important;
+    }
+
+    .recent-posts-group {padding: 0 0 0 20px; margin-top: 40px; list-style-position: inside !important;}
     .icon-group {justify-self: center; margin-top: 120px}
 
     /* Show */

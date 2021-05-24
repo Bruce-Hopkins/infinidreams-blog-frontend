@@ -59,8 +59,7 @@
 }
 /* TODO add more margin bottom */
 .info-group {display: flex;}
-.info-group p {padding-right: 17px; color: black;}
-.title-tags {color: black;}
+.info-group p {padding-right: 17px; color: var(--one);}
 .body-group {
     margin: 0px 50px 0px 40px;
 }
@@ -69,6 +68,7 @@
     padding:40px 0 30px 0;
     position: relative;
     display: block;
+    color: black;
 }
 .body-group{word-spacing: 5px;}
 @media(max-width:800px) {

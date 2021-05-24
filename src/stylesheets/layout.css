@@ -9,4 +9,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 body { background-color: white; margin: 0;}
 h3, h4, p, a {font-family: 'Quicksand', sans-serif;}
+p {font-size: 16px; color: black; font-weight: 500;}
+h3 {font-size: 18.5px;}
 h1 {font-size: 27px;}
+::marker {
+    margin: 0px !important;
+    margin-inline-start: 0px !important;
+    text-align: end !important;
+    text-transform: none;
+    white-space: pre;
+}
