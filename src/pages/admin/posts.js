@@ -4,7 +4,7 @@ import axios from 'axios'
 import "../../stylesheets/admin-styles/posts.css"
 import "../../stylesheets/blog.css"
 
-
+// ! Do not allow for nonlogged in user to access without login
 const Posts = () => {
 
   // TODO, change this to be the component that connects through axios later
@@ -45,8 +45,8 @@ const Posts = () => {
                 </a>
             </div>
             <div className="admin-post-buttons">
-              <form method="POST" action="/"> <input id="update" type="submit" value="Update"/> </form>
-              <form method="POST" action="/"> <input id="delete" type="submit" value="Delete"/> </form>
+              <form method="POST" action={"http://localhost:5000/api/post/" + data._id + "/delete"}> <input id="delete" type="submit" value="Delete"/> </form>
+              <a id="update" href={"/admin/update/" + data._id}> <input id="update" type="submit" value="Update"/> </a>
             </div> 
 
           </div>

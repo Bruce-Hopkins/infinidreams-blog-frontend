@@ -1,13 +1,23 @@
 const path = require("path");
 
 exports.onCreatePage = async ({page, actions}) =>{
-    const {createPage} = actions
-    console.log('Page - ' + page.page);
-    if(page.path.match(/^\/blog/)){
+    const {createPage} = actions;
+
+    // Creates a route for the page /blog
+    if(page.path.match("/blog")){
         createPage({
             path: "/blog",
             matchPath: "/blog/:id",
             component: path.resolve("src/pages/blog.js")
         })
     }
+    // Creates a route for the page /update
+    if(page.path.match("/admin/update")){
+        createPage({
+            path: "/admin/update",
+            matchPath: "/admin/update/:id",
+            component: path.resolve("src/pages/admin/update.js")
+        })
+    }
 }
+
