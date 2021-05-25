@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react'
 import Layout from "../components/layout"
 import axios from 'axios'
 import SEO from "../components/SEO"
-import Sidebar from "../components/sidebar"
 // import Context from "../components/contextAPI"
 
 
@@ -33,7 +32,7 @@ const IndexPage = () => {
         return (
           <div className="blogpost-container">
             <a href={"blog/"+data._id} className="blogpost-group"> 
-              <img src={`data:image/png;base64, ${data.thumbnailString}` }/> 
+              <img alt="Thumbnail" src={`data:image/png;base64, ${data.thumbnailString}` }/> 
               <div className="blogpost-text-group">
                 <h3>{data.title}</h3>
                 <div className="blogpost-info">

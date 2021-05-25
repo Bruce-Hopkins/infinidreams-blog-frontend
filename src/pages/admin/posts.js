@@ -31,7 +31,7 @@ const Posts = () => {
         <div className="admin-post-container"> 
             <div className="blogpost-container">
                 <a href={"blog/"+data._id} className="blogpost-group"> 
-                <img src={`data:image/png;base64, ${data.thumbnailString}` }/> 
+                <img alt="Thumbnail" src={`data:image/png;base64, ${data.thumbnailString}` }/> 
                 <div className="blogpost-text-group">
                     <h3>{data.title}</h3>
                     <div className="blogpost-info">

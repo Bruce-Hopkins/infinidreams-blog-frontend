@@ -47,7 +47,7 @@ const Singlepost = ({id}) => {
             } 
 
             else if (bodyString.includes("/images/")) {
-              return <img src={bodyString}/>
+              return <img alt="body" src={bodyString}/>
             }
 
             else return <p> {cleanString(bodyString)}</p>
@@ -74,7 +74,7 @@ const Singlepost = ({id}) => {
                         </span>
 
                       </div>
-                      <img className="blog-thumbnail" src={`data:image/png;base64, ${postData.thumbnailString}` }/>
+                      <img  alt="Thumbnail" className="blog-thumbnail" src={`data:image/png;base64, ${postData.thumbnailString}` }/>
                     </div>
                   
                   </div>
