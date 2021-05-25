@@ -98,6 +98,7 @@ const Form = (props) => {
 
     const onAddBtnClick = event => {
         setBodyData(bodyData.concat(<Input key={bodyData.length} _id={bodyData.length}/>));
+        valuesList= bodyData;
     };
 
     // Update the body text areas everytime the text area is updated
