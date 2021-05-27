@@ -5,7 +5,7 @@ import "../../stylesheets/admin-styles/create.css"
 const Form = () => {
   // TODO, Implement changes to prevent redirect
   return (
-    <CreatePageForm/>
+    <CreatePageForm url={"http://localhost:5000/api/post/create"} />
   );
 };
 
