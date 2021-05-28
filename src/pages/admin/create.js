@@ -1,11 +1,15 @@
 import React from "react";
 import CreatePageForm from "../../components/createPageForm"
 import "../../stylesheets/admin-styles/create.css"
+import LoginVerifiacation from '../../components/loginVerifiacation'
+
 
 const Form = () => {
-  // TODO, Implement changes to prevent redirect
   return (
-    <CreatePageForm/>
+    <LoginVerifiacation>
+
+      <CreatePageForm/>
+    </LoginVerifiacation>
   );
 };
 

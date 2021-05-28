@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react"
-// import {navigate} from 'gatsby';
+import {navigate} from 'gatsby';
 
 
 function Layout (props) {
@@ -20,7 +20,7 @@ function Layout (props) {
                 if (response.status == 200) setPostResponse(true)
                 else  {
                     console.log(response.status)
-                    // navigate('/admin/login');
+                    navigate('/admin/login');
                 }
             })
             .catch(error => console.log('Form submit error', error))

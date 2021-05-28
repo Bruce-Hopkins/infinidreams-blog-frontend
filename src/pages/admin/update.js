@@ -1,6 +1,7 @@
 
 import React, {useEffect, useState} from 'react'
 import axios from 'axios'
+import LoginVerifiacation from '../../components/loginVerifiacation'
 
 import CreatePageForm from "../../components/createPageForm"
 import "../../stylesheets/admin-styles/create.css"
@@ -25,7 +26,9 @@ const Form = ({id}) => {
     })()
 }, [])
   return (
-    <CreatePageForm url={"http://localhost:5000/api/post/" + id + "/update"} data={postsData} id={id}/>
+    <LoginVerifiacation>
+      <CreatePageForm url={"http://localhost:5000/api/post/" + id + "/update"} data={postsData} id={id}/>
+    </LoginVerifiacation>
   );
 };
 
