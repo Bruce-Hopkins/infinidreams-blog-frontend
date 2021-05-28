@@ -6,7 +6,7 @@ import LoginVerifiacation from '../../components/loginVerifiacation'
 import CreatePageForm from "../../components/createPageForm"
 import "../../stylesheets/admin-styles/create.css"
 
-const Form = ({id}) => {
+const UpdatePage = ({id}) => {
   // TODO, Implement changes to prevent redirect
   // TODO, allow for the file to also be grabbed when updating
   var[postsData, setPostsData] = useState();
@@ -32,4 +32,4 @@ const Form = ({id}) => {
   );
 };
 
-export default Form
+export default UpdatePage

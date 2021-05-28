@@ -5,7 +5,6 @@ import LoginVerification from "../../components/loginVerifiacation"
 import "../../stylesheets/admin-styles/posts.css"
 import "../../stylesheets/blog.css"
 
-// ! Do not allow for nonlogged in user to access without login
 const Posts = () => {
 
   // TODO, change this to be the component that connects through axios later
