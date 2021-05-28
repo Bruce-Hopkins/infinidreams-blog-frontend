@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import axios from 'axios'
+import LoginVerification from "../../components/loginVerifiacation"
 
 import "../../stylesheets/admin-styles/posts.css"
 import "../../stylesheets/blog.css"
@@ -63,7 +64,9 @@ const Posts = () => {
 
   return (
     <div>
+      <LoginVerification>
         <GetData/>
+      </LoginVerification>
     </div>
   );
 };
