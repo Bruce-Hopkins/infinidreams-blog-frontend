@@ -1,33 +1,11 @@
-import React, { useState, useEffect } from "react";
-import axios from 'axios'
+import React, { useState} from "react";
 import "../stylesheets/admin-styles/create.css"
 
 const Form = (props) => {
 
-    // Gets the data from the API
-    var[postsData, setPostsData] = useState([]);
-    var[test, setTests] = useState([]);
-
-    
-
     // Updates the input data
     var[bodyData, setBodyData] = useState([]);
-    var[inputValueStates, setInputValueStates] = useState([]);
-
-    var[inputSummary, setInputSummary] = useState([]);
-    var[inputTitle, setInputTitle] = useState([]);
-    var[inputFile, setInputFile] = useState([]);
-
-    var inputBodyValue = [];
-    var valuesList = [];
-
-    var inputTagsValue = [];
-    var tagsValuesList = [];
-
     var [tagsData, setTagsData] = useState([]);
-    var [tagsValues, setTagsValues] = useState();
-
-    var propsValues = props.data;
     var [hasGottenProps, setHasGottonProps] = useState(false);
 
         // Tags text input. Value is the defualt value that the text will have
@@ -40,7 +18,6 @@ const Form = (props) => {
             defaultValue={props.value ? props.value : ""}
         />
     }
-
     const Input = (props) => {
         return <textarea 
             className="body-input" 
@@ -48,46 +25,40 @@ const Form = (props) => {
             name="body" 
             cols="60" 
             rows="4"
-            onChange={updateBodyValue}
+            defaultValue={props.value ? props.value : ""}
             >
-            {props.value ? props.value : ""}
+            
         </textarea>
     };
     // Takes the values from the variable inputValue and adds it to the bodyData state
 
-    function loopThroughBody () {
-        inputBodyValue.map (input => { 
+    function loopThroughBody (inputList) {
+        let valuesList = [];
+        inputList.map (input => { 
             valuesList.push(<Input 
                 value={input} 
                 key={valuesList.length} 
                 _id={valuesList.length} 
                 />)
         });
-        setInputValueStates(inputBodyValue);
         setBodyData(valuesList);
     }
-    function loopThroughTags () {
-        inputTagsValue.map (input => {
+    function loopThroughTags (inputList) {
+        let tagsValuesList = [];
+        inputList.map (input => {
             tagsValuesList.push(<Tags
                 value={input}
                 key={tagsValuesList.length}
                 _id={tagsValuesList.length}
             />)
         });
-        setTagsValues(inputTagsValue);
         setTagsData(tagsValuesList);
-
     }  
 
     (async function getPropsValue (){
-        if(propsValues && !hasGottenProps) {
-            setPostsData(propsValues)
-
-            inputBodyValue = props.data.body;
-            inputTagsValue = props.data.tags;
-
-            loopThroughBody();
-            loopThroughTags();
+        if(props.data && !hasGottenProps) {
+            loopThroughBody(props.data.body);
+            loopThroughTags(props.data.tags);
 
             setHasGottonProps(true)
         }
@@ -101,68 +72,6 @@ const Form = (props) => {
         setBodyData(bodyData.concat(<Input key={bodyData.length} _id={bodyData.length}/>));
     };
 
-    // Update the body text areas everytime the text area is updated
-    const updateBodyValue = event => {
-
-        // Updates the textareas
-        let id = parseInt(event.target.getAttribute('id'));
-        let copyOfBodyData = bodyData;
-        copyOfBodyData[id] = <Input 
-            _id={id} 
-            key={id} 
-            value={event.target.value} 
-            onChange={updateBodyValue} 
-        /> 
-        setBodyData(copyOfBodyData);
-        
-        // Then get the atrribute to POST the update request
-        var copyOfInputValueStates = inputValueStates;
-        copyOfInputValueStates[id] = event.target.value;
-        setInputValueStates(copyOfInputValueStates);
-    }
-
-    const updateTagsValue = event => {
-        let id = parseInt(event.target.getAttribute('id'));
-        let copyOfTagsData = tagsData;
-        copyOfTagsData[id] = <Tags 
-            _id={id} 
-            key={id} 
-            value={event.target.value} 
-            onChange={updateTagsValue} 
-        /> 
-        setTagsData(copyOfTagsData);
-
-        // Then get the atrribute to POST the update request
-        var copyOftagsValues = tagsValues;
-        copyOftagsValues[id] = event.target.value;
-        setTagsValues(copyOftagsValues)
-    }
-    const updateTitleValue = event => {setInputTitle(event.target.value)}
-    const updateSummaryValue = event => {setInputSummary(event.target.value)}
-    const updateFileValue = event => {setInputFile(event.target.files[0])}
-
-    const handleSubmit = event => {
-        event.preventDefault();
-
-        const formData = new FormData();
-        formData.append("image", inputFile);
-        formData.append("title", inputTitle);
-        formData.append("summary", inputSummary);
-        formData.append("body", inputBodyValue);
-        formData.append("tags", inputTagsValue);
-
-    
-        const requestOptions = {
-            method: 'POST',
-            headers: { 'Content-Type': 'multipart/form-data' },
-            body: formData
-        };
-        fetch(props.url, requestOptions)
-            .then(response => console.log(response))
-            .catch(error => console.log('Form submit error', error))
-      };
-
-
   // TODO, Implement changes to prevent redirect
   return (
     <div>
@@ -171,7 +80,6 @@ const Form = (props) => {
         method="POST" 
         enctype="multipart/form-data"
         action={ props.url ? props.url : "/"}
-        // onSubmit={handleSubmit}
         >
 
         <label for="thumbnail">Thumbnail:</label>
@@ -180,7 +88,6 @@ const Form = (props) => {
             type="file" 
             id="image" 
             name="image" 
-            onChange={updateFileValue}
             />
         <br/>
 
@@ -188,7 +95,6 @@ const Form = (props) => {
         <input 
             className="title-input" 
             defaultValue={props.data ? props.data.title : ""} 
-            onChange={updateTitleValue}
             type="text" 
             id="title" 
             name="title"/>
@@ -198,7 +104,6 @@ const Form = (props) => {
         <input 
             className="summary-input" 
             defaultValue={props.data ? props.data.summary : ""} 
-            onChange={updateSummaryValue}
             type="text" 
             id="summary" 
             name="summary"/>
@@ -214,7 +119,6 @@ const Form = (props) => {
         
         <label for="tags">tags:</label>
         <div className="tags-group"> 
-            {/* {props.data ? <GetTagsValue tagsArray={props.data.tags}/> : <Tags/>} */}
             { props.data ? tagsData : <Tags/>}
         </div>
         <button type="button" onClick={tagsButtonClick}>Add tags</button>
