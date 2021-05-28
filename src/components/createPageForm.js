@@ -17,7 +17,7 @@ const Form = (props) => {
     
 
     // Updates the input data
-    var[bodyComponentState, setbodyComponentState] = useState([]);
+    var[bodyComponentState, setBodyComponentState] = useState([]);
     var[inputValueStates, setInputValueStates] = useState([]);
 
     var[inputSummary, setInputSummary] = useState([]);
@@ -27,11 +27,11 @@ const Form = (props) => {
     var inputBodyValue = [];
     var bodyComponents = [];
 
-    var inputTagsValue = [];
+    var tagsValues = [];
     var tagsComponents = [];
 
-    var [tagsComponentsState, setTagsComponent] = useState([]);
-    var [tagsValues, setTagsValues] = useState();
+    var [tagsComponentsState, setTagsComponentState] = useState([]);
+    var [tagsValuesState, setTagsValuesState] = useState();
 
     var propsValues = props.data;
     var [hasGottenProps, setHasGottonProps] = useState(false);
@@ -63,9 +63,14 @@ const Form = (props) => {
             
         </textarea>
     };
-    // Takes the values from the variable inputValue and adds it to the bodyComponentState state
+    // Takes the values from the variable inputValue and adds it to the bodyComponentState
 
     function loopThroughBody () {
+        /*  First it loops through the variable inputBodyValue (props.data.body) And it pushes to bodyComponents (another variable) with holds the component. Then it updates the states: inputValueStates and setBodyComponentStaes with the variables we just defined. 
+
+        I adopted this method because of the strange way that the react states were working, occationally not having any values for a while.
+        
+        */
         inputBodyValue.map (input => { 
             bodyComponents.push(<Input 
                 value={input} 
@@ -74,18 +79,19 @@ const Form = (props) => {
                 />)
         });
         setInputValueStates(inputBodyValue);
-        setbodyComponentState(bodyComponents);
+        setBodyComponentState(bodyComponents);
+        console.log(bodyComponents)
     }
     function loopThroughTags () {
-        inputTagsValue.map (input => {
+        tagsValues.map (input => {
             tagsComponents.push(<Tags
                 value={input}
                 key={tagsComponents.length}
                 _id={tagsComponents.length}
             />)
         });
-        setTagsValues(inputTagsValue);
-        setTagsComponent(tagsComponents);
+        setTagsValuesState(tagsValues);
+        setTagsComponentState(tagsComponents);
 
     }  
 
@@ -95,7 +101,7 @@ const Form = (props) => {
 
             // TODO I could just pass these into the function parameters
             inputBodyValue = props.data.body;
-            inputTagsValue = props.data.tags;
+            tagsValues = props.data.tags;
 
             // Set the defualt values to the states
             loopThroughBody();
@@ -109,19 +115,27 @@ const Form = (props) => {
     })()
     
     const tagsButtonClick = event => {
-        setTagsComponent(tagsComponentsState.concat(<Tags key={tagsComponentsState.length} _id={tagsComponentsState.length} />));
+        console.log(tagsComponents)
+        setTagsComponentState(tagsComponentsState.concat(<Tags key={tagsComponentsState.length} _id={tagsComponentsState.length} />));
         tagsComponents = tagsComponentsState;
     };
 
     const onAddBtnClick = event => {
-        setbodyComponentState(bodyComponentState.concat(<Input key={bodyComponentState.length} _id={bodyComponentState.length}/>));
+        setBodyComponentState(bodyComponentState.concat(
+        <Input 
+        key={bodyComponentState.length} 
+        _id={bodyComponentState.length}
+        />));
         bodyComponents= bodyComponentState;
+        // TODO, Add input value here aswell
+
     };
 
     // Update the body text areas everytime the text area is updated
     const updateBodyValue = event => {
-        // ! If this works do the same for the other component
-        console.log(bodyComponents)
+        // ! Just use a regular variable instead of a state
+        console.log(inputBodyValue)
+        // console.log(inputValueStates)
 
         // Updates the specific textarea of the body input based on the ID
         let id = parseInt(event.target.getAttribute('id'));
@@ -132,13 +146,14 @@ const Form = (props) => {
             value={event.target.value} 
             onChange={updateBodyValue} 
         /> 
-        setbodyComponentState(copyOfbodyComponentState);
+        setBodyComponentState(copyOfbodyComponentState);
         bodyComponents = copyOfbodyComponentState;
         
         // Then get the atrribute to POST the update request
-        var copyOfInputValueStates = inputValueStates;
+        var copyOfInputValueStates = inputBodyValue;
         copyOfInputValueStates[id] = event.target.value;
         setInputValueStates(copyOfInputValueStates);
+        inputBodyValue = copyOfInputValueStates;
     }
 
     const updateTagsValue = event => {
@@ -146,20 +161,20 @@ const Form = (props) => {
 
         // Updates a specific input of the tag input based on the ID
         let id = parseInt(event.target.getAttribute('id'));
-        let copyOfTagsComponent = tagsComponentsState;
+        let copyOfTagsComponent = tagsComponents;
         copyOfTagsComponent[id] = <Tags 
             _id={id} 
             key={id} 
             value={event.target.value} 
             onChange={updateTagsValue} 
         /> 
-        setTagsComponent(copyOfTagsComponent);
+        setTagsComponentState(copyOfTagsComponent);
         tagsComponents = copyOfTagsComponent;
 
         // Then get the atrribute to POST the update request
-        var copyOftagsValues = tagsValues;
-        copyOftagsValues[id] = event.target.value;
-        setTagsValues(copyOftagsValues)
+        var copyOftagsValuesState = tagsValues;
+        copyOftagsValuesState[id] = event.target.value;
+        setTagsValuesState(copyOftagsValuesState)
     }
     const updateTitleValue = event => {setInputTitle(event.target.value)}
     const updateSummaryValue = event => {setInputSummary(event.target.value)}
@@ -169,6 +184,7 @@ const Form = (props) => {
         event.preventDefault();
 
         const formData = new FormData();
+        console.log(inputBodyValue)
 
         // formData.append("image", inputFile);
         formData.append("title", inputTitle);
@@ -180,8 +196,7 @@ const Form = (props) => {
         inputValueStates.forEach((body) => {
             formBody.append("body", body);
         })
-        console.log(tagsValues)
-        tagsValues.forEach((tag) => {
+        tagsValuesState.forEach((tag) => {
             formBody.append("tags", tag);
         })
 
