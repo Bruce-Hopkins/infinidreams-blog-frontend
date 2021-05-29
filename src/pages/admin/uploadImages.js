@@ -4,7 +4,9 @@ import LoginVerifiacation from '../../components/loginVerifiacation'
 
 import "../../stylesheets/admin-styles/uploadImages.css"
 
-const ImageHandler = ({id}) => {
+// TODO, make the UI a bit better
+const ImageHandler = () => {
+    var[inputFile, setInputFile] = useState([]);
 
     // Gets the data from the server
     var[images, setImages] = useState();
@@ -24,7 +26,7 @@ const ImageHandler = ({id}) => {
         if (images) return images.map (image => { 
             return <div> 
                 <img src={"http://localhost:5000/images/" + image.name}/>
-                <button onClick={deleteImage.bind(this, image.name)}> </button>
+                <button onClick={deleteImage.bind(this, image.name)}> Delete </button>
             </div>
         });
         return <div/>
@@ -35,16 +37,61 @@ const ImageHandler = ({id}) => {
         console.log('http://localhost:5000/api/image/'+ name +'/delete')
         try {
             axios.post('http://localhost:5000/api/image/'+ name +'/delete', {},{ withCredentials: true }).then((res) => {
-                alert("Successful")
-                // TODO, Have the site refresh the page
+                // alert("Successful")
+                // window.location.reload()
             })
         }
         catch(err) {console.error(err)}
+    }
+    const updateFileValue = event => {
+        setInputFile(event.target.files[0])
+        console.log(inputFile)
+    }
+    const handleSubmit = event => {
+        event.preventDefault();
+
+        // Create a form and add file to it
+        const formData = new FormData();
+        formData.append("name", "testImage")
+        formData.append("image", inputFile)
+
+        /*  
+        * Two problems could occur. One, the file is not sent right because this is not a multicontent type
+        * or two, the server cannot find the file for some reason
+        */
+        try {
+            axios.post('http://localhost:5000/api/create-image', formData,{ withCredentials: true }, {
+                headers: {
+                    'Content-Type': 'multipart/form-data;'
+                }
+            }).then((res) => {
+                alert("Successful")
+                window.location.reload()
+            })
+        }
+        catch (err) {console.log(err)}
 
     }
     return (
         <LoginVerifiacation>
             <GetImages/>
+            <form 
+                className="admin-create-form" 
+                method="POST" 
+                enctype="multipart/form-data"
+                onSubmit={handleSubmit}>
+
+                <label for="image">Image:</label>
+                <input 
+                className="thumbnail-input" 
+                    type="file" 
+                    id="image" 
+                    name="image" 
+                    onChange={updateFileValue}
+                    valeu={inputFile}
+                    />
+                <input className="submit-input" type="submit" value="Submit"></input>
+            </form>
         </LoginVerifiacation>
     )
 }

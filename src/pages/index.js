@@ -64,7 +64,6 @@ const IndexPage = () => {
         <div className="post-list">
             <GetData/>          
         </div>
-        {/* <Sidebar/> */}
       </main>
     </Layout>
 

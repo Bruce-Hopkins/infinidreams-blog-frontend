@@ -11,12 +11,8 @@ function Sidebar (){
   const [show, setShow] = React.useState(false)
 
   function showMenu() {
-    if (show) {
-      setShow(false)
-    }
-    else  {
-      setShow(true)
-    }
+    if (show) setShow(false)
+    else setShow(true)
   }
   useEffect(() => {  
     (async function connectToAPI (){
@@ -32,8 +28,8 @@ function Sidebar (){
     })()
   }, [])
 
-  // TODO, Test with larger Posts
   function GetRecentPosts() {
+    // ! NO LONGER NEEDED
     // If there are more than 5 posts then it will return five
     // If not it'll only return the number of posts
     let selectedLinks = [];
