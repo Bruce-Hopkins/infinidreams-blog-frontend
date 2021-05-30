@@ -8,6 +8,8 @@ import "../stylesheets/blog.css"
 import "../stylesheets/layout.css"
 
 // TODO Make context more clear on what is supposed to be the defualt
+
+// Context for blogpage To get the backend data 
 const SinglePostConetext = React.createContext();
 
 
