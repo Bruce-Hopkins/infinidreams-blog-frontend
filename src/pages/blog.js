@@ -39,10 +39,11 @@ const Singlepost = ({id}) => {
 
     // TODO,. add lazy loading.
     //This will sort through the body property in the API and return different html tags depending on the content
-    function GetBody(body) {
-        if (singlePostsData.data.body) {
+    function GetBody() {
+        const context = React.useContext(SinglePostConetext)
+        if (context.data.body) {
 
-          return singlePostsData.data.body.map(bodyString => {
+          return context.data.body.map(bodyString => {
 
             if (bodyString.includes("(CODE)")) {
                   const splitBodyString = bodyString.split("(CODE)");
@@ -60,43 +61,49 @@ const Singlepost = ({id}) => {
     }
 
     function GetPost() {
-        if (singlePostsData.data) { 
-          let postData = singlePostsData.data;
+      const context =  React.useContext(SinglePostConetext);
+        if (context.data) { 
           return (
-            <div className="post-container"> 
-                <div className="post-group">
-                  <div className="gradient-container"> 
-                    <div className="title-group">
-                      <div className="title-text-group">
-                        <h1> {postData.title}</h1>
-                        <span className="info-group">
-                          {postData.tags ? postData.tags.map(tag => {
-                              return <p className="title-tags"> {tag}</p>
-                          }): <p> </p>}
-                          <p>{postData.FormattedDateOfPost}</p>
-                        </span>
 
+              <div className="post-container"> 
+                  <div className="post-group">
+                    <div className="gradient-container"> 
+                      <div className="title-group">
+                        <div className="title-text-group">
+                          <h1> {context.data.title}</h1>
+                          <span className="info-group">
+                            {context.data.tags ? context.data.tags.map(tag => {
+                                return <p className="title-tags"> {tag}</p>
+                            }): <p> </p>}
+                            <p>{context.data.FormattedDateOfPost}</p>
+                          </span>
+
+                        </div>
+                        <img  alt="Thumbnail" className="blog-thumbnail" src={`data:image/png;base64, ${context.data.thumbnailString}` }/>
                       </div>
-                      <img  alt="Thumbnail" className="blog-thumbnail" src={`data:image/png;base64, ${postData.thumbnailString}` }/>
+                    
                     </div>
-                  
+
+                      <div className="body-group">
+                        <GetBody/>
+                      </div>
+
                   </div>
+              </div>
 
-                    <div className="body-group">
-                      <GetBody/>
-                    </div>
-
-                </div>
-            </div>
         )}
         return <h1>Post Id not found</h1>
     }
   return (
-    <Layout>
-      {/* Change title depending on the blog post title */}
-      <SEO title={singlePostsData.data ? singlePostsData.data.title : ""}/>
-      <GetPost/>
-    </Layout>
+    <SinglePostConetext.Provider  value={singlePostsData}>
+
+      <Layout>
+        {/* Change title depending on the blog post title */}
+        <SEO title={singlePostsData.data ? singlePostsData.data.title : ""}/>
+        <GetPost/>
+      </Layout>
+    </SinglePostConetext.Provider>
+
 
   )
 }

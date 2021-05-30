@@ -11,7 +11,7 @@ import "../stylesheets/layout.css"
 // TODO, Fix infinite loading when page backend down. Either Check regularly if page is up, or give a message if the page fails to connect
 
 // Creates a context API for what the API gets from the backend
-//I created a context API becuase this leaves more room for future features and expansion.
+// I created a context API becuase this leaves more room for future features and expansion.
 const BlogPostContext = React.createContext();
 
 const IndexPage = () => {
