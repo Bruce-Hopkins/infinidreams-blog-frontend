@@ -7,6 +7,9 @@ import Page from "../components/highlighter"
 import "../stylesheets/blog.css"
 import "../stylesheets/layout.css"
 
+// TODO Make context more clear on what is supposed to be the defualt
+const SinglePostConetext = React.createContext();
+
 
 const Singlepost = ({id}) => {
     var[singlePostsData, setSinglePostsData] = useState([])

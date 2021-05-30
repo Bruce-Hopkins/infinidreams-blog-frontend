@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react'
 import Layout from "../components/layout"
 import axios from 'axios'
 import SEO from "../components/SEO"
-// import Context from "../components/contextAPI"
 
 
 import "../stylesheets/index.css"
@@ -10,6 +9,10 @@ import "../stylesheets/layout.css"
 
 //TODO, Add featured page when I have more posts.
 // TODO, Fix infinite loading when page backend down. Either Check regularly if page is up, or give a message if the page fails to connect
+
+// Creates a context API for what the API gets from the backend
+const BlogPostContext = React.createContext();
+
 const IndexPage = () => {
   var[postsData, setPostsData] = useState([])
   useEffect(() => {  
@@ -28,7 +31,8 @@ const IndexPage = () => {
   
   // Maps through each blog posts. 
   function GetData () {
-    if (postsData.data) return postsData.data.map (data => {
+    const context = React.useContext(BlogPostContext)
+    if (context.data) return context.data.map (data => {
         return (
           <div className="blogpost-container">
             <a href={"blog/"+data._id} className="blogpost-group"> 
@@ -57,17 +61,21 @@ const IndexPage = () => {
   
 
   return (
-    
-    <Layout>
-      <SEO title="Infinidream | Blog"/>
-      <main className="posts-container">
-        <div className="post-list">
-            <GetData/>          
-        </div>
-      </main>
-    </Layout>
+    <BlogPostContext.Provider value={postsData}>
+      <Layout>
+        <SEO title="Infinidream | Blog"/>
+        <main className="posts-container">
+          <div className="post-list">
+              <GetData/>          
+          </div>
+        </main>
+      </Layout>
+    </BlogPostContext.Provider>
+
+
 
   )
 }
 
 export default IndexPage
+

@@ -39,7 +39,6 @@ function Sidebar (){
         if (postsData.data.length > 5) {
           for (let i = 0; i < 5; i++) {
             selectedLinks.push(postsData.data[i]);
-            console.log(postsData.data[i])
           }
         } 
         else selectedLinks = postsData.data;
