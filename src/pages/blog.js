@@ -3,17 +3,16 @@ import Layout from "../components/layout"
 import axios from 'axios'
 import SEO from "../components/SEO"
 import Page from "../components/highlighter"
+import SinglepostContext from '../components/context/SinglepostContext'
 
 import "../stylesheets/blog.css"
 import "../stylesheets/layout.css"
 
-// TODO Make context more clear on what is supposed to be the defualt
-const SinglePostConetext = React.createContext();
-
 
 const Singlepost = ({id}) => {
-    var[singlePostsData, setSinglePostsData] = useState([])
- 
+    var[singlePostsData, setSinglePostsData] = useState()
+
+    // Collect data from the backend API
     useEffect(() => {  
         (async function connectToAPI (){
           try {
@@ -29,7 +28,9 @@ const Singlepost = ({id}) => {
         })()
         // setTimeout(() => Prism.highlightAll(), 0)
 
-    }, [])
+    },[])
+
+    // Take away the spaces at the beginning of a String
     function cleanString(stringToBeCleaned) {
       if(stringToBeCleaned.startsWith(" ")) {
         return stringToBeCleaned.slice(1);
@@ -37,11 +38,10 @@ const Singlepost = ({id}) => {
       return stringToBeCleaned;
     }
 
-    // TODO,. add lazy loading.
-    //This will sort through the body property in the API and return different html tags depending on the content
+    // This will sort through the body property in the API and return different html tags depending on the content
     function GetBody() {
-        const context = React.useContext(SinglePostConetext)
-        if (context.data.body) {
+        const context = React.useContext(SinglepostContext)
+        if (context) {
 
           return context.data.body.map(bodyString => {
 
@@ -60,9 +60,10 @@ const Singlepost = ({id}) => {
         return <h1> There was a problem</h1>
     }
 
+    // Get all the attributes of the API and create the post. Also used the GetBody function
     function GetPost() {
-      const context =  React.useContext(SinglePostConetext);
-        if (context.data) { 
+      const context = React.useContext(SinglepostContext);
+        if (context) { 
           return (
 
               <div className="post-container"> 
@@ -94,15 +95,17 @@ const Singlepost = ({id}) => {
         )}
         return <h1>Post Id not found</h1>
     }
+
+    
   return (
-    <SinglePostConetext.Provider  value={singlePostsData}>
+    <SinglepostContext.Provider  value={singlePostsData ? singlePostsData : null}>
 
       <Layout>
         {/* Change title depending on the blog post title */}
-        <SEO title={singlePostsData.data ? singlePostsData.data.title : ""}/>
+        <SEO title={singlePostsData ? singlePostsData.data.title : ""}/>
         <GetPost/>
       </Layout>
-    </SinglePostConetext.Provider>
+    </SinglepostContext.Provider>
 
 
   )
