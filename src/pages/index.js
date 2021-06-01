@@ -3,19 +3,27 @@ import Layout from "../components/layout"
 import axios from 'axios'
 import SEO from "../components/SEO"
 
-
 import "../stylesheets/index.css"
 import "../stylesheets/layout.css"
 
 //TODO, Add featured page when I have more posts.
 // TODO, Fix infinite loading when page backend down. Either Check regularly if page is up, or give a message if the page fails to connect
-
+// TODO, Rename all components
 // Creates a context API for what the API gets from the backend
 // I created a context API becuase this leaves more room for future features and expansion.
-const BlogPostContext = React.createContext();
+const BlogPostContext = React.createContext([
+  {
+    "_id": "",
+    "thumbnailString": "",
+    "title": "",
+    "tags": [],
+    "formattedDateOfPost": "",
+    "summary": "",
+  }
+]);
 
 const IndexPage = () => {
-  var[postsData, setPostsData] = useState([])
+  var[postsData, setPostsData] = useState()
   useEffect(() => {  
     (async function connectToAPI (){
       try {
@@ -30,10 +38,10 @@ const IndexPage = () => {
     })()
   }, [])
   
-  // Maps through each blog posts. 
+  // Maps through each blog posts. If there are no blog posts to be found it will return a loading animation 
   function GetData () {
     const context = React.useContext(BlogPostContext)
-    if (context.data) return context.data.map (data => {
+    if (context) return context.data.map (data => {
         return (
           <div className="blogpost-container">
             <a href={"blog/"+data._id} className="blogpost-group"> 
@@ -60,9 +68,9 @@ const IndexPage = () => {
     </div>
   }
   
-
+  // Context will only be used when postData is specified
   return (
-    <BlogPostContext.Provider value={postsData}>
+    <BlogPostContext.Provider value={postsData ? postsData : null}>
       <Layout>
         <SEO title="Infinidream | Blog"/>
         <main className="posts-container">
@@ -72,9 +80,6 @@ const IndexPage = () => {
         </main>
       </Layout>
     </BlogPostContext.Provider>
-
-
-
   )
 }
 
