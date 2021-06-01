@@ -9,7 +9,9 @@ import "../stylesheets/layout.css"
 
 //TODO, Add featured page when I have more posts.
 // TODO, Fix infinite loading when page backend down. Either Check regularly if page is up, or give a message if the page fails to connect
-// TODO, Rename all components
+
+// Creates a context API for what the API gets from the backend
+// I created a context API becuase this leaves more room for future features and expansion.
 
 const IndexPage = () => {
   var[postsData, setPostsData] = useState()
@@ -25,9 +27,9 @@ const IndexPage = () => {
       }
   
     })()
-  })
+  }, [])
   
-  // Maps through each blog posts. If there are no blog posts to be found it will return a loading animation 
+  // Maps through each blog posts. 
   function GetData () {
     const context = React.useContext(BlogpostContext)
     if (context) return context.data.map (data => {
@@ -57,7 +59,7 @@ const IndexPage = () => {
     </div>
   }
   
-  // Context will only be used when postData is specified
+
   return (
     <BlogpostContext.Provider value={postsData ? postsData : null}>
       <Layout>
@@ -69,6 +71,9 @@ const IndexPage = () => {
         </main>
       </Layout>
     </BlogpostContext.Provider>
+
+
+
   )
 }
 
