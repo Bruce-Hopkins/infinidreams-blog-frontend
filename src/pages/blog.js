@@ -28,7 +28,7 @@ const Singlepost = ({id}) => {
         })()
         // setTimeout(() => Prism.highlightAll(), 0)
 
-    })
+    },[])
 
     // Take away the spaces at the beginning of a String
     function cleanString(stringToBeCleaned) {
