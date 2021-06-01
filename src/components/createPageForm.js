@@ -30,8 +30,8 @@ const Form = (props) => {
             
         </textarea>
     };
+    
     // Takes the values from the variable inputValue and adds it to the bodyData state
-
     function loopThroughBody (inputList) {
         let valuesList = [];
         inputList.map (input => { 
