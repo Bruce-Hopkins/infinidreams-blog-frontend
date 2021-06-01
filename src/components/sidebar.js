@@ -5,13 +5,13 @@ import "../stylesheets/sidebar.css"
 import TwitterIcon from "../images/Socail-media/2021 Twitter logo - white.png"
 import GithubIcon from "../images/Socail-media/GitHub-Mark-Light-64px.png"
 import EmailIcon from "../images/Socail-media/icons8-email-64.png"
-
+import SidebarContext from '../components/context/SidebarContext'
 // Context for Sidebar to get backend
-const SidebarContext = React.createContext();
+
 
 function Sidebar (){
 
-  var[postsData, setPostsData] = useState([])    
+  var[postsData, setPostsData] = useState()    
   const [show, setShow] = React.useState(false)
 
   function showMenu() {
@@ -34,7 +34,7 @@ function Sidebar (){
 
   function GetRecentPosts() {
     const context = React.useContext(SidebarContext)
-    if (context.data) {
+    if (context) {
       if (context.data.length > 0) {
         return context.data.map (selectedLink => {
           return <li> <a href={"/blog/"+selectedLink._id}> {selectedLink.title} </a> </li>
@@ -47,7 +47,7 @@ function Sidebar (){
   }
 
     return (
-    <SidebarContext.Provider  value={postsData}>
+    <SidebarContext.Provider  value={postsData ? postsData : null}>
 
       <nav className={show ? "nav-container show" : "nav-container"}>
           <svg onClick={showMenu} fill="#000000" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 26 26" width="26px" height="26px"><path d="M 0 4 L 0 6 L 26 6 L 26 4 Z M 0 12 L 0 14 L 26 14 L 26 12 Z M 0 20 L 0 22 L 26 22 L 26 20 Z"/></svg>
