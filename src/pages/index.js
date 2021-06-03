@@ -8,10 +8,6 @@ import "../stylesheets/index.css"
 import "../stylesheets/layout.css"
 
 // TODO, add h1 to page
-// TODO, Add loading cover until page loads
-// Creates a context API for what the API gets from the backend
-// I created a context API becuase this leaves more room for future features and expansion.
-
 const IndexPage = () => {
   var[postsData, setPostsData] = useState()
   var [error, setError] = useState(false)
