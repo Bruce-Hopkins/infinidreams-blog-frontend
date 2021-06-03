@@ -7,14 +7,14 @@ import BlogpostContext from '../components/context/BlogpostsContext'
 import "../stylesheets/index.css"
 import "../stylesheets/layout.css"
 
-//TODO, Add featured page when I have more posts.
-// TODO, Fix infinite loading when page backend down. Either Check regularly if page is up, or give a message if the page fails to connect
-
+// TODO, add h1 to page
+// TODO, Add loading cover until page loads
 // Creates a context API for what the API gets from the backend
 // I created a context API becuase this leaves more room for future features and expansion.
 
 const IndexPage = () => {
   var[postsData, setPostsData] = useState()
+  var [error, setError] = useState(false)
   useEffect(() => {  
     (async function connectToAPI (){
       try {
@@ -23,6 +23,7 @@ const IndexPage = () => {
         });
       }
       catch(err) {
+        setError(true)
         console.error(err)
       }
   
@@ -51,6 +52,9 @@ const IndexPage = () => {
           </div>
         )
     })
+    if(error) {
+      return <h2> There was a connection error. Try reloading the page</h2>
+    }
     return <div className="loading-animation"> 
       <div className="circle1"></div>
       <div className="circle2"></div>
