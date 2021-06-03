@@ -2,7 +2,6 @@ import React from "react"
 import Helmet from "react-helmet"
 
 function SEO (props) {
-    //TODO , Implement title in a way it doesn't have to load
     return (
         <Helmet>
             <title>{props.title} </title>

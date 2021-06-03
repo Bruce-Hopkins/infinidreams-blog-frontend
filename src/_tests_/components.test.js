@@ -8,6 +8,7 @@ import Layout from '../components/layout';
 import SEO from '../components/SEO';
 import Sidebar from '../components/Sidebar'
 
+// TODO, Add tests to confirm API connection
 // Components
 describe('Tests Components Rendering', () => {
   it('renders Index without crashing', () => {

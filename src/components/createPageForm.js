@@ -72,7 +72,6 @@ const Form = (props) => {
         setBodyData(bodyData.concat(<Input key={bodyData.length} _id={bodyData.length}/>));
     };
 
-  // TODO, Implement changes to prevent redirect
   return (
     <div>
       <form 

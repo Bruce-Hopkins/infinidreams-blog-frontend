@@ -7,8 +7,7 @@ import "../../stylesheets/blog.css"
 
 const Posts = () => {
 
-  // TODO, change this to be the component that connects through axios later
-
+    // Connects to API through axios
     var[postsData, setPostsData] = useState([])
     useEffect(() => {  
         (async function connectToAPI (){
