@@ -1,9 +1,13 @@
 /* The entire left section of the website */
-.left-section {position: fixed; left: 26px}
+.left-section {
+    position: fixed; 
+    left: 26px; 
+    height: 100%;
+}
 .logo {
     position: fixed;
     width: auto;
-    height: auto;
+    height: 39px;
     top: 13px;
 }
 
@@ -11,25 +15,29 @@
 .nav-container {
     position: relative;
     width: 461px;
-    height: 960px;
+    height: 100%;
     top: 61px;
-
+    
+    border-left: 1px solid rgba(152, 152, 152, 0.6);
+    border-right: 1px solid rgba(152, 152, 152, 0.6);
     background: #FAFAFA;
 }
 /* The grid for the sidebar */
 .nav-group {
     display: grid;
     grid-template-columns: repeat(1, auto);
+    height: 100%;
+    align-content: baseline;
 }
-/*  Top section where links are */
+/*  Where links are */
 .top-sidebar {
-    /* Page-section */
     position: relative;
     width: 100%;
     height: 320px;
 
-    background: #FFFFFF;
-    border: 1px solid rgba(152, 152, 152, 0.6);
+    border-top: 1px solid rgba(152, 152, 152, 0.6);
+    border-bottom: 1px solid rgba(152, 152, 152, 0.6);
+
     box-sizing: border-box;
 }
 /* Pages section */
@@ -91,9 +99,9 @@
 .middle-sidebar {
     position: relative;
     width: 100%;
-    height: 619px;
+    height: 100%;
     
-    border: 1px solid rgba(152, 152, 152, 0.6);
+    border-bottom: 1px solid rgba(152, 152, 152, 0.6);
     border-top: none;
     box-sizing: border-box;
 }

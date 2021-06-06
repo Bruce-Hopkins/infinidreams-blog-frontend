@@ -2,9 +2,6 @@ import React, {useEffect, useState} from 'react'
 import axios from 'axios'
 import "../stylesheets/sidebar.css"
 
-import TwitterIcon from "../images/Socail-media/2021 Twitter logo - white.png"
-import GithubIcon from "../images/Socail-media/GitHub-Mark-Light-64px.png"
-import EmailIcon from "../images/Socail-media/icons8-email-64.png"
 import Logo from "../images/InFINIDREAMS.png"
 import SidebarContext from '../components/context/SidebarContext'
 // Context for Sidebar to get backend

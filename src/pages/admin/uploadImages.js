@@ -24,7 +24,7 @@ const ImageHandler = () => {
     // Loops through and displays the values
     function GetImages() {
         if (images) return images.map (image => { 
-            return <div> 
+            return <div className="images-upload"> 
                 <img src={"http://localhost:5000/images/" + image.name}/>
                 <button onClick={deleteImage.bind(this, image.name)}> Delete </button>
             </div>
