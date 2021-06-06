@@ -5,6 +5,7 @@ import "../stylesheets/sidebar.css"
 import TwitterIcon from "../images/Socail-media/2021 Twitter logo - white.png"
 import GithubIcon from "../images/Socail-media/GitHub-Mark-Light-64px.png"
 import EmailIcon from "../images/Socail-media/icons8-email-64.png"
+import Logo from "../images/InFINIDREAMS.png"
 import SidebarContext from '../components/context/SidebarContext'
 // Context for Sidebar to get backend
 
@@ -37,7 +38,7 @@ function Sidebar (){
     if (context) {
       if (context.data.length > 0) {
         return context.data.map (selectedLink => {
-          return <li> <a href={"/blog/"+selectedLink._id}> {selectedLink.title} </a> </li>
+          return <a href={"/blog/"+selectedLink._id}> {selectedLink.title} </a> 
         })
       }
     }
@@ -48,24 +49,28 @@ function Sidebar (){
 
     return (
     <SidebarContext.Provider  value={postsData ? postsData : null}>
-
-      <nav className={show ? "nav-container show" : "nav-container"}>
-        <div className="nav-group">
-          <div className="top-sidebar">
-            <div className="sidebar-link-group"> 
-              <h2>Pages</h2>
-              <a href="/"> Home</a>
-              <a href="http://www.infinidream.net/"> About Me</a>
-            </div>
-          </div> 
-          <div className="Middle-sidebar">
-            <div className="recent-post-group">
-              <h2>Recent</h2>
-              <GetRecentPosts/>
+      <section className="left-section">
+        <a href="http://www.infinidream.net/"> <img alt="Logo" className="logo" src={Logo}/> </a>
+        <nav className={show ? "nav-container show" : "nav-container"}>
+          <div className="nav-group">
+            <div className="top-sidebar">
+              <div className="pages-section"> 
+                <h2>Pages</h2>
+                <a href="/"> <h3>Home</h3> </a>
+                <a href="http://www.infinidream.net/"> <h3> About Me</h3> </a>
+              </div>
+            </div> 
+            <div className="middle-sidebar">
+              <div className="recent-post-section">
+                <h2>Recent</h2>
+                <GetRecentPosts/>
+              </div>
             </div>
           </div>
-        </div>
-      </nav>
+        </nav>
+      </section>
+
+
     </SidebarContext.Provider>
     )
   }

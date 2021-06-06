@@ -1,133 +1,138 @@
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap');
-.nav-container {
-    background-color:  #2d2d2d;
-    display: block;
+/* The entire left section of the website */
+.left-section {position: fixed; left: 26px}
+.logo {
     position: fixed;
-    width: 250px;
-    height: 100%;
-    left: 0px;
-    top: 0px;
-}
-.nav-group {display: grid; }
-.nav-container svg {
-    color: white;
-    background-color: white;
-    padding: 5px;
-    border-radius: 4px;
-    display: none;
-}
-.nav-container svg:hover {
-    background-color: #ABB0B8;
-}
-.nav-group a, h3{ font-family: 'Mukta', sans-serif;}
-.nav-group h3 {
-    text-align: left; 
-    margin: 40px 0px 0px 20px; 
-    font-weight: 400;
-    color: #e0e0e0;
-}
-.important-link-group{
-    display: grid; 
-    grid-template-columns: repeat(1, auto);
-    align-items: center;
-    margin: 10px 0px 0px 20px;
-    /* border-left: solid 2px var(--one); */
-    margin-top: 33px; 
-    height: 90px;
-}
-.important-link-group a{
-    width: 120px;
-    padding-left: 0px;
-    margin: 0px 0px 0px 20px;
-    font-size: 29px;
-    text-align: center;
-    color: white;
-    text-decoration: none;
-    text-align: left;
-    transition: color var(--timing) ease-out;
-    font-weight: 300;
-    /* font-family: 'Play', sans-serif; */
-
-    font-family: 'Oswald', sans-serif;
-    letter-spacing: 1px;
-}
-.recent-posts-group {
-    justify-content: center;
     width: auto;
+    height: auto;
+    top: 13px;
+}
+
+/* The sidebar */
+.nav-container {
+    position: relative;
+    width: 461px;
+    height: 960px;
+    top: 61px;
+
+    background: #FAFAFA;
+}
+/* The grid for the sidebar */
+.nav-group {
     display: grid;
     grid-template-columns: repeat(1, auto);
-    grid-gap: 30px;
-    padding: 30px 50px 50px 30px;
 }
-.recent-posts-group li { color: var(--one); transition: color var(--timing) ease-out;}
-.recent-posts-group a {
-    color: white;
-    font-weight: 100;
-    text-align: left;
+/*  Top section where links are */
+.top-sidebar {
+    /* Page-section */
+    position: relative;
+    width: 100%;
+    height: 320px;
+
+    background: #FFFFFF;
+    border: 1px solid rgba(152, 152, 152, 0.6);
+    box-sizing: border-box;
+}
+/* Pages section */
+.pages-section {
+    position: relative;
+    width: 388px;
+    height: 261px;
+    margin: 30px auto;
+
+    background: #FFFFFF;
+    border: 1px solid rgba(152, 152, 152, 0.6);
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+/* The text saying "Pages" */
+.pages-section h2 {
+    position: relative;
+    width: 85px;
+    height: 0px;
+    margin: 31px 152px 31px 152px;
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.05em;
+    font-feature-settings: 'kern' off;
+
+    color: #1E1E1E;
+
+}
+/* The link for the sidebar */
+.top-sidebar a {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 56px;
+    
     text-decoration: none;
-    font-family: 'Quicksand', sans-serif;
-    transition: color var(--timing) ease-out, text-decoration var(--timing) ease-out ;
-    font-size: 16px;
 }
-.recent-posts-group a:hover, .important-link-group a:hover {color:var(--one);}
-.recent-posts-group li:hover {color:var(--one);}
-.recent-posts-group li:hover a {color:var(--one); text-decoration:underline ;}
+/* The a tag is the links and the h3s are the text inside */
+.top-sidebar a:hover {background: #BCE5DE;}
+.top-sidebar h3 {
+    position: relative;
+    width: 145px;
+    height: 42px;
+    margin-left: 39px;
+    margin: 0px 0px 0px 39px;
 
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.05em;
+    font-feature-settings: 'kern' off;
 
-.icon-group {
-    display: grid;
-    grid-template-columns: repeat(3, auto);
-    justify-content: center;
+    color: #000000;
 }
-.icon-group a {
-    margin: 0px 10px 0px 10px; 
-    padding-bottom: 3px;
-    transition: transform 0.13s ease-out;
+.top-sidebar a:hover h3 {color: #05362D;}
+
+/* The sections bellow top-sidebar */
+.middle-sidebar {
+    position: relative;
+    width: 100%;
+    height: 619px;
+    
+    border: 1px solid rgba(152, 152, 152, 0.6);
+    border-top: none;
+    box-sizing: border-box;
 }
-.icon-group a:hover {transform: translateY(-5px);}
-.icon-group a img {width: 40px;}
-@media(max-width:800px) {
-    .nav-container {
-        width: 100%;
-        height: 90px;
-        transition: height 0.40s ease-out;
-        overflow: hidden;
-    }
-    .sections-group {
-        display: grid;
-        grid-template-columns: repeat(2, auto);
-        justify-content: start;
-        padding-top: 90px;
-        margin: 0 auto;
-        grid-gap: 20px;
-    }
-    .recent-posts-container {width: 220px; text-align: center;}
-    .nav-group h3 {margin: 0; text-align: center;}
-    .nav-container svg {
-        display: block; 
-        right: 50px;
-        margin-top:30px;
-        position: absolute;
-    }
-    .important-link-group {
-        padding: 0; 
-        border: none; 
-        margin-left: 0;
-        width: auto;
-    }
-    .important-link-group a {margin: 0; text-align: center;}
-    ::marker {
-        margin: 0px !important;
-    }
+/* The section which displays the recent blog posts  */
+.recent-post-section {
+    position: relative;
+    width: 386px;
+    height: 556px;
+    margin: 32px auto;
+    
+    background: rgba(255, 255, 255);
+    border: 1px solid #989898;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
 
-    .recent-posts-group {padding: 0 0 0 20px; margin-top: 40px; list-style-position: inside !important;}
-    .icon-group {justify-self: center; margin-top: 120px}
+.recent-post-section a {
+    display: block;
+    width: 305px;
+    height: 100px;
+    margin: 0 auto;
+    text-decoration: none;
 
-    /* Show */
-    .show.nav-container {height: 700px;}
-    .show .recent-posts-container {height: auto;}
-    .show .pages-container {height: auto;}
-    .show .icon-group {height:auto; }
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18.5px;
+    line-height: 22px;
+    letter-spacing: 0.05em;
 
+    color: #000000;
+}
+.recent-post-section a:hover {color: #14C7A8;}
+.recent-post-section h2 {
+    position: relative;
+    width: 235px;
+    height: 40px;
+    margin: 28px auto;
+
+    line-height: 35px;
+    text-align: center;
 }
