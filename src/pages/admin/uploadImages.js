@@ -50,9 +50,12 @@ const ImageHandler = () => {
     const handleSubmit = event => {
         event.preventDefault();
 
+        // Get the file without the ext
+        const name = inputFile.name.split(".")[0]
+
         // Create a form and add file to it
         const formData = new FormData();
-        formData.append("name", "testImage")
+        formData.append("name", name)
         formData.append("image", inputFile)
 
         /*  
