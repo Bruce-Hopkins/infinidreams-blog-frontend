@@ -8,7 +8,7 @@ const Form = () => {
   return (
     <LoginVerifiacation>
 
-      <CreatePageForm/>
+      <CreatePageForm url={"http://localhost:5000/api/post/create"}/>
     </LoginVerifiacation>
   );
 };
