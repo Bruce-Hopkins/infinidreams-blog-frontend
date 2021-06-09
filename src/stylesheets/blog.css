@@ -1,87 +1,60 @@
-/* TODO, Clean nav-group size bug */
-.post-group {
-    grid-gap: 10px;
-    display: grid;
-    padding: 0px 0px 0 250px;
-}
-.blog-thumbnail {max-width: 400px; height: auto; margin: 0px; padding: 0;}
-.gradient-container {
-    width: 100%;
-    display: flex; 
-    justify-content: center;
-    align-items: center;
-    height: 450px;
-    margin-bottom: 50px;
-
-    /* background: rgb(60,120,220);
-    background: linear-gradient(43deg, rgba(60,120,220,1) 0%, rgba(80,210,200,1) 100%);  */
-
-    /* background: rgb(32,153,238);
-    background: linear-gradient(325deg, rgba(0,152,240,1) 0%, rgba(159,205,231,1) 100%);  */
-
-    background: rgb(32,153,238);
-    background: linear-gradient(110deg, rgba(32,153,238,1) 0%, rgba(159,205,231,1) 100%); 
-
-    /* background: rgb(32,153,238);
-    background: linear-gradient(324deg, rgba(32,153,238,1) 0%, rgba(95,219,255,1) 100%); */
-}
-.title-group {
-    display: grid;
-    grid-template-columns: repeat(2, auto);
-    width: auto;
+.post-container {
+    position: absolute;
+    width: 850px;
     height: auto;
+    left: 488px;
+    top: 13px;   
+}
+.post-group {
     position: relative;
-    justify-content: center;
-/* 
-    box-shadow: 2px 2px 30px -2px rgba(0,0,0,0.53);
-    -webkit-box-shadow: 2px 2px 30px -2px rgba(0,0,0,0.53);
-    -moz-box-shadow: 2px 2px 30px -2px rgba(0,0,0,0.53); */
-
-    box-shadow: 2px 2px 30px -2px #003459;
-    -webkit-box-shadow: 2px 2px 30px -2px #003459;
-    -moz-box-shadow: 2px 2px 30px 1px #003459;
-
-    
+    width: 760px;
+    height: auto;
+    margin-left: 40px;
+    margin-top: 35px;
 }
-.title-text-group { 
-    background-color: white;
-    padding: 0 40px 0 20px;
-    height: 100%;
-    width: 310px;
+.post-group h1 {
+    position: relative;
+    width: 797px;
+    height: auto;
+    max-height: 224px;
+    margin-bottom: 0px;
 }
-.title-text-group h1, h2, .info-group {font-family: 'Quicksand', sans-serif; margin-left: 15px;}
-.title-text-group h1{color: black; margin-top: 50px;}
-.title-text-group h2 {
-    /* width: 450px; */
-    font-size: 15px;
-    color: black;
-    font-weight: 600;
+.post-group h4 {
+    position: relative;
+    width: 491px;
+    height: 74px;
+    margin-top: 50px;
+    margin-bottom: 0;
 }
-/* TODO add more margin bottom */
 .info-group {display: flex;}
-.info-group p {padding-right: 17px; color: var(--one);}
-.body-group {
-    margin: 0px 50px 0px 40px;
+.title-tags , .tag-space {margin-right: 15px;}
+.title-tags {
+    font-weight: normal;
+    letter-spacing: 0.07em;
+
+    color: #05362D;
 }
-.body-group p, .body-group img, .body-group .code-toolbar {
-    margin: 0px auto;
-    padding:40px 0 30px 0;
+.title-date {
+    font-style: normal;
+    font-weight: 300;
+    letter-spacing: 0.07em;
+}
+.blog-thumbnail {
     position: relative;
-    display: block;
-    color: black;
+    width: 100%;
+    height: 428px;
+    margin-top: 67px;
+    margin-bottom: 10px;
 }
-.body-group{word-spacing: 5px;}
-@media(max-width:800px) {
-    .post-container { z-index: -1; position: relative;}
-    .title-text-group h1 { font-size: 15.5px; margin: 25px 20px 0 20px; }
-    .title-group {grid-template-columns: repeat(1, auto); margin-top: 40px;}
-    .post-group {padding: 90px 0;}
-    .blog-thumbnail {max-width: 300px; order: -1;}
-    .info-group {margin-top: 10px;}
-    .info-group p { font-size: 13px; margin: 5px 0 5px 0}
-    .title-text-group {height: 175px; width: 300px; padding: 0;}
-    .gradient-container { height: 520px; margin-bottom: 20px; align-items: start; }
-    .body-group { margin: 0px 10px 0px 10px; }
-    .body-group p {font-size: 14.3px; }
-    .code-toolbar { font-size: 13px; overflow: scroll; width: 90vw;}
+.body-group {max-width: 797px;}
+.body-group p, .body-group img, .body-group div {margin-bottom: 40px; margin-top: 40px;}
+.body-group p {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 160%;
+    letter-spacing: 0.06em;
+
+    color: #3A3A3A;
 }
+.body-group img {max-width: 505px; margin: 70px auto 70px auto;}

@@ -22,6 +22,7 @@ const Singlepost = ({id}) => {
             });
           }
           catch(err) {
+            // TODO Create a sorry this post doesn't exist only on error
             console.error(err)
           }
       
@@ -51,13 +52,13 @@ const Singlepost = ({id}) => {
             } 
 
             else if (bodyString.includes("/images/")) {
-              return <img alt="body" src={bodyString}/>
+              return <img alt="body-image" className="body-image" src={bodyString}/>
             }
 
             else return <p> {cleanString(bodyString)}</p>
           })
         }
-        return <h1> There was a problem</h1>
+        return <h2> There was a problem</h2>
     }
 
     // Get all the attributes of the API and create the post. Also used the GetBody function
@@ -68,32 +69,27 @@ const Singlepost = ({id}) => {
 
               <div className="post-container"> 
                   <div className="post-group">
-                    <div className="gradient-container"> 
-                      <div className="title-group">
-                        <div className="title-text-group">
-                          <h1> {context.data.title}</h1>
-                          <span className="info-group">
-                            {context.data.tags ? context.data.tags.map(tag => {
-                                return <p className="title-tags"> {tag}</p>
-                            }): <p> </p>}
-                            <p>{context.data.FormattedDateOfPost}</p>
-                          </span>
-
-                        </div>
-                        <img  alt="Thumbnail" className="blog-thumbnail" src={`data:image/png;base64, ${context.data.thumbnailString}` }/>
-                      </div>
-                    
+                    <h1> {context.data.title}</h1>
+                    <h4>{context.data.summary}</h4>
+                    <span className="info-group">
+                      {context.data.tags ? context.data.tags.map(tag => {
+                          // Only return that tag if it's not empty 
+                          if (tag != "") return <p className="title-tags"> {tag}</p>
+                      }): <p> </p>}
+                      <p className="tag-space">|</p>
+                      <p className="title-date">{context.data.FormattedDateOfPost}</p>
+                    </span>
+                    <img  alt="Thumbnail" className="blog-thumbnail" src={`data:image/png;base64, ${context.data.thumbnailString}` }/>
+                  
+                    <div className="body-group">
+                      <GetBody/>
                     </div>
-
-                      <div className="body-group">
-                        <GetBody/>
-                      </div>
 
                   </div>
               </div>
 
         )}
-        return <h1>Post Id not found</h1>
+        return <h2>Sorry, this post doesn't exist</h2>
     }
 
     
@@ -101,7 +97,6 @@ const Singlepost = ({id}) => {
     <SinglepostContext.Provider  value={singlePostsData ? singlePostsData : null}>
 
       <Layout>
-        {/* Change title depending on the blog post title */}
         <SEO title={singlePostsData ? singlePostsData.data.title : ""}/>
         <GetPost/>
       </Layout>
@@ -110,5 +105,7 @@ const Singlepost = ({id}) => {
 
   )
 }
+
+
 
 export default Singlepost
