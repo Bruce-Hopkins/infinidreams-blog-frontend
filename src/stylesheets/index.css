@@ -76,7 +76,7 @@
 
     color: #000000 ;
 }
-
+/* The read more button */
 .read-more {
     position: relative;
     width: 174px;
@@ -84,7 +84,6 @@
     float: right;
 
     text-align: end;
-    font-family: Roboto;
     font-style: normal;
     font-weight: normal;
     font-size: 23px;
@@ -96,6 +95,19 @@
     justify-content: center;
 
     color: #14C7A8;
-
-
+}
+@media (max-width:1360px){
+    .blogpost-container {width: 616px;}
+    .blogpost-group img {width: 200px; height: 150px;}
+    .blogpost-text-group {
+        width: 327px;
+    }
+    .blogpost-text-group h3 {
+        font-size: 20px;
+        width: 329px;
+    }
+    .blogpost-info p {font-size: 17px;}
+    .blogposts-tags {margin-right: 21px;}
+    .blogposts-date {margin-left: 6px;}
+    .read-more {font-size: 21px;}
 }

@@ -55,7 +55,7 @@ const Singlepost = ({id}) => {
               return <img alt="body-image" className="body-image" src={bodyString}/>
             }
 
-            else return <p> {cleanString(bodyString)}</p>
+            else if (bodyString !== "") return <p> {cleanString(bodyString)}</p>
           })
         }
         return <h2> There was a problem</h2>
@@ -74,7 +74,7 @@ const Singlepost = ({id}) => {
                     <span className="info-group">
                       {context.data.tags ? context.data.tags.map(tag => {
                           // Only return that tag if it's not empty 
-                          if (tag != "") return <p className="title-tags"> {tag}</p>
+                          if (tag !== "") return <p className="title-tags"> {tag}</p>
                       }): <p> </p>}
                       <p className="tag-space">|</p>
                       <p className="title-date">{context.data.FormattedDateOfPost}</p>
