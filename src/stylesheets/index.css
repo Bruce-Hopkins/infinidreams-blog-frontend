@@ -97,7 +97,9 @@
     color: #14C7A8;
 }
 @media (max-width:1360px){
-    .blogpost-container {width: 616px;}
+    .posts-container{margin-left: 16px;}
+    .blogpost-container {width: 616px; margin-left: 0;}
+    .blogpost-group {padding-bottom: 0; height: auto;}
     .blogpost-group img {width: 200px; height: 150px;}
     .blogpost-text-group {
         width: 327px;
@@ -110,4 +112,26 @@
     .blogposts-tags {margin-right: 21px;}
     .blogposts-date {margin-left: 6px;}
     .read-more {font-size: 21px;}
+}
+@media (max-width:1160px){
+    .posts-container{left:310px; }
+    .blogpost-container{height:175px;display:grid; align-items: center;}
+    /* TODO, Use align itmes in all blogpost-group */
+    .blogpost-group{align-items: center; padding: 0;}
+    .blogpost-text-group{height: 150px; width: 271px;}
+    .blogpost-text-group h3{
+        line-height: 1; 
+        font-size: 17px;
+        height: 56px;
+        width: 271px;
+    }
+    .blogpost-info p {font-size: 14.5px;}
+    /* TODO, add text align end to all read more buttons */
+    .read-more {
+        display: block;
+        font-size: 18px; 
+        height: auto; 
+        margin: 37px 0 0 0;
+        text-align: end;
+    }
 }
