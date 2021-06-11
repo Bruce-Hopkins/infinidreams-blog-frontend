@@ -58,3 +58,61 @@
     color: #3A3A3A;
 }
 .body-group img {max-width: 505px; margin: 70px auto 70px auto;}
+@media (max-width:1360px){
+    .post-group {margin-left: 0;}
+    .post-group h1 {
+        width: 579px;
+        font-size: 37px;
+        line-height: 44px;
+    }
+    .post-group h4 {
+        margin-top: 33px;
+        font-size: 20px;
+        line-height: 24px;
+        width: 395px;
+    }
+    .info-group {
+        margin-top: 22px;
+        font-size: 16px;
+    }
+    .post-group {
+        width: 591px;
+    }
+    .body-group p {
+        font-size: 15.5px;
+        line-height: 160%;
+    }
+    .body-group img {
+        width: 350px;
+    }
+}
+@media (max-width:1160px){
+    .post-group {margin-left: 40px;}
+    .post-container {left:310px;}
+    .post-group h1 {
+        font-size: 35.5px;
+        width: 449px;
+        line-height: 38.4px
+    }
+    .post-group h4 {
+        margin-top: 30px;
+        font-size: 15.5px;
+        line-height: 18.6px;
+        width: 344px;
+    }
+    .post-group {
+        width: 449px;
+        margin-top: 44px;
+    }
+    .info-group p {
+        font-size: 15.5px;
+    }
+    .blog-thumbnail {height: 232px;}
+    .body-group p {
+        font-size: 15.5px;
+        line-height: 160%;
+    }
+    .body-group img {
+        width: 275px;
+    }
+}
