@@ -10,11 +10,22 @@ import SidebarContext from '../components/context/SidebarContext'
 function Sidebar (){
 
   var[postsData, setPostsData] = useState()    
-  const [show, setShow] = React.useState(false)
+  const [showDropdown1, setShowDropdown1] = React.useState(false)
+  const [showDropdown2, setShowDropdown2] = React.useState(false)
 
-  function showMenu() {
-    if (show) setShow(false)
-    else setShow(true)
+  function hover1 (){
+    setShowDropdown1(true)
+    setShowDropdown2(false)
+  }
+  function hover2 (){
+    setShowDropdown1(false)
+    setShowDropdown2(true)
+  }
+  function leaveHover1() {
+    setShowDropdown1(false)
+  }
+  function leaveHover2() {
+    setShowDropdown2(false)
   }
   useEffect(() => {  
     (async function connectToAPI (){
@@ -48,7 +59,7 @@ function Sidebar (){
     <SidebarContext.Provider  value={postsData ? postsData : null}>
       <section className="left-section">
         <a href="http://www.infinidream.net/"> <img alt="Logo" className="logo" src={Logo}/> </a>
-        <nav className={show ? "nav-container show" : "nav-container"}>
+        <nav className="nav-container">
           <div className="nav-group">
             <div className="top-sidebar">
               <div className="pages-section"> 
@@ -65,6 +76,49 @@ function Sidebar (){
             </div>
           </div>
         </nav>
+      </section>
+      <section className="mobile-menu-container">
+        <div className="mobile-menu-group">
+          <div className="mobile-logo-container">
+            <a href="http://www.infinidream.net/"> <img alt="Logo" className="logo" src={Logo}/> </a>
+          </div>
+          <div className="mobile-dropdown-container"> 
+            <div className="mobile-dropdown-group">
+              <button
+                onMouseEnter={hover1}
+                onMouseLeave={leaveHover1}
+              > 
+                <h2>Pages</h2>
+                <svg width="7" height="6" viewBox="0 0 7 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M3.5 5.24017L3.20948e-07 -1.33068e-05L7 -1.33068e-05L3.5 5.24017Z" fill="#13A38A"/>
+                </svg>
+                <div className={showDropdown1 ? "nav-list show-dropdown mobile-pages-list" : "nav-list hide-dropdown"}>
+                  <a href="/"> <h3>Home</h3> </a>
+                  <a href="http://www.infinidream.net/"> <h3> About Me</h3> </a>
+              </div>
+              </button>
+
+
+              <button
+                onMouseEnter={hover2}
+                onMouseLeave={leaveHover2}
+              > 
+                <h2>Recent</h2>  
+                <svg width="7" height="6" viewBox="0 0 7 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M3.5 5.24017L3.20948e-07 -1.33068e-05L7 -1.33068e-05L3.5 5.24017Z" fill="#13A38A"/>
+                </svg>
+                <div className={showDropdown2 ? "nav-list show-dropdown mobile-recent-list" : "nav-list hide-dropdown"}>
+                  <GetRecentPosts/>
+                </div>
+              </button>
+            </div>
+
+
+          </div>
+        </div>
+
+
+
       </section>
 
 
