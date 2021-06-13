@@ -97,7 +97,6 @@
     color: #14C7A8;
 }
 @media (max-width:1360px){
-    .posts-container{margin-left: 16px;}
     .blogpost-container {width: 616px; margin-left: 0;}
     .blogpost-group {padding-bottom: 0; height: auto;}
     .blogpost-group img {width: 200px; height: 150px;}
