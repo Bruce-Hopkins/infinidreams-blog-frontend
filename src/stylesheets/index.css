@@ -142,11 +142,11 @@
 @media (max-width:950px){
     .posts-container {
         left: 0px;
+        top: 83px;
         margin-inline: auto;
     }
 }
 @media (max-width:650px) {
-    
     .blogpost-container {
         height: 170px;
         max-width: 483px;
@@ -190,6 +190,9 @@
     }
 }
 @media(max-width:500px) {
+    .post-list {
+
+    }
     .blogpost-group img {
         width: 117px;
         height: 87.75px;

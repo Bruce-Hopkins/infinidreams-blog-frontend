@@ -176,9 +176,13 @@
 @media (max-width:950px){
     .mobile-menu-container{
         display: block;
+        position: fixed;
         width: 100%;
         height: 56px;
-        border-bottom: 1px solid #989898;
+
+        z-index: 100;
+        background-color: white;
+        border-bottom: 1px solid rgba(152, 152, 152, 0.6);
     }
     .mobile-menu-group {
         display: grid; 
@@ -188,7 +192,7 @@
         height: 100%;
     }
     .mobile-logo-container {
-        border-right: 1px solid #989898;
+        border-right: 1px solid rgba(152, 152, 152, 0.6);
         display: block;
         position: relative;
 
