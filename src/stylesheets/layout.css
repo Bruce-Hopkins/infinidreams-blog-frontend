@@ -1,21 +1,44 @@
 :root {
-    --one: rgba(0,152,240,1);
-    --two:  #FFC422;;
-    --three: rgba(80,225,200,1);
-    --four: #53b4ed;
+    --one: #14C7A8;
+    --two:  #BCE6DE;
+    --three: #B7EDE4;
+    --four:  #05362D;
     --postHeight: 180px;
     --timing: 0.15s;
 }
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 body { background-color: white; margin: 0;}
-h3, h4, p, a {font-family: 'Quicksand', sans-serif;}
-p {font-size: 16px; color: black; font-weight: 500;}
-h3 {font-size: 18.5px;}
-h1 {font-size: 27px;}
-::marker {
-    margin: 0px !important;
-    margin-inline-start: 0px !important;
-    text-align: end !important;
-    text-transform: none;
-    white-space: pre;
+h1, h2, h3, h4, p, a {font-family: 'Lato', sans-serif;}
+h1 {
+    font-style: normal;
+    font-weight: 900;
+    font-size: 48px;
+    line-height: 58px;
+    letter-spacing: 0.05em;
+    
+    color: #000000;
 }
+h2 {
+    font-style: normal;
+    font-weight: 900;
+    font-size: 29.5px;
+    line-height: 0px;
+    letter-spacing: 0.05em;
+}
+p {font-size: 16px; color: black; font-weight: 500;}
+h3 {    
+    font-style: normal;
+    font-weight: normal;
+    font-size: 26px;
+    line-height: 0px;
+}
+h4 {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 29px;
+    letter-spacing: 0.05em;
+
+    color: #A2A2A2;
+}
+/* TODO, Add hover transitions */

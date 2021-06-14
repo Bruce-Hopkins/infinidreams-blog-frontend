@@ -110,7 +110,8 @@ const Form = (props) => {
 
         <label for="body">body:</label>
         <div className="body-group">
-            {props.data ? bodyData : <Input/>}
+            {bodyData}
+            {/* {props.data ? bodyData : <Input/>} */}
         </div>
         <button type="button" onClick={onAddBtnClick}>Add input</button>
 
@@ -118,7 +119,8 @@ const Form = (props) => {
         
         <label for="tags">tags:</label>
         <div className="tags-group"> 
-            { props.data ? tagsData : <Tags/>}
+        {tagsData}
+            {/* { props.data ? tagsData : <Tags/>} */}
         </div>
         <button type="button" onClick={tagsButtonClick}>Add tags</button>
         <br/>

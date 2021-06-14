@@ -24,7 +24,7 @@ const ImageHandler = () => {
     // Loops through and displays the values
     function GetImages() {
         if (images) return images.map (image => { 
-            return <div> 
+            return <div className="images-upload"> 
                 <img src={"http://localhost:5000/images/" + image.name}/>
                 <button onClick={deleteImage.bind(this, image.name)}> Delete </button>
             </div>
@@ -50,9 +50,12 @@ const ImageHandler = () => {
     const handleSubmit = event => {
         event.preventDefault();
 
+        // Get the file without the ext
+        const name = inputFile.name.split(".")[0]
+
         // Create a form and add file to it
         const formData = new FormData();
-        formData.append("name", "testImage")
+        formData.append("name", name)
         formData.append("image", inputFile)
 
         /*  

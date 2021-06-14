@@ -42,7 +42,7 @@ const IndexPage = () => {
                   }): <p> </p>}
                   <p className="blogposts-date">{data.FormattedDateOfPost}</p>
                 </div>
-                <h4> {data.summary}</h4>
+                <p className="read-more"> Read more... </p>
               </div>
             </a>
           </div>
@@ -51,6 +51,7 @@ const IndexPage = () => {
     if(error) {
       return <h2> There was a connection error. Try reloading the page</h2>
     }
+    // TODO Change loading animation
     return <div className="loading-animation"> 
       <div className="circle1"></div>
       <div className="circle2"></div>

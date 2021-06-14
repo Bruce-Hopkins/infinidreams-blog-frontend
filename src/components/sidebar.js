@@ -2,9 +2,7 @@ import React, {useEffect, useState} from 'react'
 import axios from 'axios'
 import "../stylesheets/sidebar.css"
 
-import TwitterIcon from "../images/Socail-media/2021 Twitter logo - white.png"
-import GithubIcon from "../images/Socail-media/GitHub-Mark-Light-64px.png"
-import EmailIcon from "../images/Socail-media/icons8-email-64.png"
+import Logo from "../images/InFINIDREAMS.png"
 import SidebarContext from '../components/context/SidebarContext'
 // Context for Sidebar to get backend
 
@@ -12,11 +10,22 @@ import SidebarContext from '../components/context/SidebarContext'
 function Sidebar (){
 
   var[postsData, setPostsData] = useState()    
-  const [show, setShow] = React.useState(false)
+  const [showDropdown1, setShowDropdown1] = React.useState(false)
+  const [showDropdown2, setShowDropdown2] = React.useState(false)
 
-  function showMenu() {
-    if (show) setShow(false)
-    else setShow(true)
+  function hover1 (){
+    setShowDropdown1(true)
+    setShowDropdown2(false)
+  }
+  function hover2 (){
+    setShowDropdown1(false)
+    setShowDropdown2(true)
+  }
+  function leaveHover1() {
+    setShowDropdown1(false)
+  }
+  function leaveHover2() {
+    setShowDropdown2(false)
   }
   useEffect(() => {  
     (async function connectToAPI (){
@@ -37,7 +46,7 @@ function Sidebar (){
     if (context) {
       if (context.data.length > 0) {
         return context.data.map (selectedLink => {
-          return <li> <a href={"/blog/"+selectedLink._id}> {selectedLink.title} </a> </li>
+          return <a href={"/blog/"+selectedLink._id}> {selectedLink.title} </a> 
         })
       }
     }
@@ -48,34 +57,71 @@ function Sidebar (){
 
     return (
     <SidebarContext.Provider  value={postsData ? postsData : null}>
-
-      <nav className={show ? "nav-container show" : "nav-container"}>
-          <svg onClick={showMenu} fill="#000000" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 26 26" width="26px" height="26px"><path d="M 0 4 L 0 6 L 26 6 L 26 4 Z M 0 12 L 0 14 L 26 14 L 26 12 Z M 0 20 L 0 22 L 26 22 L 26 20 Z"/></svg>
-        <div className="nav-group">
-          <div className="sections-group">
-            <div className="pages-container">
-              <h3> Pages:</h3>
-              <div className="important-link-group"> 
-                <a href="/"> Home</a>
-                <a href="http://www.infinidream.net/"> About Me</a>
+      <section className="left-section">
+        <a href="http://www.infinidream.net/"> <img alt="Logo" className="logo" src={Logo}/> </a>
+        <nav className="nav-container">
+          <div className="nav-group">
+            <div className="top-sidebar">
+              <div className="pages-section"> 
+                <h2>Pages</h2>
+                <a href="/"> <h3>Home</h3> </a>
+                <a href="http://www.infinidream.net/"> <h3> About Me</h3> </a>
               </div>
             </div> 
-            <div className="recent-posts-container">
-              <h3>Recent posts:</h3>
-              <ul className="recent-posts-group">
+            <div className="middle-sidebar">
+              <div className="recent-post-section">
+                <h2>Recent</h2>
                 <GetRecentPosts/>
-              </ul>
-            </div> 
-
+              </div>
+            </div>
           </div>
+        </nav>
+      </section>
+      <section className="mobile-menu-container">
+        <div className="mobile-menu-group">
+          <div className="mobile-logo-container">
+            <a href="http://www.infinidream.net/"> <img alt="Logo" className="logo" src={Logo}/> </a>
+          </div>
+          <div className="mobile-dropdown-container"> 
+            <div className="mobile-dropdown-group">
+              <button
+                onMouseEnter={hover1}
+                onMouseLeave={leaveHover1}
+              > 
+                <h2>Pages</h2>
+                <svg width="7" height="6" viewBox="0 0 7 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M3.5 5.24017L3.20948e-07 -1.33068e-05L7 -1.33068e-05L3.5 5.24017Z" fill="#13A38A"/>
+                </svg>
+                <div className={showDropdown1 ? "nav-list show-dropdown mobile-pages-list" : "nav-list hide-dropdown"}>
+                  <a href="/"> <h3>Home</h3> </a>
+                  <a href="http://www.infinidream.net/"> <h3> About Me</h3> </a>
+              </div>
+              </button>
 
-          <div className="icon-group">
-            <a href="https://twitter.com/InfiniDreams1" target="_blank" rel="noopener noreferrer" > <img src={TwitterIcon} alt="Twitter icon"/> </a>
-            <a href="https://github.com/Bruce-Hopkins-Jr" target="_blank" rel="noopener noreferrer">  <img src={GithubIcon} alt="Github Icon"/> </a>
-            <a href="mailto: sales@budgetchamp.net" target="_blank" rel="noopener noreferrer"> <img src={EmailIcon} alt="Email Icon"/></a>  
+
+              <button
+                onMouseEnter={hover2}
+                onMouseLeave={leaveHover2}
+              > 
+                <h2>Recent</h2>  
+                <svg width="7" height="6" viewBox="0 0 7 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M3.5 5.24017L3.20948e-07 -1.33068e-05L7 -1.33068e-05L3.5 5.24017Z" fill="#13A38A"/>
+                </svg>
+                <div className={showDropdown2 ? "nav-list show-dropdown mobile-recent-list" : "nav-list hide-dropdown"}>
+                  <GetRecentPosts/>
+                </div>
+              </button>
+            </div>
+
+
           </div>
         </div>
-      </nav>
+
+
+
+      </section>
+
+
     </SidebarContext.Provider>
     )
   }
