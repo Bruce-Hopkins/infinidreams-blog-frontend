@@ -46,7 +46,7 @@ function Sidebar (){
     if (context) {
       if (context.data.length > 0) {
         return context.data.map (selectedLink => {
-          return <a href={"/blog/"+selectedLink._id}> {selectedLink.title} </a> 
+          return <div> <a href={"/blog/"+selectedLink._id}> {selectedLink.title} </a> </div>
         })
       }
     }

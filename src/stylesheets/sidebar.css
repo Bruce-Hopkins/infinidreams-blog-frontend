@@ -240,9 +240,6 @@
         display: flex;
         align-items: center;
     }
-    .mobile-dropdown-group button:hover {
-        background-color: #EBEBEB;
-    }
     .mobile-dropdown-group svg {
         margin-top: 4px;
         padding-left: 7px;
@@ -251,6 +248,11 @@
         display: grid;
         grid-template-columns: repeat(1, auto);
         position: absolute;
+
+        background-color: white;
+        border: 1px solid rgba(152, 152, 152, 0.6);
+        border-top: none;
+        margin-left: -11px;
 
         top: 56px;
         
@@ -272,11 +274,17 @@
         min-width: 114px;
     }
     .mobile-recent-list {
-        padding-top: 30px;
-        padding-bottom: 30px;
-        grid-gap: 25px;
+        padding-top: 10px;
+        padding-bottom: 15px;
+        /* grid-gap: 25px; */
+    }
+    .mobile-recent-list div {
+        min-height: 60px;
+        display: grid;
+        align-items: center;
     }
     .mobile-recent-list a {
+        display: block;
         text-align: start;
         color: black;
         padding-inline: 16px;
@@ -285,8 +293,17 @@
         line-height: 16px;
         max-width: 187px;
     }
-    .nav-list h3:hover, .mobile-recent-list a:hover {
-        color: var(--one);
+    .nav-list a:hover {
+        background-color: #BCE5DE;
+    }
+    .nav-list a:hover h3 {
+        color: #05362D;
+    }
+    .mobile-recent-list div:hover {
+        background-color: #BCE5DE;
+    }
+    .mobile-recent-list div:hover a{
+        color: #05362D;
     }
     .hide-dropdown {
         height: 0;
@@ -294,7 +311,6 @@
     }
     .show-dropdown {
         z-index: 100;
-        background-color: #EBEBEB;
         height: auto;
         width: auto;
     }

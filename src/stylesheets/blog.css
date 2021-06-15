@@ -120,6 +120,7 @@
         width: 275px;
     }
 }
+/* TODO Make Design better for tablet sizes */
 @media (max-width:950px) {
     .post-container {
         top: 56px;
@@ -175,7 +176,8 @@
     }
     .body-group div {
         margin: 40px auto;
-        width: 300px;
+        max-width: 300px;
+        width: auto;
     }
 }
 @media (max-width:350px) {
