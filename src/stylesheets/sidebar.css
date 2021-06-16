@@ -8,9 +8,9 @@
 .logo {
     position: fixed;
     width: auto;
-    height: 39px;
+    height: 33px; 
+    left: 94px;
     top: 13px;
-    left: 56px
 }
 
 /* The sidebar */
@@ -32,8 +32,8 @@
 /* Pages section */
 .pages-section {
     position: relative;
-    width: 388px;
-    height: 261px;
+    width: 324px;
+    height: 207px;
     margin: 0px auto;
 
     background: #FFFFFF;
@@ -47,7 +47,7 @@
     position: relative;
     width: 85px;
     height: 0px;
-    margin: 31px 152px 31px 152px;
+    margin: 31px auto 31px auto;
 
     display: flex;
     align-items: center;
@@ -87,7 +87,7 @@
 /* The section which displays the recent blog posts  */
 .recent-post-section {
     position: relative;
-    width: 386px;
+    width: 324px;
     min-height: 470px;
     margin: 30px auto;
     
@@ -99,7 +99,7 @@
 
 .recent-post-section a {
     display: block;
-    width: 305px;
+    width: 288px;
     height: auto;
     margin: 0 auto 40px auto;
     text-decoration: none;
@@ -107,7 +107,7 @@
     font-family: Lato;
     font-style: normal;
     font-weight: normal;
-    font-size: 18.5px;
+    font-size: 15px;
     line-height: 22px;
     letter-spacing: 0.05em;
 
@@ -122,29 +122,6 @@
 
     line-height: 35px;
     text-align: center;
-}
-/* Regular screens */
-@media (max-width:1360px){
-    .logo {
-        height: 33px; 
-        left: 94px;
-        top: 13px;
-    }
-    .pages-section {
-        width: 324px;
-        height: 207px;
-    }
-    .pages-section h2, .recent-post-section h2{
-        font-size: 23px; 
-        margin-left: auto; 
-        margin-right: auto;
-    } 
-    .pages-section h3 {font-size: 18px;}
-    .recent-post-section {width: 324px;}
-    .recent-post-section a {
-        font-size: 15px;
-        width: 288px;
-    }
 }
 /* Smaller screens */
 @media (max-width:1160px){
