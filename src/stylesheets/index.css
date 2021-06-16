@@ -1,9 +1,9 @@
+/* TODO, Make 1360 size the default */
 /* Main section for the posts */
 .posts-container {
     position: relative;
     top: 61px;
-    left: 487px;
-    margin-left: 40px;
+    margin-left: 527px;
 }
 /* The container for one blog post */
 .blogpost-container {
@@ -113,7 +113,7 @@
     .read-more {font-size: 21px;}
 }
 @media (max-width:1160px){
-    .posts-container{left:310px; max-width: 630px;}
+    .posts-container{margin-left:350px; max-width: 630px;}
     .blogpost-container{height:175px;display:grid; align-items: center;}
     /* TODO, Use align itmes in all blogpost-group */
     .blogpost-group{align-items: center; padding: 0;}
@@ -136,7 +136,7 @@
 }
 /* Small adujustment */
 @media (max-width: 1000px) {
-    .posts-container {left: 273px;}
+    .posts-container {margin-left: 273px;}
 }
 @media (max-width:950px){
     .posts-container {

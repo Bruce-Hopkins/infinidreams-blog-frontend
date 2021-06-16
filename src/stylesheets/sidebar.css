@@ -134,7 +134,11 @@
         width: 324px;
         height: 207px;
     }
-    .pages-section h2, .recent-post-section h2{font-size: 23px; margin-inline: auto;}
+    .pages-section h2, .recent-post-section h2{
+        font-size: 23px; 
+        margin-left: auto; 
+        margin-right: auto;
+    } 
     .pages-section h3 {font-size: 18px;}
     .recent-post-section {width: 324px;}
     .recent-post-section a {
@@ -153,7 +157,8 @@
     .pages-section {width: 229px; height: 165px;}
     .pages-section h2, .recent-post-section h2{
         display: block;
-        margin-inline: auto; 
+        margin-left:auto;
+        margin-right: auto;
         width: auto;
 
         font-size: 21px; 
