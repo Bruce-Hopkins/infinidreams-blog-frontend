@@ -3,7 +3,7 @@
 .posts-container {
     position: relative;
     top: 61px;
-    margin-left: 527px;
+    margin-left: 465px;
 }
 /* The container for one blog post */
 .blogpost-container {
@@ -189,9 +189,6 @@
     }
 }
 @media(max-width:500px) {
-    .post-list {
-
-    }
     .blogpost-group img {
         width: 117px;
         height: 87.75px;

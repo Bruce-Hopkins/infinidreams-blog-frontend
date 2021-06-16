@@ -19,6 +19,8 @@ h1 {
     color: #000000;
 }
 h2 {
+    display: block;
+
     font-style: normal;
     font-weight: 900;
     font-size: 23px; 
