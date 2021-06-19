@@ -1,5 +1,5 @@
 import React from "react"
-import Sidebar from "../components/sidebar";
+import Sidebar from "../components/navbar";
 // import SEO from "../components/SEO"
 
 function Layout (props) {

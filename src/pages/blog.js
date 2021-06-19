@@ -22,13 +22,10 @@ const Singlepost = ({id}) => {
             });
           }
           catch(err) {
-            // TODO Create a sorry this post doesn't exist only on error
             console.error(err)
           }
       
         })()
-        // setTimeout(() => Prism.highlightAll(), 0)
-
     },[])
 
     // Take away the spaces at the beginning of a String
