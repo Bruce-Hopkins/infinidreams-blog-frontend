@@ -2,13 +2,13 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from '../pages/index';
+import App from '../../src/pages/index';
 
-import Layout from '../components/layout';
-import SEO from '../components/SEO';
-import Sidebar from '../components/Sidebar'
+import Layout from '../../src/components/layout';
+import SEO from '../../src/components/SEO';
+import Sidebar from '../../src/components/navbar'
 
-// TODO, Add tests to confirm API connection
+// TODO, Finish component rendering tests
 // Components
 describe('Tests Components Rendering', () => {
   it('renders Index without crashing', () => {

@@ -13,6 +13,7 @@
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
+    "test": "jest --verbose .tests/components",
     "server-tests": "mocha --recursive tests/backend --exit"
   },
   "dependencies": {
