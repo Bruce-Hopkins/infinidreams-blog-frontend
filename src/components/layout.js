@@ -1,13 +1,13 @@
 import React from "react"
 import Sidebar from "./navbar/sidebar";
-// import MobileNavbar from "../components/navbar/mobileNavbar"
+import MobileNavbar from './navbar/mobileNavbar'
 // import SEO from "../components/SEO"
 
 function Layout (props) {
     return (
       <div>
-        {/* <MobileNavbar/>
-        <Sidebar/> */}
+        <Sidebar/>
+        <MobileNavbar/>
         {props.children}
       </div>
     )

@@ -4,26 +4,22 @@ import "../../stylesheets/sidebar.css"
 
 import Logo from "../../images/InFINIDREAMS.png"
 import SidebarContext from '../context/SidebarContext'
-// Context for Sidebar to get backend
+import navbarConnect from "../Backend-API/navbarConnect"
 
 // Main function. Is imported by layout.js
 function Sidebar (){
 
-  // For the postdata
-  var[postsData, setPostsData] = useState()    
+  // Will connect to the backend API
+  var[postsData, setPostsData] = useState()
+  var [error, setError] = useState(false)
 
-  useEffect(() => {  
+  useEffect(() => {
+    // Connects to the API and inserts into the react hooks 
     (async function connectToAPI (){
-      try {
-        await axios.get('http://localhost:5000/api/recent-posts').then((res) => {
-          setPostsData(res);
-        });
-      }
-      catch(err) {
-        console.error(err)
-      }
-  
-    })()
+      const connect = await navbarConnect();
+      setPostsData(connect.postData)
+      setError(connect.isError)
+    })()    
   }, [])
 
   function GetRecentPosts() {
@@ -35,7 +31,6 @@ function Sidebar (){
         })
       }
     }
-
 
     return <div/>
   }

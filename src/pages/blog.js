@@ -1,31 +1,26 @@
 import React, {useEffect, useState} from 'react'
 import Layout from "../components/layout"
 import axios from 'axios'
+
 import SEO from "../components/SEO"
 import Page from "../components/highlighter"
 import SinglepostContext from '../components/context/SinglepostContext'
+import blogConnnect from "../components/Backend-API/blogConnect"
 
 import "../stylesheets/blog.css"
 import "../stylesheets/layout.css"
 
-
+// Main function. 
 const Singlepost = ({id}) => {
     var[singlePostsData, setSinglePostsData] = useState()
 
-    // Collect data from the backend API
-    useEffect(() => {  
-        (async function connectToAPI (){
-          try {
-            await axios.get('http://localhost:5000/api/posts/' + id).then((res) => {
-                setSinglePostsData(res)
-                if (res.data.title) document.title = res.data.title;
-            });
-          }
-          catch(err) {
-            console.error(err)
-          }
-      
-        })()
+    // Connects to the API and inserts into the react hooks 
+    useEffect(() => {
+      (async function connectToAPI (){
+        let connect = await blogConnnect(id)
+        // TODO Center the error message
+        setSinglePostsData(connect.postData)
+      })()    
     },[])
 
     // Take away the spaces at the beginning of a String

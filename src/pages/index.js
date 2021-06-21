@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from 'react'
 import Layout from "../components/layout"
 import axios from 'axios'
+
 import SEO from "../components/SEO"
 import BlogpostContext from '../components/context/BlogpostsContext'
+import postsConnect from '../components/Backend-API/postsConnect'
 
 import "../stylesheets/index.css"
 import "../stylesheets/layout.css"
@@ -13,22 +15,16 @@ const IndexPage = () => {
   var [error, setError] = useState(false)
   useEffect(() => {  
     (async function connectToAPI (){
-      try {
-        await axios.get('http://localhost:5000/api/posts').then((res) => {
-          setPostsData(res);
-        });
-      }
-      catch(err) {
-        setError(true)
-        console.error(err)
-      }
-  
+      const connect = await postsConnect();
+      setError(connect.isError)
+      setPostsData(connect.postData);
     })()
   }, [])
   
   // Maps through each blog posts. 
   function GetData () {
     const context = React.useContext(BlogpostContext)
+    console.log(context)
     if (context) return context.data.map (data => {
         return (
           <div className="blogpost-container">
