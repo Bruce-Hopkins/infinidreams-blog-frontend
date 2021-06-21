@@ -6,7 +6,7 @@ import App from '../../src/pages/index';
 
 import Layout from '../../src/components/layout';
 import SEO from '../../src/components/SEO';
-import Sidebar from '../../src/components/navbar'
+import Sidebar from '../../src/components/navbar/sidebar'
 
 // TODO, Finish component rendering tests
 // Components
