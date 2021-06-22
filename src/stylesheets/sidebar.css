@@ -163,7 +163,7 @@
         display: block;
         position: fixed;
         width: 100%;
-        height: 56px;
+        height: 76px;
 
         z-index: 100;
         background-color: white;
@@ -171,25 +171,19 @@
     }
     .mobile-menu-group {
         display: grid; 
-        grid-template-columns: repeat(3, auto);
-        justify-content: start;
+        grid-template-columns: repeat(2, auto);
+        justify-content: space-between;
+        align-content: center;
         
         height: 100%;
     }
     
     /* Logo container */
     .mobile-logo-container {
-        border-right: 1px solid rgba(152, 152, 152, 0.6);
-        display: block;
-        position: relative;
-
-        height: 100%;
-        width: 139px;
-    }
-    .mobile-logo-container a {
         display: grid;
         align-items: center;
         height: 100%;
+        padding:0 15px 0 15px; 
     }
     
     /* Image of the logo */
@@ -200,103 +194,9 @@
         position: relative;
         display: block;
     }
-    /* Components containing "Pages" and "Recent" */
-    .mobile-dropdown-container {
-        padding-left: 10px;
-        height: 100%;
-    }
-    .mobile-dropdown-group {
-        display: flex;
-        height: 100%;
-    }
-    .mobile-dropdown-group h2 {
-        width: auto;
-        height: 20px;
-        margin: 0;
-        padding-left: 10px;
-        
-        font-size: 15px;
-        line-height: normal;
-        
-    }
-    /* Button to activate dropdown */
-    .mobile-dropdown-group button {
-        width: auto;
-        padding: 0 15px 0 0;
-        background-color: white;
-        border: none;
-        
-        display: flex;
-        align-items: center;
-    }
-    /* Upside down triangle */
-    .mobile-dropdown-group svg {
-        margin-top: 4px;
-        padding-left: 7px;
-    }
-    /* The dropdown that triggers when hovered */
-    .nav-list {
-        display: grid;
-        grid-template-columns: repeat(1, auto);
-        position: absolute;
 
-        background-color: white;
-        border: 1px solid rgba(152, 152, 152, 0.6);
-        border-top: none;
-        margin-left: -11px;
-
-        top: 56px;
-        
-        transition: 0.4s height;
-    }
-    .nav-list a {text-decoration: none;}
-
-    /* Dropdown for the pages */
-    .mobile-pages-list {min-width: 114px;}
-    .mobile-pages-list h3 {
-        margin: 27px;
-        color: black;
-
-        text-align: start;
-        font-weight: normal;
-        font-size: 13px !important;
-        line-height: 0px;
-    }
-    /* Dropdown for the recent posts */
-    .mobile-recent-list {
-        padding-top: 10px;
-        padding-bottom: 15px;
-    }
-    .mobile-recent-list div { /* Used for aligning the links in a certain way and for hover to look right*/
-        min-height: 60px;
-        display: grid;
-        align-items: center;
-    }
-    .mobile-recent-list a {
-        display: block;
-        text-align: start;
-        color: black;
-        padding-inline: 16px;
-        
-        font-size: 12.3px;
-        line-height: 16px;
-        max-width: 187px;
-    }
-    /* Hover for all the dropdown links */
-    .nav-list a:hover {background-color: #BCE5DE;}
-    .nav-list a:hover h3 {color: #05362D;}
-    .mobile-recent-list div:hover {background-color: #BCE5DE;}
-    .mobile-recent-list div:hover a{color: #05362D;}
-
-    /* Hides the dropdown */
-    .hide-dropdown {
-        height: 0;
-        overflow: hidden;
-    }
-    /* Shows the dropdown */
-    .show-dropdown {
-        z-index: 100;
-        height: auto;
-        width: auto;
+    /* Hamburger menu */
+    .mobile-menu-group svg {
+        margin-right: 20px;
     }
 }
