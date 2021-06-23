@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react"
 
-import navbarConnect from "./Backend-API/navbarConnect"
+import navbarConnect from "./backend-API/navbarConnect"
 import Sidebar from "./navbar/sidebar";
 import MobileNavbar from './navbar/mobileNavbar'
 import SidebarContext from "./context/SidebarContext"

@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react'
-import "../../stylesheets/sidebar.css"
+import React from 'react'
+import "../../stylesheets/navbar/sidebar.css"
 
 import Logo from "../../images/InFINIDREAMS.png"
 import SidebarContext from '../context/SidebarContext'

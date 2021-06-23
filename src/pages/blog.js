@@ -1,11 +1,10 @@
 import React, {useEffect, useState} from 'react'
 import Layout from "../components/layout"
-import axios from 'axios'
 
 import SEO from "../components/SEO"
 import Page from "../components/highlighter"
 import SinglepostContext from '../components/context/SinglepostContext'
-import blogConnnect from "../components/Backend-API/blogConnect"
+import blogConnnect from "../components/backend-API/blogConnect"
 
 import "../stylesheets/blog.css"
 import "../stylesheets/layout.css"

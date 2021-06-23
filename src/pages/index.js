@@ -4,7 +4,7 @@ import axios from 'axios'
 
 import SEO from "../components/SEO"
 import BlogpostContext from '../components/context/BlogpostsContext'
-import postsConnect from '../components/Backend-API/postsConnect'
+import postsConnect from '../components/backend-API/postsConnect'
 
 import "../stylesheets/index.css"
 import "../stylesheets/layout.css"
