@@ -155,48 +155,4 @@
     .nav-container {width: 244px;}
 }
 /* Mobile screens */
-@media (max-width:950px){
-    .left-section {display: none;} /* Gets rid of the sidebar to create a mobile menu  */
-
-    /* The mobile menu */
-    .mobile-menu-container{
-        display: block;
-        position: fixed;
-        width: 100%;
-        height: 76px;
-
-        z-index: 100;
-        background-color: white;
-        border-bottom: 1px solid rgba(152, 152, 152, 0.6);
-    }
-    .mobile-menu-group {
-        display: grid; 
-        grid-template-columns: repeat(2, auto);
-        justify-content: space-between;
-        align-content: center;
-        
-        height: 100%;
-    }
-    
-    /* Logo container */
-    .mobile-logo-container {
-        display: grid;
-        align-items: center;
-        height: 100%;
-        padding:0 15px 0 15px; 
-    }
-    
-    /* Image of the logo */
-    .logo {
-        left: 0;
-        top:0;
-        height: 23px;
-        position: relative;
-        display: block;
-    }
-
-    /* Hamburger menu */
-    .mobile-menu-group svg {
-        margin-right: 20px;
-    }
-}
+@media (max-width:950px){.left-section {display: none;} /* Gets rid of the sidebar to create a mobile menu  */}
