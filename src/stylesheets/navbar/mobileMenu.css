@@ -49,18 +49,52 @@
     .mobile-menu-group button:hover {
         background-color: #EBEBEB;
     }
-
-    /* Side menu. Only open when the button is clicked. */
+    /* Cover over the blog */
     .cover {
         display: block;
         position: fixed;
         background-color: rgba(0, 0, 0, 0.6);
         height: 100vh;
         width: 0px;
+        overflow: hidden;
     }
     .cover.show {
         width: 100vw;
         z-index: 1000;
     }
+
+    /* Side menu. Only open when the button is clicked. */
+    .side-menu-container {
+        height: 100vh;
+        width: 400px;
+        position: fixed;
+        right:0;
+        background-color: white;
+    }
+    .side-menu-group {
+        display: grid;
+        grid-template-columns: repeat(1, auto);
+        justify-content: center;
+    }
+    .side-menu-group svg {
+        justify-self: end;
+        border: none;
+    }
+    .mobile-pages-section, .mobile-recent-posts {
+        width: 80%;
+        margin: 0 auto;
+    }
+    .mobile-pages-section {
+        display: grid;
+        grid-template-columns: repeat(1, auto);
+
+    }
+    .mobile-recent-posts {
+        display: grid;
+        grid-template-columns: repeat(1, auto);
+    }
+
+
+    
 
 }
