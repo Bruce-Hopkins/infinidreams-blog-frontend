@@ -1,6 +1,6 @@
 /* The entire left section of the website, used for aligning the sidebar */
 .left-section {
-    position: fixed; 
+    position: absolute; 
     left: 26px; 
     height: 100%;
 }
