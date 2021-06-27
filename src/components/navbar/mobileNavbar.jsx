@@ -52,7 +52,7 @@ function MobileNavbar (){
             </button>
 
             <div className="mobile-pages-section"> 
-              <h2> Pages</h2>
+              <h2>Pages</h2>
               <a href="/"> Home</a>
               <a href="http://www.infinidream.net/"> About Me</a>
             </div>
