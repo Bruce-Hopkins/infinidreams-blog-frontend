@@ -14,8 +14,15 @@ async function SinglepostConnect (id){
     }
     catch(err) {
         console.error(err)
-        return "error"
+        return {
+            postData: null,
+            isError: true
+        };
     }
-    return postData;
+    return { 
+        postData: postData, 
+        isError: false
+    }
+
 }
 export default SinglepostConnect

@@ -12,15 +12,16 @@ async function postsConnect (){
         });
     }
     catch(err) {
-      console.error(err)
-      return {
-          postData: null,
-          isError: true
-      };
+        console.error(err)
+        return {
+            postData: null,
+            isError: true
+        };
     }
     return { 
         postData: postData, 
-        isError: false}
+        isError: false
+    }
 
 }
 
