@@ -1,0 +1,158 @@
+/* The entire left section of the website, used for aligning the sidebar */
+.left-section {
+    position: absolute; 
+    left: 26px; 
+    height: 100%;
+}
+.mobile-menu-container {display: none;}
+/* Main logo */
+.logo {
+    position: fixed;
+    width: auto;
+    height: 33px; 
+    left: 94px;
+    top: 13px;
+}
+
+/* Sidebar */
+.nav-container {
+    overflow-y: scroll;
+    position: relative;
+    width: 461px;
+    height: 100%;
+    top: 61px;
+}
+/* The grid for the sidebar */
+.nav-group {
+    display: grid;
+    grid-template-columns: repeat(1, auto);
+    height: 100%;
+    align-content: baseline;
+}
+/*  Where links are */
+/* Pages section */
+.pages-section {
+    position: relative;
+    width: 324px;
+    height: 207px;
+    margin: 0px auto;
+
+    background: #FFFFFF;
+    border: 1px solid rgba(152, 152, 152, 0.6);
+    box-sizing: border-box;
+    border-radius: 10px;
+    overflow: hidden;
+}
+/* The text saying "Pages" */
+.pages-section h2 {
+    position: relative;
+    width: 85px;
+    height: 0px;
+    margin: 31px auto 31px auto;
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.05em;
+    font-feature-settings: 'kern' off;
+
+    color: #1E1E1E;
+
+}
+/* The link for the sidebar */
+.top-sidebar a {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 56px;
+    
+    text-decoration: none;
+}
+/* The a tag is the links and the h3s are the text inside */
+.top-sidebar a:hover {background: #BCE5DE;}
+.top-sidebar h3 {
+    position: relative;
+    width: 145px;
+    height: 42px;
+    margin-left: 39px;
+    margin: 0px 0px 0px 39px;
+
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.05em;
+    font-feature-settings: 'kern' off;
+
+    color: #000000;
+}
+.top-sidebar a:hover h3 {color: #05362D;}
+/* The section which displays the recent blog posts  */
+.recent-post-section {
+    position: relative;
+    width: 324px;
+    min-height: 470px;
+    margin: 30px auto;
+    
+    background: rgba(255, 255, 255);
+    border: 1px solid rgba(152, 152, 152, 0.6);
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+/* The text saying "Recent" */
+.recent-post-section h2 {
+    position: relative;
+    width: 235px;
+    height: 40px;
+    margin: 28px auto;
+
+    line-height: 35px;
+    text-align: center;
+}
+/* The titles of the recents posts */
+.recent-post-section a {
+    display: block;
+    width: 288px;
+    height: auto;
+    margin: 0 auto 40px auto;
+    text-decoration: none;
+
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 22px;
+    letter-spacing: 0.05em;
+
+    color: #000000;
+}
+.recent-post-section a:hover {color: #14C7A8;}
+
+/* Smaller screens */
+@media (max-width:1160px){
+    .logo { 
+        left: 66px;
+        top: 24px;
+        height: 29px;
+    }
+    /* Decrease the size of the components */
+    .nav-container {width: 301px;}
+    .pages-section {width: 229px; height: 165px;}
+    
+    /* Changing the text properties to be more compact */
+    .pages-section h2, .recent-post-section h2{font-size: 21px;}
+    .pages-section h2 {margin-bottom: 20px;}
+    .pages-section h3 {font-size: 17px; height: 42px; margin-left: 30px;}
+
+    /* Recent-post more compact */
+    .recent-post-section {width: 229px;}
+    .recent-post-section a {
+        font-size: 14px;
+        width: 169px;
+    }
+}
+/* Small adjustment */
+@media (max-width: 1000px) {
+    .logo {left: 37px}
+    .nav-container {width: 244px;}
+}
+/* Mobile screens */
+@media (max-width:950px){.left-section {display: none;} /* Gets rid of the sidebar to create a mobile menu  */}

@@ -1,31 +1,13 @@
-import React, {useEffect, useState} from 'react'
-import axios from 'axios'
-import "../../stylesheets/sidebar.css"
+import React from 'react'
+import "../../stylesheets/navbar/sidebar.css"
 
 import Logo from "../../images/InFINIDREAMS.png"
 import SidebarContext from '../context/SidebarContext'
-// Context for Sidebar to get backend
 
 // Main function. Is imported by layout.js
 function Sidebar (){
 
-  // For the postdata
-  var[postsData, setPostsData] = useState()    
-
-  useEffect(() => {  
-    (async function connectToAPI (){
-      try {
-        await axios.get('http://localhost:5000/api/recent-posts').then((res) => {
-          setPostsData(res);
-        });
-      }
-      catch(err) {
-        console.error(err)
-      }
-  
-    })()
-  }, [])
-
+  // Uses the sidebar context (defined in layout.js) to use backend API data
   function GetRecentPosts() {
     const context = React.useContext(SidebarContext)
     if (context) {
@@ -35,13 +17,10 @@ function Sidebar (){
         })
       }
     }
-
-
     return <div/>
   }
 
     return (
-    <SidebarContext.Provider  value={postsData ? postsData : null}>
       <section className="left-section">
         <a href="http://www.infinidream.net/"> <img alt="Logo" className="logo" src={Logo}/> </a>
         <nav className="nav-container">
@@ -62,7 +41,6 @@ function Sidebar (){
           </div>
         </nav>
       </section>
-    </SidebarContext.Provider>
     )
   }
   

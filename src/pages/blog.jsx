@@ -1,42 +1,41 @@
 import React, {useEffect, useState} from 'react'
 import Layout from "../components/layout"
-import axios from 'axios'
+import { navigate } from "gatsby"
+
 import SEO from "../components/SEO"
 import Page from "../components/highlighter"
 import SinglepostContext from '../components/context/SinglepostContext'
+import blogConnnect from "../components/backend-API/blogConnect"
 
 import "../stylesheets/blog.css"
 import "../stylesheets/layout.css"
 
-
+// Main function. 
 const Singlepost = ({id}) => {
     var[singlePostsData, setSinglePostsData] = useState()
+    var [isError, setError] = useState(false)
 
-    // Collect data from the backend API
-    useEffect(() => {  
-        (async function connectToAPI (){
-          try {
-            await axios.get('http://localhost:5000/api/posts/' + id).then((res) => {
-                setSinglePostsData(res)
-                if (res.data.title) document.title = res.data.title;
-            });
-          }
-          catch(err) {
-            console.error(err)
-          }
-      
-        })()
+    // Connects to the API and inserts into the react hooks 
+    useEffect(() => {
+      (async function connectToAPI (){
+        let connect = await blogConnnect(id)
+        setSinglePostsData(connect.postData)
+        
+        // Redirect to 404 if the page is not found.
+        if(connect.isError) navigate("/404")
+      })()    
     },[])
 
     // Take away the spaces at the beginning of a String
     function cleanString(stringToBeCleaned) {
-      if(stringToBeCleaned.startsWith(" ")) {
-        return stringToBeCleaned.slice(1);
-      }
+      if(stringToBeCleaned.startsWith(" ")) return stringToBeCleaned.slice(1);
       return stringToBeCleaned;
     }
 
-    // This will sort through the body property in the API and return different html tags depending on the content
+    // This will sort through the body property in the API and return different html tags depending on the 
+    function RedirectForError(){
+      if (isError) navigate("/")
+    }
     function GetBody() {
         const context = React.useContext(SinglepostContext)
         if (context) {
@@ -47,11 +46,7 @@ const Singlepost = ({id}) => {
                   const splitBodyString = bodyString.split("(CODE)");
                   return <Page language={splitBodyString[0]} code={cleanString(splitBodyString[1])}/>
             } 
-
-            else if (bodyString.includes("/images/")) {
-              return <img alt="body-image" className="body-image" src={bodyString}/>
-            }
-
+            else if (bodyString.includes("/images/")) return <img alt="body-image" className="body-image" src={bodyString}/>
             else if (bodyString !== "") return <p> {cleanString(bodyString)}</p>
           })
         }
@@ -61,9 +56,8 @@ const Singlepost = ({id}) => {
     // Get all the attributes of the API and create the post. Also used the GetBody function
     function GetPost() {
       const context = React.useContext(SinglepostContext);
-        if (context) { 
+        if (context) {
           return (
-
               <div className="post-container"> 
                   <div className="post-group">
                     <h1> {context.data.title}</h1>
@@ -86,13 +80,12 @@ const Singlepost = ({id}) => {
               </div>
 
         )}
-        return <h2>Sorry, this post doesn't exist</h2>
+        return <div> </div>
     }
 
     
   return (
     <SinglepostContext.Provider  value={singlePostsData ? singlePostsData : null}>
-
       <Layout>
         <SEO title={singlePostsData ? singlePostsData.data.title : ""}/>
         <GetPost/>
