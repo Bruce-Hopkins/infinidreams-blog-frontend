@@ -3,6 +3,7 @@ import "../../stylesheets/navbar/sidebar.css"
 
 import Logo from "../../images/InFINIDREAMS.png"
 import SidebarContext from '../context/SidebarContext'
+import { Link } from 'gatsby'
 
 // Main function. Is imported by layout.js
 function Sidebar (){
@@ -22,7 +23,7 @@ function Sidebar (){
 
     return (
       <section className="left-section">
-        <a href="http://www.infinidream.net/"> <img alt="Logo" className="logo" src={Logo}/> </a>
+        <Link href="/"> <img alt="Logo" className="logo" src={Logo}/> </Link>
         <nav className="nav-container">
           <div className="nav-group">
             <div className="top-sidebar">

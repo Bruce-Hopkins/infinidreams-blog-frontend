@@ -1,13 +1,13 @@
 .post-container {
     position: absolute;
-    width: 850px;
+    max-width: 1050px;
     height: auto;
     left: 488px;
     top: 13px;   
 }
 .post-group {
     position: relative;
-    width: 760px;
+    width: 100%;
     height: auto;
     margin-left: 40px;
     margin-top: 35px;
@@ -47,6 +47,20 @@
     margin-bottom: 10px;
 }
 .body-group {max-width: 797px;}
+.body-group h3 {
+    height: 30px;
+    font-size: 27px; 
+    font-weight: 600;
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+.body-group a {
+    color: #14C7A8;
+    font-size: 16px;
+    height: auto;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
 .body-group p, .body-group img, .body-group div {margin-bottom: 40px; margin-top: 40px;}
 .body-group p {
     font-style: normal;
@@ -61,7 +75,7 @@
 @media (max-width:1360px){
     .post-container{
         margin-left: 16px;
-        width: auto;
+        /* width: ; */
     }
     .post-group {margin-left: 0;}
     .post-group h1 {
@@ -173,6 +187,11 @@
         font-size: 14px;
 
         justify-self: center;
+    }
+    .body-group h3 {
+        font-size: 22px; 
+        margin-left: auto;
+        margin-right: auto;
     }
     .body-group div {
         margin: 40px auto;
