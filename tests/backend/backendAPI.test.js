@@ -5,22 +5,13 @@ let chaiHttp = require('chai-http');
 chai.use(chaiHttp);
 
 
-// TODO, Add tests to confirm API connection
 // GET all the posts
 describe('/GET blogposts', () => {
-  it('it should connect to the API', (done) => {
-    chai.request("http://localhost:5000/")
-    .get('api/')
-    .end((err, res) => {
-      res.should.have.status(200);
-      done();
-    });
-  })
   
   // This is will be used to get an individual post.
   let id;
   it('it should GET all the posts', (done) => {
-    chai.request("http://localhost:5000/")
+    chai.request("http://server.infinidream.net/")
       .get('api/posts/')
       .end((err, res) => {
         res.should.have.status(200);
@@ -40,7 +31,7 @@ describe('/GET blogposts', () => {
   // Only preform this test if the other has succeeded
   if (id) {
     it('it should GET all the posts', (done) => {
-      chai.request("http://localhost:5000/")
+      chai.request("http://server.infinidream.net/")
         .get('api/posts/')
         .end((err, res) => {
           res.should.have.status(200);
@@ -53,7 +44,7 @@ describe('/GET blogposts', () => {
 
   // Make sure that the navbar can connect to the API, and is the right number of results.
   it('it should return four titles', (done) => {
-    chai.request("http://localhost:5000/")
+    chai.request("http://server.infinidream.net/")
       .get('api/recent-posts')
       .end((err, res) => {
         res.should.have.status(200);

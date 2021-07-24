@@ -14,7 +14,7 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "jest --verbose .tests/components",
-    "server-tests": "mocha --recursive tests/backend --exit"
+    "servertests": "mocha --recursive tests/backend --exit"
   },
   "dependencies": {
     "chai": "^4.3.4",
@@ -33,7 +33,7 @@
   },
   "main": "index.js",
   "license": "MIT",
-  "proxy": "http://localhost:5000",
+  "proxy": "http://blog.infinidream.net/",
   "devDependencies": {
     "@babel/core": "^7.13.10",
     "@babel/plugin-proposal-class-properties": "^7.13.0",

@@ -43,13 +43,22 @@ const Singlepost = ({id}) => {
           return context.data.body.map(bodyString => {
 
             if (bodyString.includes("(CODE)")) {
-                  const splitBodyString = bodyString.split("(CODE)");
-                  return <Page language={splitBodyString[0]} code={cleanString(splitBodyString[1])}/>
+              const splitBodyString = bodyString.split("(CODE)");
+              return <Page language={splitBodyString[0]} code={cleanString(splitBodyString[1])}/>
             } 
+            else if (bodyString.includes("</Header>")) {
+              const header = bodyString.match(new RegExp("<Header>" + "(.*)" + "</Header>"))[1]
+              return <h3 className="body-header"> {header}</h3>
+            }
+            else if (bodyString.includes("</Link>")) {
+              const href = bodyString.match(new RegExp("href='" + "(.*)" + "'"))[1]
+              const linkText = bodyString.match(new RegExp(">" + "(.*)" + "</Link>"))[1]
+              return <a className="body-link" href={href}> {linkText} </a>
+            }
             else if (bodyString.includes("/images/")) return <img alt="body-image" className="body-image" src={bodyString}/>
             else if (bodyString !== "") return <p> {cleanString(bodyString)}</p>
           })
-        }
+        } {}
         return <h2> There was a problem</h2>
     }
 

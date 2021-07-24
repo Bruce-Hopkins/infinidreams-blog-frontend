@@ -1,6 +1,6 @@
 /* The entire left section of the website, used for aligning the sidebar */
 .left-section {
-    position: absolute; 
+    position: fixed; 
     left: 26px; 
     height: 100%;
 }
@@ -69,7 +69,11 @@
     text-decoration: none;
 }
 /* The a tag is the links and the h3s are the text inside */
-.top-sidebar a:hover {background: #BCE5DE;}
+.top-sidebar a:hover {
+    background: #BCE5DE;
+    transition: background-color 0.25s ease-out;
+}
+
 .top-sidebar h3 {
     position: relative;
     width: 145px;
@@ -84,7 +88,10 @@
 
     color: #000000;
 }
-.top-sidebar a:hover h3 {color: #05362D;}
+.top-sidebar a:hover h3 {
+    color: #05362D;
+    transition: color 0.25s ease-out;
+}
 /* The section which displays the recent blog posts  */
 .recent-post-section {
     position: relative;
@@ -124,7 +131,10 @@
 
     color: #000000;
 }
-.recent-post-section a:hover {color: #14C7A8;}
+.recent-post-section a:hover {
+    color: #14C7A8;
+    transition: color 0.25s ease-out;
+}
 
 /* Smaller screens */
 @media (max-width:1160px){
