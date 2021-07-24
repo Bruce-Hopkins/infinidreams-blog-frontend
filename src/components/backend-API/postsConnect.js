@@ -7,7 +7,7 @@ async function postsConnect (){
 
     // Connects to backend API and /GETs a singlepost. If there's an error returns "error"
     try {
-        await axios.get('http://localhost:5000/api/posts').then((res) => {
+        await axios.get('http://server.infinidream.net/api/posts').then((res) => {
             postData = res;
         });
     }

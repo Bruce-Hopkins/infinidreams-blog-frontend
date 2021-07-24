@@ -6,7 +6,7 @@ async function SidebarConnect(){
 
     // Connects to backend API and /GETs a singlepost. If there's an error returns "error"
     try {
-        await axios.get('http://localhost:5000/api/recent-posts').then((res) => {
+        await axios.get('http://server.infinidream.net/api/recent-posts').then((res) => {
             postData = res;
         });
     }

@@ -1,5 +1,5 @@
 // const sum = require('../components/sum');
-
+// TODO Tests not currently working
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from '../../src/pages/index';

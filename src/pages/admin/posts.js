@@ -12,7 +12,7 @@ const Posts = () => {
     useEffect(() => {  
         (async function connectToAPI (){
         try {
-            await axios.get('http://localhost:5000/api/posts').then((res) => {
+            await axios.get('http://server.infinidream.net/api/posts').then((res) => {
             setPostsData(res);
             });
         }
@@ -44,7 +44,7 @@ const Posts = () => {
                 </a>
             </div>
             <div className="admin-post-buttons">
-              <form method="POST" action={"http://localhost:5000/api/post/" + data._id + "/delete"}> <input id="delete" type="submit" value="Delete"/> </form>
+              <form method="POST" action={"http://server.infinidream.net/api/post/" + data._id + "/delete"}> <input id="delete" type="submit" value="Delete"/> </form>
               <a id="update" href={"/admin/update/" + data._id}> <input id="update" type="submit" value="Update"/> </a>
             </div> 
 
