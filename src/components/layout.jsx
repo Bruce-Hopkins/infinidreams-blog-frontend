@@ -20,14 +20,14 @@ function Layout (props) {
     })()    
 }, [])
     return (
-      <div>
-      <SidebarContext.Provider  value={postsData ? postsData : null}>
-        <Sidebar/>
-        <MobileNavbar/>
-      </SidebarContext.Provider>
-      
-        {props.children}
-      </div>
+      <main>
+        <SidebarContext.Provider  value={postsData ? postsData : null}>
+          <Sidebar/>
+          <MobileNavbar/>
+        </SidebarContext.Provider>
+        
+          {props.children}
+      </main>
     )
   }
   
