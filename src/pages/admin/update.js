@@ -14,7 +14,7 @@ const UpdatePage = ({id}) => {
     (async function connectToAPI (){
     try {
         
-      await axios.get('http://server.infinidream.net/api/posts/' + id).then((res) => {
+      await axios.get(process.env.GATSBY_BACKEND_URL + '/api/posts/' + id).then((res) => {
         setPostsData(res.data);
       });
     }
@@ -25,7 +25,7 @@ const UpdatePage = ({id}) => {
 }, [])
   return (
     <LoginVerifiacation>
-      <CreatePageForm url={"http://server.infinidream.net/api/post/" + id + "/update"} data={postsData} id={id}/>
+      <CreatePageForm url={process.env.GATSBY_BACKEND_URL + "/api/post/" + id + "/update"} data={postsData} id={id}/>
     </LoginVerifiacation>
   );
 };

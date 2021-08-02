@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react'
 import Layout from "../components/layout"
-import axios from 'axios'
 
 import SEO from "../components/SEO"
 import BlogpostContext from '../components/context/BlogpostsContext'
@@ -9,7 +8,6 @@ import postsConnect from '../components/backend-API/postsConnect'
 import "../stylesheets/index.css"
 import "../stylesheets/layout.css"
 
-// TODO, add h1 to page
 const IndexPage = () => {
   var[postsData, setPostsData] = useState()
   var [error, setError] = useState(false)
@@ -24,8 +22,10 @@ const IndexPage = () => {
   // Maps through each blog posts. 
   function GetData () {
     const context = React.useContext(BlogpostContext)
-    console.log(context)
-    if (context) return context.data.map (data => {
+    console.log("HERE1")
+    console.log(process.env.GATSBY_BACKEND_URL)
+    if (context) 
+    return context.data.map (data => {
         return (
           <div className="blogpost-container">
             <a href={"blog/"+data._id} className="blogpost-group"> 

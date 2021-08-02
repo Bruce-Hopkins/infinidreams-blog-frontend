@@ -3,7 +3,7 @@ let expect = chai.expect;
 let should = chai.should();
 let chaiHttp = require('chai-http');
 chai.use(chaiHttp);
-
+require('dotenv').config()
 
 // GET all the posts
 describe('/GET blogposts', () => {
@@ -11,7 +11,7 @@ describe('/GET blogposts', () => {
   // This is will be used to get an individual post.
   let id;
   it('it should GET all the posts', (done) => {
-    chai.request("http://server.infinidream.net/")
+    chai.request(process.env.GATSBY_BACKEND_URL + "/")
       .get('api/posts/')
       .end((err, res) => {
         res.should.have.status(200);
@@ -31,7 +31,7 @@ describe('/GET blogposts', () => {
   // Only preform this test if the other has succeeded
   if (id) {
     it('it should GET all the posts', (done) => {
-      chai.request("http://server.infinidream.net/")
+      chai.request(process.env.GATSBY_BACKEND_URL + "/")
         .get('api/posts/')
         .end((err, res) => {
           res.should.have.status(200);
@@ -44,7 +44,7 @@ describe('/GET blogposts', () => {
 
   // Make sure that the navbar can connect to the API, and is the right number of results.
   it('it should return four titles', (done) => {
-    chai.request("http://server.infinidream.net/")
+    chai.request(process.env.GATSBY_BACKEND_URL + "/")
       .get('api/recent-posts')
       .end((err, res) => {
         res.should.have.status(200);
