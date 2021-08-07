@@ -13,18 +13,18 @@ import "../stylesheets/layout.css"
 // Main function. 
 const Singlepost = ({id}) => {
     var[singlePostsData, setSinglePostsData] = useState()
-    var [isError, setError] = useState(false)
 
     // Connects to the API and inserts into the react hooks 
     useEffect(() => {
       (async function connectToAPI (){
         let connect = await blogConnnect(id)
         setSinglePostsData(connect.postData)
+
         
         // Redirect to 404 if the page is not found.
         if(connect.isError) navigate("/404")
       })()    
-    },[])
+    },[id])
 
     // Take away the spaces at the beginning of a String
     function cleanString(stringToBeCleaned) {
@@ -33,13 +33,9 @@ const Singlepost = ({id}) => {
     }
 
     // This will sort through the body property in the API and return different html tags depending on the 
-    function RedirectForError(){
-      if (isError) navigate("/")
-    }
     function GetBody() {
         const context = React.useContext(SinglepostContext)
         if (context) {
-
           return context.data.body.map(bodyString => {
 
             if (bodyString.includes("(CODE)")) {
@@ -47,18 +43,19 @@ const Singlepost = ({id}) => {
               return <Page language={splitBodyString[0]} code={cleanString(splitBodyString[1])}/>
             } 
             else if (bodyString.includes("</Header>")) {
-              const header = bodyString.match(new RegExp("<Header>" + "(.*)" + "</Header>"))[1]
+              const header = bodyString.match(new RegExp("<Header>(.*)</Header>"))[1]
               return <h3 className="body-header"> {header}</h3>
             }
             else if (bodyString.includes("</Link>")) {
-              const href = bodyString.match(new RegExp("href='" + "(.*)" + "'"))[1]
-              const linkText = bodyString.match(new RegExp(">" + "(.*)" + "</Link>"))[1]
+              const href = bodyString.match(new RegExp("href='(.*)'"))[1]
+              const linkText = bodyString.match(new RegExp(">(.*)</Link>"))[1]
               return <a className="body-link" href={href}> {linkText} </a>
             }
-            else if (bodyString.includes("/images/")) return <img alt="body-image" className="body-image" src={bodyString}/>
+            else if (bodyString.includes("/images/")) return <img alt="body" className="body-image" src={bodyString}/>
             else if (bodyString !== "") return <p> {cleanString(bodyString)}</p>
+            return null
           })
-        } {}
+        }
         return <h2> There was a problem</h2>
     }
 
@@ -75,6 +72,7 @@ const Singlepost = ({id}) => {
                       {context.data.tags ? context.data.tags.map(tag => {
                           // Only return that tag if it's not empty 
                           if (tag !== "") return <p className="title-tags"> {tag}</p>
+                          return null
                       }): <p> </p>}
                       <p className="tag-space">|</p>
                       <p className="title-date">{context.data.FormattedDateOfPost}</p>

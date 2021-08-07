@@ -17,7 +17,7 @@ function Layout (props) {
         fetch(process.env.GATSBY_BACKEND_URL + "/api/validate-login", requestOptions)
             .then(response => {
                 console.log(response)
-                if (response.status == 200) setPostResponse(true)
+                if (response.status === 200) setPostResponse(true)
                 else  {
                     console.log(response.status)
                     navigate('/admin/login');

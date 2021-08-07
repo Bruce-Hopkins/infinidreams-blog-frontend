@@ -33,25 +33,31 @@ const Form = (props) => {
     
     // Takes the values from the variable inputValue and adds it to the bodyData state
     function loopThroughBody (inputList) {
-        let valuesList = [];
-        inputList.map (input => { 
-            valuesList.push(<Input 
-                value={input} 
-                key={valuesList.length} 
-                _id={valuesList.length} 
-                />)
-        });
+        let valuesList = []
+        valuesList.push(inputList.map (input => { 
+            return (
+                <Input 
+                    value={input} 
+                    key={valuesList.length} 
+                    _id={valuesList.length} 
+                />
+            )
+        })
+        )
         setBodyData(valuesList);
     }
     function loopThroughTags (inputList) {
         let tagsValuesList = [];
-        inputList.map (input => {
-            tagsValuesList.push(<Tags
-                value={input}
-                key={tagsValuesList.length}
-                _id={tagsValuesList.length}
-            />)
-        });
+        tagsValuesList.push ( inputList.map (input => {
+            return( 
+                <Tags
+                    value={input}
+                    key={tagsValuesList.length}
+                    _id={tagsValuesList.length}
+                />
+            )
+            }) 
+        )
         setTagsData(tagsValuesList);
     }  
 
@@ -81,7 +87,7 @@ const Form = (props) => {
         action={ props.url ? props.url : "/"}
         >
 
-        <label for="thumbnail">Thumbnail:</label>
+        <label htmlFor="thumbnail">Thumbnail:</label>
         <input 
         className="thumbnail-input" 
             type="file" 
@@ -90,7 +96,7 @@ const Form = (props) => {
             />
         <br/>
 
-        <label for="title">title:</label>
+        <label htmlFor="title">title:</label>
         <input 
             className="title-input" 
             defaultValue={props.data ? props.data.title : ""} 
@@ -99,7 +105,7 @@ const Form = (props) => {
             name="title"/>
         <br/>
 
-        <label for="summary">summary:</label>
+        <label htmlFor="summary">summary:</label>
         <input 
             className="summary-input" 
             defaultValue={props.data ? props.data.summary : ""} 
@@ -108,7 +114,7 @@ const Form = (props) => {
             name="summary"/>
         <br/><br/>
 
-        <label for="body">body:</label>
+        <label htmlFor="body">body:</label>
         <div className="body-group">
             {bodyData}
             {/* {props.data ? bodyData : <Input/>} */}
@@ -117,7 +123,7 @@ const Form = (props) => {
 
         <br/><br/>
         
-        <label for="tags">tags:</label>
+        <label htmlFor="tags">tags:</label>
         <div className="tags-group"> 
         {tagsData}
             {/* { props.data ? tagsData : <Tags/>} */}

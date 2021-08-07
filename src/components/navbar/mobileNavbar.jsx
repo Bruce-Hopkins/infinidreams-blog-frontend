@@ -12,7 +12,7 @@ function MobileNavbar (){
     const context = React.useContext(SidebarContext)
     if (context) {
       if (context.data.length > 0) {
-        return context.data.map (selectedLink => {
+        return context.data.reverse().map (selectedLink => {
           return <div> <a href={"/blog/"+selectedLink._id}> {selectedLink.title} </a> </div>
         })
       }

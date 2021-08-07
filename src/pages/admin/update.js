@@ -22,7 +22,7 @@ const UpdatePage = ({id}) => {
         console.error(err)
     }
     })()
-}, [])
+}, [id])
   return (
     <LoginVerifiacation>
       <CreatePageForm url={process.env.GATSBY_BACKEND_URL + "/api/post/" + id + "/update"} data={postsData} id={id}/>

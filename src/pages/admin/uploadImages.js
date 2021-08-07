@@ -4,7 +4,6 @@ import LoginVerifiacation from '../../components/loginVerifiacation'
 
 import "../../stylesheets/admin-styles/uploadImages.css"
 
-// TODO, make the UI a bit better
 const ImageHandler = () => {
     var[inputFile, setInputFile] = useState([]);
 
@@ -25,7 +24,7 @@ const ImageHandler = () => {
     function GetImages() {
         if (images) return images.map (image => { 
             return <div className="images-upload"> 
-                <img src={process.env.GATSBY_BACKEND_URL + "/images/" + image.name}/>
+                <img alt="uploaded" src={process.env.GATSBY_BACKEND_URL + "/images/" + image.name}/>
                 <button onClick={deleteImage.bind(this, image.name)}> Delete </button>
             </div>
         });
@@ -83,7 +82,7 @@ const ImageHandler = () => {
                 enctype="multipart/form-data"
                 onSubmit={handleSubmit}>
 
-                <label for="image">Image:</label>
+                <label htmlFor="image">Image:</label>
                 <input 
                 className="thumbnail-input" 
                     type="file" 
