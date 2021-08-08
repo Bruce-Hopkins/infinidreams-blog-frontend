@@ -61,11 +61,11 @@ const IndexPage = () => {
     <BlogpostContext.Provider value={postsData ? postsData : null}>
       <Layout>
         <SEO title="Infinidream | Blog"/>
-        <main className="posts-container">
+        <section className="posts-container">
           <div className="post-list">
               <GetData/>          
           </div>
-        </main>
+        </section>
       </Layout>
     </BlogpostContext.Provider>
 

@@ -4,7 +4,6 @@ import navbarConnect from "./backend-API/navbarConnect"
 import Sidebar from "./navbar/sidebar";
 import MobileNavbar from './navbar/mobileNavbar'
 import SidebarContext from "./context/SidebarContext"
-import { navigate } from "gatsby"
 // import SEO from "../components/SEO"
 
 function Layout (props) {
@@ -16,11 +15,10 @@ function Layout (props) {
     (async function connectToAPI (){
     const connect = await navbarConnect();
     setPostsData(connect.postData)
-    if(connect.isError) navigate("/404")
     })()    
 }, [])
     return (
-      <main>
+      <main className={props.className}>
         <SidebarContext.Provider  value={postsData ? postsData : null}>
           <Sidebar/>
           <MobileNavbar/>

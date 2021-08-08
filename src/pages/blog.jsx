@@ -93,7 +93,7 @@ const Singlepost = ({id}) => {
     
   return (
     <SinglepostContext.Provider  value={singlePostsData ? singlePostsData : null}>
-      <Layout>
+      <Layout className="blog-main">
         <SEO title={singlePostsData ? singlePostsData.data.title : ""}/>
         <GetPost/>
       </Layout>

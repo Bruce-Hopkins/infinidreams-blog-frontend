@@ -16,7 +16,7 @@ exports.onCreatePage = async ({page, actions}) =>{
         createPage({
             path: "/admin/update",
             matchPath: "/admin/update/:id",
-            component: path.resolve("src/pages/admin/update.js")
+            component: path.resolve("src/pages/admin/update.jsx")
         })
     }
 }
