@@ -22,8 +22,6 @@ const IndexPage = () => {
   // Maps through each blog posts. 
   function GetData () {
     const context = React.useContext(BlogpostContext)
-    console.log("HERE1")
-    console.log(process.env.GATSBY_BACKEND_URL)
     if (context) 
     return context.data.map (data => {
         return (

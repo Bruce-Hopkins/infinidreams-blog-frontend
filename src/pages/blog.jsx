@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import Layout from "../components/layout"
-import { navigate } from "gatsby"
+import { navigate, graphql, useStaticQuery } from "gatsby"
 
 import SEO from "../components/SEO"
 import Page from "../components/highlighter"
@@ -94,7 +94,7 @@ const Singlepost = ({id}) => {
   return (
     <SinglepostContext.Provider  value={singlePostsData ? singlePostsData : null}>
       <Layout className="blog-main">
-        <SEO title={singlePostsData ? singlePostsData.data.title : ""}/>
+        {/* <SEO title={gatsbyRepoData.title ? gatsbyRepoData.title : ""}/> */}
         <GetPost/>
       </Layout>
     </SinglepostContext.Provider>
