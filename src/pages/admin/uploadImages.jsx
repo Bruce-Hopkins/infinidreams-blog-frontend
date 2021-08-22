@@ -4,7 +4,6 @@ import LoginVerifiacation from '../../components/loginVerifiacation'
 
 import "../../stylesheets/admin-styles/uploadImages.css"
 
-// TODO, make the UI a bit better
 const ImageHandler = () => {
     var[inputFile, setInputFile] = useState([]);
 
@@ -13,7 +12,7 @@ const ImageHandler = () => {
     useEffect(() => {  
         (async function connectToAPI (){
         try {
-            await axios.get('http://server.infinidream.net/api/images', { withCredentials: true }).then((res) => {
+            await axios.get(process.env.GATSBY_BACKEND_URL + '/api/images', { withCredentials: true }).then((res) => {
                 setImages(res.data);
             });
         }
@@ -25,7 +24,7 @@ const ImageHandler = () => {
     function GetImages() {
         if (images) return images.map (image => { 
             return <div className="images-upload"> 
-                <img src={"http://server.infinidream.net/images/" + image.name}/>
+                <img alt="uploaded" src={process.env.GATSBY_BACKEND_URL + "/images/" + image.name}/>
                 <button onClick={deleteImage.bind(this, image.name)}> Delete </button>
             </div>
         });
@@ -34,9 +33,8 @@ const ImageHandler = () => {
 
     // Deletes the image when you click on the button. Name property is used to find the image
     function deleteImage (name ){
-        console.log('http://server.infinidream.net/api/image/'+ name +'/delete')
         try {
-            axios.post('http://server.infinidream.net/api/image/'+ name +'/delete', {},{ withCredentials: true }).then((res) => {
+            axios.post(process.env.GATSBY_BACKEND_URL + '/api/image/'+ name +'/delete', {},{ withCredentials: true }).then((res) => {
                 // alert("Successful")
                 // window.location.reload()
             })
@@ -63,7 +61,7 @@ const ImageHandler = () => {
         * or two, the server cannot find the file for some reason
         */
         try {
-            axios.post('http://server.infinidream.net/api/create-image', formData,{ withCredentials: true }, {
+            axios.post(process.env.GATSBY_BACKEND_URL + '/api/create-image', formData,{ withCredentials: true }, {
                 headers: {
                     'Content-Type': 'multipart/form-data;'
                 }
@@ -84,7 +82,7 @@ const ImageHandler = () => {
                 enctype="multipart/form-data"
                 onSubmit={handleSubmit}>
 
-                <label for="image">Image:</label>
+                <label htmlFor="image">Image:</label>
                 <input 
                 className="thumbnail-input" 
                     type="file" 

@@ -9,25 +9,23 @@ import SidebarContext from "./context/SidebarContext"
 function Layout (props) {
   // Connects to the sidebar inserts it into the sidebar context
   var[postsData, setPostsData] = useState()
-  var [error, setError] = useState(false)
 
   useEffect(() => {
     // Connects to the API and inserts into the react hooks 
     (async function connectToAPI (){
     const connect = await navbarConnect();
     setPostsData(connect.postData)
-    setError(connect.isError)
     })()    
 }, [])
     return (
-      <div>
-      <SidebarContext.Provider  value={postsData ? postsData : null}>
-        <Sidebar/>
-        <MobileNavbar/>
-      </SidebarContext.Provider>
-      
-        {props.children}
-      </div>
+      <main className={props.className}>
+        <SidebarContext.Provider  value={postsData ? postsData : null}>
+          <Sidebar/>
+          <MobileNavbar/>
+        </SidebarContext.Provider>
+        
+          {props.children}
+      </main>
     )
   }
   

@@ -8,7 +8,7 @@ const Form = () => {
   return (
     <LoginVerifiacation>
 
-      <CreatePageForm url={"http://server.infinidream.net/api/post/create"}/>
+      <CreatePageForm url={process.env.GATSBY_BACKEND_URL + "/api/post/create"}/>
     </LoginVerifiacation>
   );
 };

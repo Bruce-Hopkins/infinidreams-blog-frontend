@@ -11,13 +11,13 @@ function Layout (props) {
             credentials: 'include',
             method: 'GET',
             headers: { 
-                "Access-Control-Allow-Origin": "http://server.infinidream.net/"
+                "Access-Control-Allow-Origin": process.env.GATSBY_BACKEND_URL
             },
         };
-        fetch("http://server.infinidream.net/api/validate-login", requestOptions)
+        fetch(process.env.GATSBY_BACKEND_URL + "/api/validate-login", requestOptions)
             .then(response => {
                 console.log(response)
-                if (response.status == 200) setPostResponse(true)
+                if (response.status === 200) setPostResponse(true)
                 else  {
                     console.log(response.status)
                     navigate('/admin/login');

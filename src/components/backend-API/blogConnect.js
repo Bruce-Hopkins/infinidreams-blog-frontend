@@ -7,7 +7,7 @@ async function SinglepostConnect (id){
 
     // Connects to backend API and /GETs a singlepost. If theres an error returns "error"
     try {
-      await axios.get('http://server.infinidream.net/api/posts/' + id).then((res) => {
+      await axios.get(process.env.GATSBY_BACKEND_URL + '/api/posts/' + id).then((res) => {
           postData = res;
           if (res.data.title) document.title = res.data.title;
       });
